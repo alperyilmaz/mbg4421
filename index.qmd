@@ -1,12 +1,15 @@
 # MBG4421 Biyoinformatik
 
-- Ders notları bu sayfada paylaşılacaktır.
+- Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe'ye çevirebilirsiniz.
+- Uygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.
 
-## Ders1 
+## Ders1
 
-*8 Ekim 2024 Salı, 9-12*
+*1 Ekim 2024 Salı* tarihinde Galaxy sitesi tanıtıldı 
 
-**İçerik**:
+## Ders2 
+
+*8 Ekim 2024 Salı* tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. [Sunum linki](ders2.qmd)
 
 
 

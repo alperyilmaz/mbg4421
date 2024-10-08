@@ -1,0 +1,67 @@
+---
+title: "Galaxy Analizlerine Giriş"
+subtitle: "MBG4421 Biyoinformatik - Ders2"
+author: "Alper Yılmaz"
+date: 2024-10-08
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+---
+
+## İçerik
+
+Bugün bahsedilecek Galaxy analizleri:
+
+* [A short introduction to Galaxy](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-short/tutorial.html)
+* [Galaxy Basics for genomics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-101/tutorial.html)
+* [Introduction to Genomics and Galaxy](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-strands/tutorial.html)
+
+## Örnek1: A short introduction to Galaxy
+
+Bu eğitimde 
+
+* dosya yükleme
+* dosya görüntüleme
+* tool kullanma
+* bir tool'u tekrar kullanma
+
+gösterilecektir.
+
+
+
+## Örnek2: Galaxy Basics for genomics
+
+Bu eğitimde:
+
+* link kullanarak dosya yükleme
+* genom aritmetiği
+* *datamash* ile veri analizi
+  * herhangi bir kolondaki verilerin sayımı
+  * herhangi bir kolona göre sıralama
+  * iki dosyayı birleştirme
+* UCSC genom browser'da görüntüleme
+
+gösterilecektir.
+
+
+
+
+## Örnek3: Introduction to Genomics and Galaxy
+
+Bu eğitimde:
+
+chr22'de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.
+
+* UCSC'den veri çekimi (insan genlerinin koordinatları)
+* *Filter* yardımıyla, genleri iki dosyaya ayırma
+* genom aritmetiği, çakışan bölgeleri bulma
+* UCSC genome browser'da görüntüleme

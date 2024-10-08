@@ -4,14 +4,21 @@
     "href": "index.html",
     "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Ders notları bu sayfada paylaşılacaktır.\n\n\n\n8 Ekim 2024 Salı, 9-12\nİçerik:"
+    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
   },
   {
     "objectID": "index.html#ders1",
     "href": "index.html#ders1",
     "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "8 Ekim 2024 Salı, 9-12\nİçerik:"
+    "text": "1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı"
+  },
+  {
+    "objectID": "index.html#ders2",
+    "href": "index.html#ders2",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
   },
   {
     "objectID": "about.html",
@@ -26,5 +33,40 @@
     "title": "MBG4421 Ders Notları",
     "section": "",
     "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
+  },
+  {
+    "objectID": "ders2.html#içerik",
+    "href": "ders2.html#içerik",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "İçerik",
+    "text": "İçerik\nBugün bahsedilecek Galaxy analizleri:\n\nA short introduction to Galaxy\nGalaxy Basics for genomics\nIntroduction to Genomics and Galaxy"
+  },
+  {
+    "objectID": "ders2.html#örnek1-a-short-introduction-to-galaxy",
+    "href": "ders2.html#örnek1-a-short-introduction-to-galaxy",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek1: A short introduction to Galaxy",
+    "text": "Örnek1: A short introduction to Galaxy\nBu eğitimde\n\ndosya yükleme\ndosya görüntüleme\ntool kullanma\nbir tool’u tekrar kullanma\n\ngösterilecektir."
+  },
+  {
+    "objectID": "ders2.html#örnek2-galaxy-basics-for-genomics",
+    "href": "ders2.html#örnek2-galaxy-basics-for-genomics",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek2: Galaxy Basics for genomics",
+    "text": "Örnek2: Galaxy Basics for genomics\nBu eğitimde:\n\nlink kullanarak dosya yükleme\ngenom aritmetiği\ndatamash ile veri analizi\n\nherhangi bir kolondaki verilerin sayımı\nherhangi bir kolona göre sıralama\niki dosyayı birleştirme\n\nUCSC genom browser’da görüntüleme\n\ngösterilecektir."
+  },
+  {
+    "objectID": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
+    "href": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek3: Introduction to Genomics and Galaxy",
+    "text": "Örnek3: Introduction to Genomics and Galaxy\nBu eğitimde:\nchr22’de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.\n\nUCSC’den veri çekimi (insan genlerinin koordinatları)\nFilter yardımıyla, genleri iki dosyaya ayırma\ngenom aritmetiği, çakışan bölgeleri bulma\nUCSC genome browser’da görüntüleme"
+  },
+  {
+    "objectID": "page-sample.html",
+    "href": "page-sample.html",
+    "title": "Some title",
+    "section": "",
+    "text": "Galaxy örnek"
   }
 ]

@@ -1,0 +1,12 @@
+---
+title: "Some title"
+subtitle: "MBG4421 - Ders1"
+author: "Alper Yılmaz"
+date: 2024-10-08
+format: html
+typora-copy-images-to: images
+---
+
+# Galaxy örnek
+
+
