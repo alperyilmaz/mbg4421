@@ -1,0 +1,255 @@
+---
+title: "Galaxy Üzerinde Docking"
+subtitle: "MBG4421 Biyoinformatik - Ders3"
+author: "Alper Yılmaz"
+date: 2024-10-15
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+---
+
+## İçerik
+
+Bugün bahsedilecek Galaxy analizleri:
+
+* [Protein-ligand docking](https://training.galaxyproject.org/training-material/topics/computational-chemistry/tutorials/cheminformatics/tutorial.html)
+
+
+## Örnek1: Protein-ligand docking
+
+Bu eğitimde 
+
+* PDB dosyası indirme, temizleme
+* Receptor ve ligand hazırlama
+* Ligand kütüphanesi hazırlama
+* Docking/yanaştırma 
+
+gösterilecektir.
+
+
+## Docking/Moleküler Kenetlenme Nedir?
+
+- Moleküllerin bağlanma yönelimini tahmin etmek için kullanılan hesaplamalı bir yöntem
+- Genellikle küçük bir molekül (ligand) ve daha büyük bir protein (reseptör) içerir
+- Moleküller arasındaki ilişki gücünü veya bağlanma afinitesini tahmin etmeyi amaçlar
+- İlaç keşfi ve tasarım süreçlerinde esastır
+
+## Moleküler Kenetlenmenin Uygulamaları
+
+- İlaç keşfi ve geliştirilmesi
+- Protein-protein etkileşimlerini anlama
+- Enzim-substrat etkileşimlerini inceleme
+
+
+## Yaygın Kenetlenme Yazılımları
+
+1. AutoDock Vina
+   - Açık kaynaklı, hızlı ve doğru
+   - Büyük ölçekli sanal tarama için uygun
+
+2. GOLD (Ligand Kenetlenmesi için Genetik Optimizasyon)
+   - Yüksek doğruluklu ticari yazılım
+   - Kenetlenme için genetik algoritma kullanır
+
+3. Glide (Enerjetiklerle Izgara Tabanlı Ligand Kenetlenmesi)
+   - Schrödinger paketinin bir parçası
+   - Hızı ve doğruluğu ile bilinir
+
+4. SwissDock
+   - Web tabanlı kenetlenme aracı
+   - Kullanıcı dostu arayüz, yeni başlayanlar için uygun
+
+
+## Docking/kenetlenme
+
+![](images/triggering.gif)
+
+:::footer
+[Resim kaynağı](https://www.drugdesign.org/chapters/molecular-docking/#introduction-to-computational-docking)
+:::
+
+## PDB Formatı: Protein Veri Bankası
+
+- Biyomoleküllerin 3B yapılarını temsil etmek için standart dosya formatı
+- Atomik koordinatları ve diğer bilgileri içerir
+- PDB dosyasındaki tipik bilgiler:
+  - Atom türleri ve koordinatları
+  - İkincil yapı atamaları
+  - Kristalografik bilgiler
+  - Deneysel yöntem ve koşullar
+
+## PDB Dosya Örneği
+
+```
+ATOM     1  N   ASP A  30     31.904  -0.904  -0.904  1.00 25.00          N
+ATOM     2  CA  ASP A  30     31.904  -0.904  -0.904  1.00 25.00          C
+ATOM     3  C   ASP A  30     32.904  -1.904  -1.904  1.00 25.00          C
+...
+```
+
+- Her satır bir atomu temsil eder
+- Sütunlar belirli bilgileri içerir (örn. atom türü, amino asit, koordinatlar)
+- **Proteine ait olmayan atomlar (örn. ligandlar) `HETATM` ile gösterilir.**
+
+## PDB içerik
+
+Galaxy örneğinde kullanılacak olan `2BRC` numaralı 3B yapıyı [RCSB PDB sitesinden](https://www.rcsb.org/) indirip:
+
+- not defterinde 
+- PyMOL programında açalım
+
+**Not**:  "HETATM" ile başlayan satırları silip, hem HETATM hem de HETATM içermeyen dosyayı ayrı ayrı görüntüleyiniz.
+
+**Not2**: 2BRC numaralı yapıyı RCSB PDB sitesinde de 3B olarak görüntüleyebilirsiniz.
+
+## PDBQT Formatı
+
+PDBQT (Protein Veri Bankası, Kısmi Yük (Q) ve Atom Türü (T))
+
+- Özellikle moleküler kenetlenme için kullanılan dosya formatı
+- PDB formatına dayanır, ek bilgiler içerir
+
+Temel Özellikler:
+
+- Atomlar için kısmi yükleri içerir
+- Kuvvet alanı hesaplamalarında kullanılmak üzere atom türlerini belirtir
+- AutoDock ve AutoDock Vina kenetlenme yazılımları tarafından kullanılır
+
+## PDBQT örnek
+
+```
+ATOM    1  A1  INH I        1.054   3.021   1.101  0.00  0.00    0.002 A
+ATOM    2  A2  INH I        1.150   1.704   0.764  0.00  0.00    0.012 A
+ATOM    3  A3  INH I       -0.006   0.975   0.431  0.00  0.00   -0.024 A
+```
+## SMILES Formatı
+
+SMILES (Basitleştirilmiş Moleküler Giriş Satır Giriş Sistemi)
+
+- Moleküler yapıyı temsil eden dize notasyonu
+- Kompakt ve insan tarafından okunabilir
+
+Örnek: Aspirin
+```
+CC(=O)OC1=CC=CC=C1C(=O)O
+```
+
+Avantajlar:
+
+- Oluşturması ve ayrıştırması kolay
+- Veritabanı depolama ve araması için uygun
+
+Sınırlamalar:
+
+- 3B bilgi içermez
+- Aynı molekül için birden fazla geçerli SMILES olabilir
+
+## SMILES Örnekleri
+
+1. Etanol: `CCO`
+2. Benzen: `c1ccccc1`
+3. Kafein: `CN1C=NC2=C1C(=O)N(C(=O)N2C)C`
+
+SMILES şunları temsil edebilir:
+
+- Atomlar ve bağlar
+- Aromatiklik
+- Dallanma
+- Siklik yapılar
+- Stereokimya
+
+## SDF Formatı
+
+SDF (Yapı-Veri Dosyası)
+
+- Birden çok molekülü ve ilişkili verileri temsil etmek için dosya formatı
+
+Özellikler:
+
+- 3B koordinatları içerir
+- Ek özellikleri içerebilir (örn. moleküler ağırlık, LogP)
+- Çok sayıda bileşiği depolamak için uygundur
+
+## SDF formatı örnek
+
+```
+Aspirin
+  -OEChem-01172403242D
+
+ 13 13  0     0  0  0  0  0  0999 V2000
+    2.8660   -0.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    4.5981    1.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0
+    [Daha fazla koordinat satırı...]
+  1  2  1  0  0  0  0
+  [Daha fazla bağ satırı...]
+M  END
+$$$$
+```
+
+## Bağlanma Bölgesi: Boşluk veya Cep
+
+- Tanım: Bir ligandın bağlanabileceği protein yüzeyindeki bir bölge
+- Özellikler:
+  - Genellikle içbükey şekilde
+  - Belirli kimyasal özelliklere sahip olabilir (hidrofobik, yüklü vb.)
+  - Rijit veya esnek olabilir
+
+- Türleri:
+  1. Ortosterik bölgeler: Doğal ligand için birincil bağlanma bölgesi
+  2. Allosterik bölgeler: Protein işlevini modüle edebilen ikincil bölgeler
+
+## Bağlanma Bölgelerinin Belirlenmesi
+
+- Deneysel yöntemler:
+  - X-ışını kristalografisi
+  - NMR spektroskopisi
+
+- Hesaplamalı yöntemler:
+  - Geometri tabanlı algoritmalar
+  - Enerji tabanlı yaklaşımlar
+  - Makine öğrenimi teknikleri
+
+## Reseptör Moleküllerinin Hazırlanması
+
+1. 3B yapıyı elde edin
+   - X-ışını kristalografisi, NMR veya homoloji modellemesi
+
+2. Yapıyı temizleyin
+   - Su moleküllerini ve standart olmayan kalıntıları kaldırın
+   - Eksik atomları veya kalıntıları ekleyin
+
+3. Hidrojen bağlarını optimize edin
+   - Hidrojenleri ekleyin ve uygun protonasyon durumlarını atayın
+
+4. Enerjiyi minimize edin
+   - Sterik çakışmaları gidermek için kısa bir enerji minimizasyonu gerçekleştirin
+
+5. Bağlanma bölgesini tanımlayın
+   - Kenetlenme için ilgilenilen bölgeyi belirtin
+
+## Ligand Moleküllerinin Hazırlanması
+
+1. Ligand yapısını elde edin
+   - Manuel olarak çizin veya veritabanlarından alın (örn. PubChem, ZINC)
+
+2. 3B konformasyon oluşturun
+   - Gerekirse 2B'den 3B yapıya dönüştürün
+
+3. Hidrojenleri ekleyin ve yükleri atayın
+   - Uygun protonasyon durumlarını ve yük dağılımını sağlayın
+
+4. Birden çok konformer oluşturun (isteğe bağlı)
+   - Ligand esnekliğini hesaba katın
+
+5. Enerjiyi minimize edin
+   - Ligand geometrisini optimize edin
+

@@ -11,5 +11,8 @@
 
 *8 Ekim 2024 Salı* tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. [Sunum linki](ders2.qmd)
 
+## Ders3
+
+*15 Ekim 2024 Salı* tarihinde Docking (Yanaştırma) konusu işlenecektir. [Sunum linki](ders3.qmd)
 
 
