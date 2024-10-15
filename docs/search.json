@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
+    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki"
   },
   {
     "objectID": "index.html#ders1",
@@ -21,18 +21,151 @@
     "text": "8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "MBG4421 Ders Notları",
+    "objectID": "index.html#ders3",
+    "href": "index.html#ders3",
+    "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "YTÜ MBG bölümü MBG4421 Biyoinformatik 2024/2025GÜZ dönemi ders notları.\n\n\nSorularınız oldukça bu kısımda cevaplanacaktır.."
+    "text": "15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki"
   },
   {
-    "objectID": "about.html#sıkça-sorulan-sorular",
-    "href": "about.html#sıkça-sorulan-sorular",
-    "title": "MBG4421 Ders Notları",
+    "objectID": "ders3.html#içerik",
+    "href": "ders3.html#içerik",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "İçerik",
+    "text": "İçerik\nBugün bahsedilecek Galaxy analizleri:\n\nProtein-ligand docking"
+  },
+  {
+    "objectID": "ders3.html#örnek1-protein-ligand-docking",
+    "href": "ders3.html#örnek1-protein-ligand-docking",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Örnek1: Protein-ligand docking",
+    "text": "Örnek1: Protein-ligand docking\nBu eğitimde\n\nPDB dosyası indirme, temizleme\nReceptor ve ligand hazırlama\nLigand kütüphanesi hazırlama\nDocking/yanaştırma\n\ngösterilecektir."
+  },
+  {
+    "objectID": "ders3.html#dockingmoleküler-kenetlenme-nedir",
+    "href": "ders3.html#dockingmoleküler-kenetlenme-nedir",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Docking/Moleküler Kenetlenme Nedir?",
+    "text": "Docking/Moleküler Kenetlenme Nedir?\n\nMoleküllerin bağlanma yönelimini tahmin etmek için kullanılan hesaplamalı bir yöntem\nGenellikle küçük bir molekül (ligand) ve daha büyük bir protein (reseptör) içerir\nMoleküller arasındaki ilişki gücünü veya bağlanma afinitesini tahmin etmeyi amaçlar\nİlaç keşfi ve tasarım süreçlerinde esastır"
+  },
+  {
+    "objectID": "ders3.html#moleküler-kenetlenmenin-uygulamaları",
+    "href": "ders3.html#moleküler-kenetlenmenin-uygulamaları",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Moleküler Kenetlenmenin Uygulamaları",
+    "text": "Moleküler Kenetlenmenin Uygulamaları\n\nİlaç keşfi ve geliştirilmesi\nProtein-protein etkileşimlerini anlama\nEnzim-substrat etkileşimlerini inceleme"
+  },
+  {
+    "objectID": "ders3.html#yaygın-kenetlenme-yazılımları",
+    "href": "ders3.html#yaygın-kenetlenme-yazılımları",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Yaygın Kenetlenme Yazılımları",
+    "text": "Yaygın Kenetlenme Yazılımları\n\nAutoDock Vina\n\nAçık kaynaklı, hızlı ve doğru\nBüyük ölçekli sanal tarama için uygun\n\nGOLD (Ligand Kenetlenmesi için Genetik Optimizasyon)\n\nYüksek doğruluklu ticari yazılım\nKenetlenme için genetik algoritma kullanır\n\nGlide (Enerjetiklerle Izgara Tabanlı Ligand Kenetlenmesi)\n\nSchrödinger paketinin bir parçası\nHızı ve doğruluğu ile bilinir\n\nSwissDock\n\nWeb tabanlı kenetlenme aracı\nKullanıcı dostu arayüz, yeni başlayanlar için uygun"
+  },
+  {
+    "objectID": "ders3.html#dockingkenetlenme",
+    "href": "ders3.html#dockingkenetlenme",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Docking/kenetlenme",
+    "text": "Docking/kenetlenme\n\n\nResim kaynağı"
+  },
+  {
+    "objectID": "ders3.html#pdb-formatı-protein-veri-bankası",
+    "href": "ders3.html#pdb-formatı-protein-veri-bankası",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "PDB Formatı: Protein Veri Bankası",
+    "text": "PDB Formatı: Protein Veri Bankası\n\nBiyomoleküllerin 3B yapılarını temsil etmek için standart dosya formatı\nAtomik koordinatları ve diğer bilgileri içerir\nPDB dosyasındaki tipik bilgiler:\n\nAtom türleri ve koordinatları\nİkincil yapı atamaları\nKristalografik bilgiler\nDeneysel yöntem ve koşullar"
+  },
+  {
+    "objectID": "ders3.html#pdb-dosya-örneği",
+    "href": "ders3.html#pdb-dosya-örneği",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "PDB Dosya Örneği",
+    "text": "PDB Dosya Örneği\nATOM     1  N   ASP A  30     31.904  -0.904  -0.904  1.00 25.00          N\nATOM     2  CA  ASP A  30     31.904  -0.904  -0.904  1.00 25.00          C\nATOM     3  C   ASP A  30     32.904  -1.904  -1.904  1.00 25.00          C\n...\n\nHer satır bir atomu temsil eder\nSütunlar belirli bilgileri içerir (örn. atom türü, amino asit, koordinatlar)\nProteine ait olmayan atomlar (örn. ligandlar) HETATM ile gösterilir."
+  },
+  {
+    "objectID": "ders3.html#pdb-içerik",
+    "href": "ders3.html#pdb-içerik",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "PDB içerik",
+    "text": "PDB içerik\nGalaxy örneğinde kullanılacak olan 2BRC numaralı 3B yapıyı RCSB PDB sitesinden indirip:\n\nnot defterinde\nPyMOL programında açalım\n\nNot: “HETATM” ile başlayan satırları silip, hem HETATM hem de HETATM içermeyen dosyayı ayrı ayrı görüntüleyiniz.\nNot2: 2BRC numaralı yapıyı RCSB PDB sitesinde de 3B olarak görüntüleyebilirsiniz."
+  },
+  {
+    "objectID": "ders3.html#pdbqt-formatı",
+    "href": "ders3.html#pdbqt-formatı",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "PDBQT Formatı",
+    "text": "PDBQT Formatı\nPDBQT (Protein Veri Bankası, Kısmi Yük (Q) ve Atom Türü (T))\n\nÖzellikle moleküler kenetlenme için kullanılan dosya formatı\nPDB formatına dayanır, ek bilgiler içerir\n\nTemel Özellikler:\n\nAtomlar için kısmi yükleri içerir\nKuvvet alanı hesaplamalarında kullanılmak üzere atom türlerini belirtir\nAutoDock ve AutoDock Vina kenetlenme yazılımları tarafından kullanılır"
+  },
+  {
+    "objectID": "ders3.html#pdbqt-örnek",
+    "href": "ders3.html#pdbqt-örnek",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "PDBQT örnek",
+    "text": "PDBQT örnek\nATOM    1  A1  INH I        1.054   3.021   1.101  0.00  0.00    0.002 A\nATOM    2  A2  INH I        1.150   1.704   0.764  0.00  0.00    0.012 A\nATOM    3  A3  INH I       -0.006   0.975   0.431  0.00  0.00   -0.024 A"
+  },
+  {
+    "objectID": "ders3.html#smiles-formatı",
+    "href": "ders3.html#smiles-formatı",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "SMILES Formatı",
+    "text": "SMILES Formatı\nSMILES (Basitleştirilmiş Moleküler Giriş Satır Giriş Sistemi)\n\nMoleküler yapıyı temsil eden dize notasyonu\nKompakt ve insan tarafından okunabilir\n\nÖrnek: Aspirin\nCC(=O)OC1=CC=CC=C1C(=O)O\nAvantajlar:\n\nOluşturması ve ayrıştırması kolay\nVeritabanı depolama ve araması için uygun\n\nSınırlamalar:\n\n3B bilgi içermez\nAynı molekül için birden fazla geçerli SMILES olabilir"
+  },
+  {
+    "objectID": "ders3.html#smiles-örnekleri",
+    "href": "ders3.html#smiles-örnekleri",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "SMILES Örnekleri",
+    "text": "SMILES Örnekleri\n\nEtanol: CCO\nBenzen: c1ccccc1\nKafein: CN1C=NC2=C1C(=O)N(C(=O)N2C)C\n\nSMILES şunları temsil edebilir:\n\nAtomlar ve bağlar\nAromatiklik\nDallanma\nSiklik yapılar\nStereokimya"
+  },
+  {
+    "objectID": "ders3.html#sdf-formatı",
+    "href": "ders3.html#sdf-formatı",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "SDF Formatı",
+    "text": "SDF Formatı\nSDF (Yapı-Veri Dosyası)\n\nBirden çok molekülü ve ilişkili verileri temsil etmek için dosya formatı\n\nÖzellikler:\n\n3B koordinatları içerir\nEk özellikleri içerebilir (örn. moleküler ağırlık, LogP)\nÇok sayıda bileşiği depolamak için uygundur"
+  },
+  {
+    "objectID": "ders3.html#sdf-formatı-örnek",
+    "href": "ders3.html#sdf-formatı-örnek",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "SDF formatı örnek",
+    "text": "SDF formatı örnek\nAspirin\n  -OEChem-01172403242D\n\n 13 13  0     0  0  0  0  0  0999 V2000\n    2.8660   -0.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    4.5981    1.2500    0.0000 O   0  0  0  0  0  0  0  0  0  0  0  0\n    [Daha fazla koordinat satırı...]\n  1  2  1  0  0  0  0\n  [Daha fazla bağ satırı...]\nM  END\n$$$$"
+  },
+  {
+    "objectID": "ders3.html#bağlanma-bölgesi-boşluk-veya-cep",
+    "href": "ders3.html#bağlanma-bölgesi-boşluk-veya-cep",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Bağlanma Bölgesi: Boşluk veya Cep",
+    "text": "Bağlanma Bölgesi: Boşluk veya Cep\n\nTanım: Bir ligandın bağlanabileceği protein yüzeyindeki bir bölge\nÖzellikler:\n\nGenellikle içbükey şekilde\nBelirli kimyasal özelliklere sahip olabilir (hidrofobik, yüklü vb.)\nRijit veya esnek olabilir\n\nTürleri:\n\nOrtosterik bölgeler: Doğal ligand için birincil bağlanma bölgesi\nAllosterik bölgeler: Protein işlevini modüle edebilen ikincil bölgeler"
+  },
+  {
+    "objectID": "ders3.html#bağlanma-bölgelerinin-belirlenmesi",
+    "href": "ders3.html#bağlanma-bölgelerinin-belirlenmesi",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Bağlanma Bölgelerinin Belirlenmesi",
+    "text": "Bağlanma Bölgelerinin Belirlenmesi\n\nDeneysel yöntemler:\n\nX-ışını kristalografisi\nNMR spektroskopisi\n\nHesaplamalı yöntemler:\n\nGeometri tabanlı algoritmalar\nEnerji tabanlı yaklaşımlar\nMakine öğrenimi teknikleri"
+  },
+  {
+    "objectID": "ders3.html#reseptör-moleküllerinin-hazırlanması",
+    "href": "ders3.html#reseptör-moleküllerinin-hazırlanması",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Reseptör Moleküllerinin Hazırlanması",
+    "text": "Reseptör Moleküllerinin Hazırlanması\n\n3B yapıyı elde edin\n\nX-ışını kristalografisi, NMR veya homoloji modellemesi\n\nYapıyı temizleyin\n\nSu moleküllerini ve standart olmayan kalıntıları kaldırın\nEksik atomları veya kalıntıları ekleyin\n\nHidrojen bağlarını optimize edin\n\nHidrojenleri ekleyin ve uygun protonasyon durumlarını atayın\n\nEnerjiyi minimize edin\n\nSterik çakışmaları gidermek için kısa bir enerji minimizasyonu gerçekleştirin\n\nBağlanma bölgesini tanımlayın\n\nKenetlenme için ilgilenilen bölgeyi belirtin"
+  },
+  {
+    "objectID": "ders3.html#ligand-moleküllerinin-hazırlanması",
+    "href": "ders3.html#ligand-moleküllerinin-hazırlanması",
+    "title": "Galaxy Üzerinde Docking",
+    "section": "Ligand Moleküllerinin Hazırlanması",
+    "text": "Ligand Moleküllerinin Hazırlanması\n\nLigand yapısını elde edin\n\nManuel olarak çizin veya veritabanlarından alın (örn. PubChem, ZINC)\n\n3B konformasyon oluşturun\n\nGerekirse 2B’den 3B yapıya dönüştürün\n\nHidrojenleri ekleyin ve yükleri atayın\n\nUygun protonasyon durumlarını ve yük dağılımını sağlayın\n\nBirden çok konformer oluşturun (isteğe bağlı)\n\nLigand esnekliğini hesaba katın\n\nEnerjiyi minimize edin\n\nLigand geometrisini optimize edin"
+  },
+  {
+    "objectID": "page-sample.html",
+    "href": "page-sample.html",
+    "title": "Some title",
     "section": "",
-    "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
+    "text": "Galaxy örnek"
   },
   {
     "objectID": "ders2.html#içerik",
@@ -63,10 +196,17 @@
     "text": "Örnek3: Introduction to Genomics and Galaxy\nBu eğitimde:\nchr22’de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.\n\nUCSC’den veri çekimi (insan genlerinin koordinatları)\nFilter yardımıyla, genleri iki dosyaya ayırma\ngenom aritmetiği, çakışan bölgeleri bulma\nUCSC genome browser’da görüntüleme"
   },
   {
-    "objectID": "page-sample.html",
-    "href": "page-sample.html",
-    "title": "Some title",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "MBG4421 Ders Notları",
     "section": "",
-    "text": "Galaxy örnek"
+    "text": "YTÜ MBG bölümü MBG4421 Biyoinformatik 2024/2025GÜZ dönemi ders notları.\n\n\nSorularınız oldukça bu kısımda cevaplanacaktır.."
+  },
+  {
+    "objectID": "about.html#sıkça-sorulan-sorular",
+    "href": "about.html#sıkça-sorulan-sorular",
+    "title": "MBG4421 Ders Notları",
+    "section": "",
+    "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
   }
 ]
