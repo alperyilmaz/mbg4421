@@ -15,4 +15,6 @@
 
 *15 Ekim 2024 Salı* tarihinde Docking (Yanaştırma) konusu işlenecektir. [Sunum linki](ders3.qmd)
 
+## Ders4 
 
+*22 Ekim 2024 Salı* tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. [Sunum linki](ders4.qmd)

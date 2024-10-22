@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alper Yılmaz">
+<meta name="dcterms.date" content="2024-10-22">
+
+<title>Yeni Nesil Dizileme Giriş – MBG4421 Bioinformatics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MBG4421 Bioinformatics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Ana Sayfa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Hakkında</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fastq-manipülasyonu-ve-kalite-kontrolü" id="toc-fastq-manipülasyonu-ve-kalite-kontrolü" class="nav-link active" data-scroll-target="#fastq-manipülasyonu-ve-kalite-kontrolü">FASTQ manipülasyonu ve kalite kontrolü</a></li>
+  <li><a href="#eşlenmiş-uç-verisi-paired-end" id="toc-eşlenmiş-uç-verisi-paired-end" class="nav-link" data-scroll-target="#eşlenmiş-uç-verisi-paired-end">Eşlenmiş uç verisi (Paired End)</a>
+  <ul class="collapse">
+  <li><a href="#iki-ayrı-dosya" id="toc-iki-ayrı-dosya" class="nav-link" data-scroll-target="#iki-ayrı-dosya">İki ayrı dosya</a></li>
+  <li><a href="#iç-içe-geçmiş-dosya-interleaved" id="toc-iç-içe-geçmiş-dosya-interleaved" class="nav-link" data-scroll-target="#iç-içe-geçmiş-dosya-interleaved">İç içe geçmiş dosya (Interleaved)</a></li>
+  </ul></li>
+  <li><a href="#baz-kaliteleri-nedir" id="toc-baz-kaliteleri-nedir" class="nav-link" data-scroll-target="#baz-kaliteleri-nedir">Baz kaliteleri nedir?</a></li>
+  <li><a href="#veri-kalitesinin-değerlendirilmesi" id="toc-veri-kalitesinin-değerlendirilmesi" class="nav-link" data-scroll-target="#veri-kalitesinin-değerlendirilmesi">Veri kalitesinin değerlendirilmesi</a></li>
+  <li><a href="#verinizi-haritalama" id="toc-verinizi-haritalama" class="nav-link" data-scroll-target="#verinizi-haritalama">Verinizi Haritalama</a>
+  <ul class="collapse">
+  <li><a href="#önceden-hesaplanmış-genom-indeksine-karşı-haritalama" id="toc-önceden-hesaplanmış-genom-indeksine-karşı-haritalama" class="nav-link" data-scroll-target="#önceden-hesaplanmış-genom-indeksine-karşı-haritalama">Önceden hesaplanmış genom indeksine karşı haritalama</a></li>
+  <li><a href="#önceden-hesaplanmış-indeks-mevcut-değilse-ne-olur" id="toc-önceden-hesaplanmış-indeks-mevcut-değilse-ne-olur" class="nav-link" data-scroll-target="#önceden-hesaplanmış-indeks-mevcut-değilse-ne-olur">Önceden hesaplanmış indeks mevcut değilse ne olur?</a></li>
+  </ul></li>
+  <li><a href="#sambam-veri-setleri" id="toc-sambam-veri-setleri" class="nav-link" data-scroll-target="#sambam-veri-setleri">SAM/BAM veri setleri</a>
+  <ul class="collapse">
+  <li><a href="#sam-başlığı" id="toc-sam-başlığı" class="nav-link" data-scroll-target="#sam-başlığı">SAM Başlığı</a></li>
+  <li><a href="#sam-hizalama-bölümü" id="toc-sam-hizalama-bölümü" class="nav-link" data-scroll-target="#sam-hizalama-bölümü">SAM hizalama bölümü</a></li>
+  <li><a href="#flag-alanı" id="toc-flag-alanı" class="nav-link" data-scroll-target="#flag-alanı"><code>FLAG</code> alanı</a></li>
+  <li><a href="#cigar-dizisi" id="toc-cigar-dizisi" class="nav-link" data-scroll-target="#cigar-dizisi"><code>CIGAR</code> dizisi</a></li>
+  <li><a href="#isteğe-bağlı-alanlar" id="toc-isteğe-bağlı-alanlar" class="nav-link" data-scroll-target="#isteğe-bağlı-alanlar">İsteğe bağlı alanlar</a></li>
+  <li><a href="#okuma-grupları" id="toc-okuma-grupları" class="nav-link" data-scroll-target="#okuma-grupları">Okuma Grupları</a></li>
+  <li><a href="#sambam-veri-setlerinin-işlenmesi" id="toc-sambam-veri-setlerinin-işlenmesi" class="nav-link" data-scroll-target="#sambam-veri-setlerinin-işlenmesi">SAM/BAM veri setlerinin işlenmesi</a></li>
+  </ul></li>
+  <li><a href="#okuma-duplikasyonlarının-zorluğu" id="toc-okuma-duplikasyonlarının-zorluğu" class="nav-link" data-scroll-target="#okuma-duplikasyonlarının-zorluğu">Okuma duplikasyonlarının zorluğu</a>
+  <ul class="collapse">
+  <li><a href="#pcr-duplikasyonları" id="toc-pcr-duplikasyonları" class="nav-link" data-scroll-target="#pcr-duplikasyonları">PCR duplikasyonları</a></li>
+  <li><a href="#örnekleme-tesadüf-duplikasyonları" id="toc-örnekleme-tesadüf-duplikasyonları" class="nav-link" data-scroll-target="#örnekleme-tesadüf-duplikasyonları">Örnekleme tesadüf duplikasyonları</a></li>
+  </ul></li>
+  <li><a href="#ngs-verilerini-galaxyye-alma" id="toc-ngs-verilerini-galaxyye-alma" class="nav-link" data-scroll-target="#ngs-verilerini-galaxyye-alma">NGS Verilerini Galaxy’ye Alma</a>
+  <ul class="collapse">
+  <li><a href="#bilgisayarınızdan-veri-yükleme" id="toc-bilgisayarınızdan-veri-yükleme" class="nav-link" data-scroll-target="#bilgisayarınızdan-veri-yükleme">Bilgisayarınızdan veri yükleme</a></li>
+  <li><a href="#ftp-kullanarak" id="toc-ftp-kullanarak" class="nav-link" data-scroll-target="#ftp-kullanarak">FTP Kullanarak</a></li>
+  <li><a href="#ncbi-sra-kısa-okuma-arşivinden" id="toc-ncbi-sra-kısa-okuma-arşivinden" class="nav-link" data-scroll-target="#ncbi-sra-kısa-okuma-arşivinden">NCBI SRA kısa okuma arşivinden</a></li>
+  </ul></li>
+  <li><a href="#hadi-yapalım-okumalardan-varyantlara" id="toc-hadi-yapalım-okumalardan-varyantlara" class="nav-link" data-scroll-target="#hadi-yapalım-okumalardan-varyantlara">Hadi yapalım: Okumalardan varyantlara</a>
+  <ul class="collapse">
+  <li><a href="#srada-gerekli-verileri-bulma" id="toc-srada-gerekli-verileri-bulma" class="nav-link" data-scroll-target="#srada-gerekli-verileri-bulma">SRA’da gerekli verileri bulma</a></li>
+  <li><a href="#galaxyde-sraruninfo.csv-dosyasını-işleme-ve-filtreleme" id="toc-galaxyde-sraruninfo.csv-dosyasını-işleme-ve-filtreleme" class="nav-link" data-scroll-target="#galaxyde-sraruninfo.csv-dosyasını-işleme-ve-filtreleme">Galaxy’de <code>SraRunInfo.csv</code> dosyasını işleme ve filtreleme</a></li>
+  <li><a href="#sekanslama-verisini-indirme" id="toc-sekanslama-verisini-indirme" class="nav-link" data-scroll-target="#sekanslama-verisini-indirme">Sekanslama verisini indirme</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Yeni Nesil Dizileme Giriş</h1>
+<p class="subtitle lead">MBG4421 - Ders4</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alper Yılmaz </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 22, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<p><a href="https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-ngs-data-managment/tutorial.html">NGS data logistics</a> isimli Galaxy eğitimi materyalinden uyarlanmıştır.</p>
+</blockquote>
+<section id="fastq-manipülasyonu-ve-kalite-kontrolü" class="level2">
+<h2 class="anchored" data-anchor-id="fastq-manipülasyonu-ve-kalite-kontrolü">FASTQ manipülasyonu ve kalite kontrolü</h2>
+<p><a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ</a> çok iyi tanımlanmamış bir formattır. Başlangıçta, çeşitli sekanslama cihazı üreticileri FASTQ’yu kendi gördükleri şekilde yorumlama özgürlüğüne sahipti, bu da birçok FASTQ çeşidinin ortaya çıkmasına neden oldu. Bu varyasyon öncelikle <a href="https://en.wikipedia.org/wiki/FASTQ_format">FASTQ için Wikipedia makalesinde</a> açıklandığı gibi kalite değerlerinin farklı şekillerde kodlanmasından kaynaklanıyordu (kalite skorları ve anlamları hakkında aşağıda açıklama bulacaksınız). Bugün, <a href="https://www.ncbi.nlm.nih.gov/pubmed/20015970">FASTQ Sanger</a> versiyonu formatın standart formu olarak kabul edilmektedir. Galaxy, downstream işleme araçları için tek meşru girdi olarak FASTQ Sanger’ı kullanmakta ve FASTQ dosyalarını bu forma dönüştürmek için <a href="https://www.ncbi.nlm.nih.gov/pubmed/20562416">bir dizi araç</a> sunmaktadır (Galaxy araçlarının <strong>FASTQ Kalite Kontrolü</strong> bölümüne bakınız).</p>
+<p>FASTQ formatı şu şekilde görünür:</p>
+<pre><code>@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
+CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCTGAACCAGCCAAGTAGCGTGCAG
++
+ABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE&lt;,,CD,CEFC,@E9&lt;FCFCF?9
+@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23
+CCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACTGATCCAGCCATGCCGCGTGCAG
++
+ABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF&lt;,CEF,CFGGD8FFCFCFEGCF
+@M02286:19:000000000-AA549:1:1101:11116:1322 1:N:0:23
+CCTACGGGAGGCAGCAGTAGGGAATCTTCGGCAATGGACGGAAGTCTGACCGAGCAACGCCGCGTGAGT
++
+AAC&lt;CCF+@@&gt;CC,C9,F9C9@9-CFFFE@7@:+CC8-C@:7,@EFE,6CF:+8F7EFEEF@EGGGEEE</code></pre>
+<p>Her sekanslama okuması dört satırla temsil edilir:</p>
+<ol type="1">
+<li>Okuma ID’si ve sekanslama çalışması hakkında isteğe bağlı bilgiler ile başlayan <code>@</code></li>
+<li>Sekanslanmış bazlar</li>
+<li><code>+</code> (isteğe bağlı olarak okuma ID’si ve bazı ek bilgilerle birlikte)</li>
+<li><a href="https://en.wikipedia.org/wiki/ASCII">ASCII sembolleri</a> olarak kodlanmış sekansın her bazı için kalite skorları</li>
+</ol>
+</section>
+<section id="eşlenmiş-uç-verisi-paired-end" class="level2">
+<h2 class="anchored" data-anchor-id="eşlenmiş-uç-verisi-paired-end">Eşlenmiş uç verisi (Paired End)</h2>
+<p>Eşlenmiş-uç ve mate-pair sekanslama kütüphaneleri hazırlamak yaygındır. Bu, sonraki konularda tartışılan birçok uygulama için oldukça faydalıdır. Şimdilik bunların ne olduğunu ve FASTQ formunda nasıl göründüklerini kısaca tartışalım.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pe_mp.png" class="img-fluid figure-img"></p>
+<figcaption>Görsel: Eşlenmiş-uç ve mate-pair okumalar</figcaption>
+</figure>
+</div>
+<p><strong>Eşlenmiş-uç ve mate-pair okumalar</strong>. Eşlenmiş uç sekanslama işleminde (sol) oldukça kısa DNA moleküllerinin (1kb’den az) gerçek uçları belirlenirken, mate pair sekanslama için (sağ) uzun moleküllerin uçları birleştirilir ve özel sekanslama kütüphanelerinde hazırlanır. Bu mate pair protokollerinde, uzun, boyut seçimli moleküllerin uçları bir daireselleştirme reaksiyonunda dahili bir adaptör sekansı (yani bağlayıcı, sarı) ile bağlanır. Dairesel molekül daha sonra restriksiyon enzimleri veya fragmentasyon kullanılarak işlenir. Fragmentler bağlayıcı için zenginleştirilir ve dış kütüphane adaptörleri iki birleştirilmiş molekül ucunun etrafına eklenir. Dahili adaptör daha sonra aynı yönde ek bir sekanslama reaksiyonu için ikinci bir başlatma bölgesi olarak kullanılabilir veya sekanslama ikinci adaptörden, ters zincirden gerçekleştirilebilir. (<a href="https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/">Martin Kircher</a>’ın “Understanding and improving high-throughput sequencing data production and analysis” başlıklı doktora tezinden)</p>
+<p>Bu nedenle her iki durumda da (eşlenmiş-uç ve mate-pair) tek bir fiziksel DNA parçası (veya RNA-seq durumunda RNA) iki uçtan sekanslanır ve böylece iki okuma oluşturur. Bunlar ayrı dosyalar (birinci ve ikinci okumalar için iki FASTQ dosyası) veya her uç için okumaların iç içe geçtiği tek bir dosya olarak gösterilebilir. İşte örnekler:</p>
+<section id="iki-ayrı-dosya" class="level3">
+<h3 class="anchored" data-anchor-id="iki-ayrı-dosya">İki ayrı dosya</h3>
+<p>Dosya 1</p>
+<pre><code>@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
+CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCT
++
+ABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE
+@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23
+CCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACT
++
+ABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF</code></pre>
+<p>Dosya 2</p>
+<pre><code>@M02286:19:000000000-AA549:1:1101:12677:1273 2:N:0:23
+CACTACCCGTGTATCTAATCCTGTTTGATACCCGCACCTTCGAGCTTA
++
+--8A,CCE+,,;,&lt;CC,,&lt;CE@,CFD,,C,CFF+@+@CCEF,,,B+C,
+@M02286:19:000000000-AA549:1:1101:15048:1299 2:N:0:23
+CACTACCGGGGTATCTAATCCTGTTCGCTCCCCACGCTTTCGTCCATC
++
+-6AC,EE@::CF7CFF&lt;&lt;FFGGDFFF,@FGGGG?F7FEGGGDEFF&gt;FF</code></pre>
+<blockquote class="blockquote">
+<p>Yorum: Okuma sırası önemlidir</p>
+<p>İki dosyadaki okuma ID’lerinin <strong>aynı</strong> olduğuna ve <strong>aynı</strong> sırada listelendiğine dikkat edin. Bazı durumlarda birinci ve ikinci dosyadaki okuma ID’lerine sırasıyla <code>/1</code> ve <code>/2</code> etiketleri eklenebilir.</p>
+</blockquote>
+</section>
+<section id="iç-içe-geçmiş-dosya-interleaved" class="level3">
+<h3 class="anchored" data-anchor-id="iç-içe-geçmiş-dosya-interleaved">İç içe geçmiş dosya (Interleaved)</h3>
+<pre><code>@1/1
+AGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA
++
+EGGEGGGDFGEEEAEECGDEGGFEEGEFGBEEDDECFEFDD@CDD&lt;ED
+@1/2
+CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC
++
+GHHHDFDFGFGEGFBGEGGEGEGGGHGFGHFHFHHHHHHHEF?EFEFF
+@2/1
+AGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA
++
+HHHHHHEGFHEEFEEHEEHHGGEGGGGEFGFGGGGHHHHFBEEEEEFG
+@2/2
+CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC
++
+HHHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH</code></pre>
+<p>Burada birinci ve ikinci okumalar <code>/1</code> ve <code>/2</code> etiketleriyle tanımlanmıştır.</p>
+<blockquote class="blockquote">
+<p>Yorum: FASTQ formatı katı kuralları olmayan bir standarttır</p>
+<p>FASTQ formatı katı bir şekilde tanımlanmamıştır ve varyasyonları her zaman size baş ağrısı yaratacaktır. Daha fazla bilgi için <a href="https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/">bu sayfaya</a> bakın.</p>
+</blockquote>
+</section>
+</section>
+<section id="baz-kaliteleri-nedir" class="level2">
+<h2 class="anchored" data-anchor-id="baz-kaliteleri-nedir">Baz kaliteleri nedir?</h2>
+<p>Yukarıda gördüğümüz gibi, FASTQ veri setleri iki tür bilgi içerir:</p>
+<ul>
+<li><em>okumanın sekansı</em></li>
+<li>okumadaki her nükleotid için <em>baz kaliteleri</em>.</li>
+</ul>
+<p>Baz kaliteleri, sekanslama okumasındaki her bazın ne kadar güvenilir olduğunu değerlendirmemize olanak tanır. Friederike Dündar, Luce Skrabanek, Paul Zumbo tarafından hazırlanan mükemmel bir <a href="http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf">öğreticiden</a> alınan aşağıdaki alıntı baz kalitelerinin ne olduğunu açıklamaktadır:</p>
+<blockquote class="blockquote">
+<p>Yorum: “RNA-seq kullanarak diferansiyel gen ekspresyon analizine giriş”ten</p>
+<p>Illumina sekanslama, büyüyen sekanslama okumasına dahil edilmeleri üzerine yayılan floresan sinyalini tanımlayarak tek tek nükleotidleri belirlemeye dayanır. Floresan yoğunlukları çıkarıldıktan ve dört harfli koda çevrildikten sonra, sekanslama sırasında elde edilen görüntülerden nükleotid sekanslarının çıkarılması genellikle baz çağırma olarak adlandırılır. Sekanslama işleminin kusurlu doğası ve optik cihazların sınırlamaları nedeniyle, baz çağırma her zaman doğal bir belirsizliğe sahip olacaktır. Bu nedenle FASTQ dosyaları, her okumanın DNA sekansını, pozisyona özgü bir kalite skoruyla birlikte saklar; bu skor hata olasılığını, yani tek bir baz çağrısının yanlış olma olasılığını temsil eder. Skora <a href="http://www.phrap.com/phred/">Phred skoru</a> denir, <em>Q</em>, bir baz çağrısının yanlış olma olasılığı <em>p</em> ile orantılıdır, burada <em>Q</em>=−10<em>lg</em>(<em>p</em>)’dir.</p>
+</blockquote>
+<p>Örneğin, 10’luk bir Phred skoru her on baz çağrısında bir hata anlamına gelir (<em>Q</em>=−10<em>lg</em>(0.1)), yani %90 doğruluk; 20’lik bir Phred skoru her yüz baz çağrısında bir hata, yani %99 doğruluk anlamına gelir. Dolayısıyla, daha yüksek bir Phred skoru, raporlanan baza olan güvenin daha yüksek olduğunu gösterir.</p>
+<p>Her baza benzersiz bir skor tanımlayıcısı atamak için (değişken uzunluktaki sayılar yerine), Phred skorları genellikle ASCII karakterleri olarak temsil edilir. http://ascii-code.com/ adresinde hangi karakterlerin hangi sayıya atandığını görebilirsiniz.</p>
+<p>Ham okumalar için, skorların aralığı sekanslama teknolojisine ve kullanılan baz çağırıcıya bağlı olacaktır (örneğin Illumina, Bustard adlı bir araç veya daha yakın zamanda RTA kullanıyordu). Ne yazık ki, Illumina Phred skorunu nasıl hesapladıkları ve ASCII-kodladıkları konusunda tutarlı olmaktan uzak olmuştur (aşağıya bakın)! Ayrıca, Illumina artık HiSeq X’e kadar 41 maksimum skor olana kadar, baz çağrıları için 45’e kadar yüksek Phred skorlarına izin vermektedir. Bu, 41’lik bir üst limit bekleyen downstream uygulamalarla sorunlara neden olabilir.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/illumina_qs.png" class="img-fluid figure-img"></p>
+<figcaption>Illumina quality score</figcaption>
+</figure>
+</div>
+<p>Baz çağrısı kalite skorları Phred aralığı ile temsil edilir. Farklı Illumina (eski adıyla Solexa) versiyonları farklı skorlar ve ASCII ofsetleri kullanmıştır. Illumina format 1.8’den başlayarak, skor artık diğer sekanslama platformları ve sekanslama arşivleri tarafından da kullanılan standart Sanger/Phred formatını temsil etmektedir.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fastq_qs.png" class="img-fluid figure-img"></p>
+<figcaption>FASTQ quality score</figcaption>
+</figure>
+</div>
+<p>Illumina tarafından kullanılan farklı Phred skoru gösterimlerinin ve orijinal Sanger yorumunun ASCII yorumlaması ve aralıkları. Sanger formatı teorik olarak 93’lük bir skora izin verse de, ham sekanslama okumaları genellikle 60’lık bir Phred skorunu aşmaz. Aslında, çoğu Illumina tabanlı sekanslama 41 ila 45’lik maksimum skorlarla sonuçlanacaktır (görsel <a href="https://en.wikipedia.org/wiki/FASTQ_format">Wikipedia</a>’dan alınmıştır)</p>
+</section>
+<section id="veri-kalitesinin-değerlendirilmesi" class="level2">
+<h2 class="anchored" data-anchor-id="veri-kalitesinin-değerlendirilmesi">Veri kalitesinin değerlendirilmesi</h2>
+<p>NGS verilerinin analizindeki ilk adımlardan biri verinin gerçekte ne kadar iyi olduğunu görmektir. <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">FastqQC</a>, FASTQ veri setlerinin kalitesini değerlendirmenize olanak tanıyan (ve sizin için sekanslama yapanı suçlayıp suçlamama konusunda karar vermenizi sağlayan) harika bir araçtır.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>A.</strong> Mükemmel kalite</th>
+<th style="text-align: center;"><strong>B.</strong> Hmm…Tamam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><img src="images/good_fq.png" class="img-fluid" alt="İyi kalite FastQC görseli"></td>
+<td style="text-align: center;"><img src="images/bad_fq.png" class="img-fluid" alt="Kötü kalite FastQC görseli"></td>
+</tr>
+</tbody>
+</table>
+<p>Burada iki veri seti için FastQC baz kalite raporlarını görebilirsiniz (araç size başka türde veriler de sunar): <strong>A</strong> ve <strong>B</strong>. <strong>A</strong> veri seti uzun okumalara (250 bp) ve hiçbir kalitenin <a href="http://www.phrap.com/phred/">phred skoru</a> 30’un altına düşmediği çok iyi bir kalite profiline sahiptir. <strong>B</strong> veri seti, okumaların uçlarının phred skoru 20’nin altına düştüğü önemli ölçüde daha kötüdür. <strong>B</strong> okumalarının ileri işleme için kırpılması gerekebilir.</p>
+</section>
+<section id="verinizi-haritalama" class="level2">
+<h2 class="anchored" data-anchor-id="verinizi-haritalama">Verinizi Haritalama</h2>
+<p>NGS okumalarının referans sekanslarına karşı haritalanması, analizin temel adımlarından biridir. Şimdi bunun pratikte nasıl yapıldığını göreceğiz. Aşağıda ana akım haritalama araçlarını vurgulayan temel yayınların bir listesi bulunmaktadır:</p>
+<ul>
+<li>2009 Bowtie 1 - <a href="http://genomebiology.com/content/10/3/R25">Langmead ve ark.</a></li>
+<li>2012 Bowtie 2 - <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322381/">Langmead ve Salzberg</a></li>
+<li>2009 BWA - <a href="https://academic.oup.com/bioinformatics/article/25/14/1754/225615/Fast-and-accurate-short-read-alignment-with">Li ve Durbin</a></li>
+<li>2010 BWA - <a href="https://academic.oup.com/bioinformatics/article/26/5/589/211735/Fast-and-accurate-long-read-alignment-with-Burrows">Li ve Durbin</a></li>
+<li>2013 BWA-MEM - <a href="https://arxiv.org/abs/1303.3997">Li</a></li>
+</ul>
+<section id="önceden-hesaplanmış-genom-indeksine-karşı-haritalama" class="level3">
+<h3 class="anchored" data-anchor-id="önceden-hesaplanmış-genom-indeksine-karşı-haritalama">Önceden hesaplanmış genom indeksine karşı haritalama</h3>
+<p>Haritalayıcılar genellikle okumaları, genom indeksi adı verilen yüksek erişilebilir bir veri yapısına dönüştürülmüş bir referans sekansa karşı karşılaştırır. Bu tür indeksler haritalama başlamadan önce oluşturulmalıdır. Galaxy örnekleri genellikle halka açık olan bir dizi genom yapısı için indeksler depolar.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cached_genome.png" class="img-fluid figure-img"></p>
+<figcaption>Önbelleğe alınmış genom görseli</figcaption>
+</figure>
+</div>
+<p>Örneğin, yukarıdaki görsel insan genomunun <code>hg38</code> versiyonu için indeksleri göstermektedir. Aslında üç seçenek olduğunu görebilirsiniz: (1) <code>hg38</code>, (2) <code>hg38 canonical</code> ve (3) <code>hg38 canonical female</code>. <code>hg38</code> tüm kromozomları ve yerleştirilmemiş tüm contig’leri içerir. <code>hg38 canonical</code> yerleştirilmemiş sekansları içermez ve sadece 1’den 22’ye kadar olan kromozomlardan, X, Y ve mitokondriyal DNA’dan oluşur. <code>hg38 canonical female</code> Y kromozomu hariç canonical setteki her şeyi içerir.</p>
+</section>
+<section id="önceden-hesaplanmış-indeks-mevcut-değilse-ne-olur" class="level3">
+<h3 class="anchored" data-anchor-id="önceden-hesaplanmış-indeks-mevcut-değilse-ne-olur">Önceden hesaplanmış indeks mevcut değilse ne olur?</h3>
+<p>Eğer Galaxy’de haritalama yapmak istediğiniz genom mevcut değilse, genom sekansınızı FASTA dosyası olarak yükleyebilir ve aşağıda gösterildiği gibi doğrudan haritalayıcıda kullanabilirsiniz (<strong>Referans genom yükle</strong> <code>History</code> olarak ayarlanmıştır).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/uploaded_genome.png" class="img-fluid figure-img"></p>
+<figcaption>Yüklenmiş genom görseli</figcaption>
+</figure>
+</div>
+<p>Bu durumda Galaxy önce bu veri setinden bir indeks oluşturacak ve ardından ona karşı haritalama analizi yapacaktır.</p>
+</section>
+</section>
+<section id="sambam-veri-setleri" class="level2">
+<h2 class="anchored" data-anchor-id="sambam-veri-setleri">SAM/BAM veri setleri</h2>
+<p><a href="https://samtools.github.io/hts-specs/SAMv1.pdf">SAM/BAM</a> formatı, hizalanmış okumaları depolamak için kabul edilen bir standarttır (hizalanmamış okumaları da depolayabilir ve BWA gibi bazı haritalayıcılar girdi olarak hizalanmamış BAM kabul eder). Formatın ikili formu (BAM) kompakttır ve (indekslenmişse) hızlıca aranabilir. Galaxy’de BAM veri setleri her zaman indekslidir (bir .bai dosyası eşlik eder) ve koordinat sırasına göre sıralanmıştır. <a href="http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf">Daha fazla bilgi için tıklayınız</a>.</p>
+<p>Sequence Alignment/Map (SAM) formatı, aslında sekanslama okumalarının (veya sorgu sekanslarının) bir referansa hizalanmasını tanımlayan genel bir nükleotid hizalama formatıdır. İnsan tarafından okunabilir, TAB ile ayrılmış SAM dosyaları Binary Alignment/Map formatına sıkıştırılabilir. Bu BAM dosyaları basitçe gzip’lenmiş SAM dosyalarından daha büyüktür, çünkü boyut küçültmeden ziyade hızlı rastgele erişim için optimize edilmişlerdir. Pozisyona göre sıralanmış BAM dosyaları, tüm dosyayı belleğe yüklemeden bir lokusa hizalanan tüm okumaların verimli bir şekilde alınabilmesi için indekslenebilir.</p>
+<p>Aşağıda gösterildiği gibi, SAM dosyaları genellikle kısa bir başlık bölümü ve her satırın tek bir okuma hizalamasını temsil ettiği çok uzun bir hizalama bölümü içerir. Aşağıdaki bölümler SAM formatını biraz daha ayrıntılı olarak açıklayacaktır. En kapsamlı ve güncel bilgi için https://github.com/samtools/hts-specs adresine gidin.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bam_structure.png" class="img-fluid figure-img"></p>
+<figcaption>BAM yapısı görseli</figcaption>
+</figure>
+</div>
+<p><strong>SAM dosyasının şematik gösterimi</strong>. İsteğe bağlı başlık bölümündeki her satır “@” ile başlar, ardından uygun kısaltma gelir (örneğin, tüm kromozom adlarını (SN) ve uzunluklarını (LN) listeleyen sekans sözlüğü için SQ). Bir SAM dosyasındaki satırların büyük çoğunluğu genellikle okuma hizalamalarına karşılık gelir; burada her okuma 11 zorunlu giriş (siyah yazı tipi) ve değişken sayıda isteğe bağlı alan (gri yazı tipi) ile tanımlanır. Friederike Dündar, Luce Skrabanek ve Paul Zumbo’nun <a href="http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf">öğreticisinden</a> alınmıştır.</p>
+<section id="sam-başlığı" class="level3">
+<h3 class="anchored" data-anchor-id="sam-başlığı">SAM Başlığı</h3>
+<p>Başlık bölümü, hizalamanın nasıl oluşturulduğu ve saklandığı hakkında bilgi içerir. Başlık bölümündeki tüm satırlar tab ile ayrılmıştır ve “@” karakteri ile başlar, ardından etiket:değer çiftleri gelir; burada etiket, değerin içeriğini ve formatını tanımlayan iki harfli bir dizedir. Örneğin, başlık bölümündeki “<span class="citation" data-cites="SQ">@SQ</span>” satırı, okumaların hizalandığı referans sekansların adları ve uzunlukları hakkında bilgi içerir. Her biri 1.000 bp uzunluğunda üç kromozoma sahip varsayımsal bir organizma için, SAM başlığı aşağıdaki üç satırı içermelidir:</p>
+<pre><code>@SQ SN:chr1 LN:1000
+@SQ SN:chr2 LN:1000
+@SQ SN:chr3 LN:1000</code></pre>
+</section>
+<section id="sam-hizalama-bölümü" class="level3">
+<h3 class="anchored" data-anchor-id="sam-hizalama-bölümü">SAM hizalama bölümü</h3>
+<p>İsteğe bağlı başlık bölümünün ardından, her satırın bir sekanslanmış okumaya karşılık geldiği hizalama bölümü gelir. Her okuma için, her zaman aynı sırada görünen 11 zorunlu alan vardır:</p>
+<pre><code>&lt;QNAME&gt; &lt;FLAG&gt; &lt;RNAME&gt; &lt;POS&gt; &lt;MAPQ&gt; &lt;CIGAR&gt; &lt;MRNM&gt; &lt;MPOS&gt; &lt;ISIZE&gt; &lt;SEQ&gt; &lt;QUAL&gt;</code></pre>
+<p>İlgili bilgi mevcut değilse veya geçersizse, alan değerleri (alana bağlı olarak) ‘0’ veya ’*’ olabilir, ancak eksik olamazlar! 11 zorunlu alandan sonra, değişken sayıda isteğe bağlı alan bulunabilir. İşte gerçek bir SAM dosyasından tek bir satır örneği (yana kaydırmanız gerekebilir):</p>
+<pre><code>ERR458493.552967 16 chrI 140 255 12M61232N37M2S * 0 0 CCACTCGTTCACCAGGGCCGGCGGGCTGATCACTTTATCGTGCATCTTGGC BB?HHJJIGHHJIGIIJJIJGIJIJJIIIGHBJJJJJJHHHHFFDDDA1+B NH:i:1 HI:i:1 AS:i:41 nM:i:2</code></pre>
+<p>Aşağıdaki tablo her alanın formatını ve içeriğini açıklamaktadır. <code>FLAG</code>, <code>CIGAR</code> ve isteğe bağlı alanlar (mavi ile işaretlenmiş) aşağıda daha ayrıntılı olarak açıklanmıştır. İsteğe bağlı alanların sayısı farklı SAM dosyaları arasında ve hatta aynı dosya içindeki okumalar arasında büyük ölçüde değişebilir.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sam_fields.png" class="img-fluid figure-img"></p>
+<figcaption>SAM alanları görseli</figcaption>
+</figure>
+</div>
+</section>
+<section id="flag-alanı" class="level3">
+<h3 class="anchored" data-anchor-id="flag-alanı"><code>FLAG</code> alanı</h3>
+<p>FLAG alanı, özellikle PE (eşlenmiş uç) okumalar için önemli olan, tek tek okuma hakkında çeşitli bilgi parçalarını kodlar. Bir dizi bitten (0, 1) oluşturulan bir tamsayı içerir. Bu şekilde, birden fazla ikili (Evet/Hayır) soruya verilen yanıtlar, her bir bitin ayrı ayrı adreslenebileceği ve atanabileceği bir bit serisi olarak kompakt bir şekilde saklanabilir.</p>
+<p>Aşağıdaki tablo FLAG alanında kodlanabilen farklı özelliklere genel bir bakış sunar. SAM formatı ve samtools geliştiricileri, belgelerinde farklı bitlere atıfta bulunmak için onaltılık kodlamayı kullanma eğilimindedir. Ancak, verilen bir SAM dosyasındaki FLAG alanının değeri her zaman altta yatan ikili değerlerin toplamının ondalık gösterimi olacaktır (aşağıdaki tabloda, satır 2’de gösterildiği gibi).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sam_flag.png" class="img-fluid figure-img"></p>
+<figcaption>SAM flag görseli</figcaption>
+</figure>
+</div>
+<p>SAM dosyalarının <code>FLAG</code> alanı, ilgili okuma hizalaması hakkındaki bilgileri tek bir ondalık sayıda saklar. Ondalık sayı, her ikili bite karşılık gelen Evet/Hayır sorularının tüm yanıtlarının toplamıdır. Onaltılık gösterim, tek tek bitlere (sorulara) atıfta bulunmak için kullanılır. İlgili durum doğruysa bir bit ayarlanır. Örneğin, bir okuma eşlenmişse, <code>0x1</code> ayarlanır ve ondalık değer 1 döndürülür. Bu nedenle, eşlenmiş okumalarla ilişkili tüm <code>FLAG</code> değerleri tek ondalık sayılar olmalıdır. Tersine, <code>0x1</code> biti ayarlanmamışsa (= okuma eşlenmemişse), <code>0x2</code>, <code>0x8</code>, <code>0x20</code>, <code>0x40</code> ve <code>0x80</code> hakkında varsayımda bulunulamaz çünkü bunlar eşlenmiş okumalara atıfta bulunur.</p>
+<p>Tek okumalarla yapılan bir çalışmada, en sık göreceğiniz bayraklar şunlardır:</p>
+<ul>
+<li>0: Bu okuma ileri zincire haritalanmıştır. (Bit bazlı bayrakların hiçbiri ayarlanmamıştır.)</li>
+<li>4: Okuma haritalanmamıştır (<code>0x4</code> ayarlıdır).</li>
+<li>16: Okuma ters zincire haritalanmıştır (<code>0x10</code> ayarlıdır)</li>
+</ul>
+<p>(<code>0x100</code>, <code>0x200</code> ve <code>0x400</code> çoğu hizalayıcı/haritalayıcı tarafından kullanılmaz, ancak prensipte tek okumalar için ayarlanabilir.) PE (eşlenmiş uç) deneyinde görebileceğiniz bazı yaygın <code>FLAG</code> değerleri şunları içerir:</p>
+<div class="line-block"><strong>69</strong> (= 1 + 4 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır ve haritalanmamıştır. |<br>
+<strong>77</strong> (= 1 + 4 + 8 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır, her ikisi de haritalanmamıştır. |<br>
+<strong>83</strong> (= 1 + 2 + 16 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve ters zincire haritalanmıştır. |<br>
+<strong>99</strong> (= 1 + 2 + 32 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve eşi ters zincire haritalanmıştır. |<br>
+<strong>133</strong> (= 1 + 4 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve haritalanmamıştır. |<br>
+<strong>137</strong> (= 1 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve eşi haritalanmamışken kendisi haritalanmıştır. |<br>
+<strong>141</strong> (= 1 + 4 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır, ancak her ikisi de haritalanmamıştır. |<br>
+<strong>147</strong> (= 1 + 2 + 16 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve ters zincire haritalanmıştır. |<br>
+<strong>163</strong> (= 1 + 2 + 32 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve eşi ters zincire haritalanmıştır. |</div>
+<p>FLAG tam sayılarını yukarıda gösterilenler gibi düz İngilizce açıklamalara hızlıca çevirmek için kullanışlı bir web sitesi: https://broadinstitute.github.io/picard/explain-flags.html</p>
+</section>
+<section id="cigar-dizisi" class="level3">
+<h3 class="anchored" data-anchor-id="cigar-dizisi"><code>CIGAR</code> dizisi</h3>
+<p><code>CIGAR</code>, <em>Concise Idiosyncratic Gapped Alignment Report</em> (Özlü İdiyosinkratik Boşluklu Hizalama Raporu) anlamına gelir. SAM dosyasının bu altıncı alanı, okumayı o belirli lokusta referans sekansa haritalamak için hangi işlemlerin gerekli olduğunu gösteren bir CIGAR dizisi içerir.</p>
+<p>CIGAR formatında aşağıdaki işlemler tanımlanmıştır (ayrıca aşağıdaki şekle bakın):</p>
+<ul>
+<li><strong>M</strong> - Hizalama (bir sekans eşleşmesi veya uyuşmazlığı olabilir!)</li>
+<li><strong>I</strong> - Referansa kıyasla okumada ekleme</li>
+<li><strong>D</strong> - Referansa kıyasla okumada silme</li>
+<li><strong>N</strong> - Referanstan atlanan bölge. mRNA-genom hizalamaları için, N işlemi bir intronu temsil eder. Diğer hizalama türleri için, N’nin yorumu tanımlanmamıştır.</li>
+<li><strong>S</strong> - Yumuşak kırpma (kırpılan sekanslar okumada mevcuttur); S’nin yalnızca H işlemleri arasında ve dizinin uçlarında olabilir</li>
+<li><strong>H</strong> - Sert kırpma (kırpılan sekanslar hizalama kaydında mevcut DEĞİLDİR); yalnızca ilk ve/veya son işlem olarak mevcut olabilir</li>
+<li><strong>P</strong> - Dolgu (dolgulu referanstan sessiz silme)</li>
+<li><strong>=</strong> - Sekans eşleşmesi (yaygın olarak kullanılmaz)</li>
+<li><strong>X</strong> - Sekans uyuşmazlığı (yaygın olarak kullanılmaz)</li>
+</ul>
+<p><strong>M</strong>, <strong>I</strong>, <strong>S</strong>, <strong>=</strong>, <strong>X</strong> işlemlerinin uzunluklarının toplamı okumanın uzunluğuna eşit olmalıdır. İşte bazı örnekler:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cigar.png" class="img-fluid figure-img"></p>
+<figcaption>CIGAR görseli</figcaption>
+</figure>
+</div>
+<p>Friederike Dündar, Luce Skrabanek ve Paul Zumbo’nun <a href="http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf">eğitim materyalinzden</a> alınmıştır.</p>
+</section>
+<section id="isteğe-bağlı-alanlar" class="level3">
+<h3 class="anchored" data-anchor-id="isteğe-bağlı-alanlar">İsteğe bağlı alanlar</h3>
+<p>On bir zorunlu SAM dosya alanından sonra, isteğe bağlı alanlar <code>&lt;TAG&gt;:&lt;TİP&gt;:&lt;DEĞER&gt;</code> formatında anahtar-değer çiftleri olarak sunulur, burada <code>TİP</code> şunlardan biridir:</p>
+<ul>
+<li><code>A</code> - Karakter</li>
+<li><code>i</code> - Tamsayı</li>
+<li><code>f</code> - Ondalıklı sayı</li>
+<li><code>Z</code> - Dizi</li>
+<li><code>H</code> - Onaltılık dizi</li>
+</ul>
+<p>Bu isteğe bağlı alanlarda saklanan bilgiler, haritalayıcıya bağlı olarak büyük ölçüde değişecektir ve yeni etiketler serbestçe eklenebilir. Ayrıca, SAM dosyası içindeki okumalar, SAM dosyasını üreten programa bağlı olarak farklı sayıda isteğe bağlı alana sahip olabilir. Yaygın olarak kullanılan isteğe bağlı etiketler şunları içerir:</p>
+<ul>
+<li><code>AS:i</code> - Hizalama skoru</li>
+<li><code>BC:Z</code> - Barkod sekansı</li>
+<li><code>HI:i</code> - Eşleşme okuma için i. hit’tir</li>
+<li><code>NH:i</code> - Sorgu sekansı için raporlanan hizalamaların sayısı</li>
+<li><code>NM:i</code> - Sorgunun referansa göre düzenleme mesafesi</li>
+<li><code>MD:Z</code> - Uyuşmazlıkların tam konumlarını içeren dizi (CIGAR dizisini tamamlamalıdır)</li>
+<li><code>RG:Z</code> - Okuma grubu (başlıkta <span class="citation" data-cites="RG">@RG</span> mevcutsa ID’den sonraki girişle eşleşmelidir)</li>
+</ul>
+<p>Böylece, örneğin, referansa mükemmel şekilde haritalanan (yani uyuşmazlık içermeyen) okumaları seçmek için NM:i:0 etiketini kullanabiliriz. Yukarıda listelenen isteğe bağlı alanlar oldukça standartlaştırılmış olsa da, <code>X</code>, <code>Y</code> ve <code>Z</code> ile başlayan etiketler özellikle serbest kullanım için ayrılmıştır ve asla resmi SAM dosya formatı spesifikasyonlarının bir parçası olmayacaktır. Örneğin <code>XS</code>, TopHat (daha sonra tartışacağımız bir RNA-seq analiz aracı) tarafından zincir bilgisini kodlamak için kullanılır (örn. <code>XS:A:+</code>) iken Bowtie2 ve BWA, çoklu hizalamaları olan okumalar için bir sonraki en iyi skorlu hizalamanın hizalama skorunu saklamak için <code>XS:i:</code> kullanır (örn. <code>XS:i:30</code>).</p>
+</section>
+<section id="okuma-grupları" class="level3">
+<h3 class="anchored" data-anchor-id="okuma-grupları">Okuma Grupları</h3>
+<p>SAM/BAM formatının temel özelliklerinden biri, bireysel okumaları okuma grubu etiketleriyle etiketleme yeteneğidir. Bu, birden çok deneyin sonuçlarını tek bir BAM veri setinde birleştirmeye olanak tanır. Bu, downstream lojistiği önemli ölçüde basitleştirir: birden çok veri setiyle uğraşmak yerine sadece bir taneyle ilgilenebilirsiniz. Varyant çağırıcılar gibi birçok downstream analiz aracı, okuma grubu verilerini tanımak ve sonuçları okuma grubu bazında çıkarmak üzere tasarlanmıştır.</p>
+<p>BAM okuma gruplarının en iyi açıklamalarından biri <a href="https://gatkforums.broadinstitute.org/discussion/1317/collected-faqs-about-bam-files">GATK destek sitesinde</a> bulunmaktadır. En önemli okuma grubu etiketlerini - <code>ID</code>, <code>SM</code>, <code>LB</code> ve <code>PL</code> - açıklayan iki tabloyu GATK forumundan minnetle aldık ve burada sunuyoruz:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rg.png" class="img-fluid figure-img"></p>
+<figcaption>Okuma grupları görseli</figcaption>
+</figure>
+</div>
+<p>GATK forumu ayrıca aşağıdaki örneği de sunmaktadır:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rg_example.png" class="img-fluid figure-img"></p>
+<figcaption>Okuma grubu örneği görseli</figcaption>
+</figure>
+</div>
+</section>
+<section id="sambam-veri-setlerinin-işlenmesi" class="level3">
+<h3 class="anchored" data-anchor-id="sambam-veri-setlerinin-işlenmesi">SAM/BAM veri setlerinin işlenmesi</h3>
+<p>SAM/BAM veri setlerini işlemek için dört ana araç setini destekliyoruz:</p>
+<ul>
+<li><a href="https://deeptools.readthedocs.io">DeepTools</a> - derin sekanslama DNA sekanslama deneylerinden elde edilen verilerin görselleştirilmesi, kalite kontrolü ve normalizasyonu için kullanıcı dostu araçlar paketi.</li>
+<li><a href="http://www.htslib.org/">SAMtools</a> - SAM/BAM formatındaki hizalamaları manipüle etmek için çeşitli araçlar; sıralama, birleştirme, indeksleme ve pozisyon başına hizalamaları oluşturma dahil.</li>
+<li><a href="https://bedtools.readthedocs.io/en/latest/">BEDtools</a> - başlangıçta BED formatı için yazılan araç seti, BAM ve VCF veri setlerinin analizi için genişletilmiştir.</li>
+<li><a href="https://broadinstitute.github.io/picard/">Picard</a> - yüksek verimli sekanslama (HTS) verilerini ve formatlarını manipüle etmek için bir dizi Java aracı.</li>
+</ul>
+</section>
+</section>
+<section id="okuma-duplikasyonlarının-zorluğu" class="level2">
+<h2 class="anchored" data-anchor-id="okuma-duplikasyonlarının-zorluğu">Okuma duplikasyonlarının zorluğu</h2>
+<section id="pcr-duplikasyonları" class="level3">
+<h3 class="anchored" data-anchor-id="pcr-duplikasyonları">PCR duplikasyonları</h3>
+<p>Illumina gibi teknolojiler için sekanslama kütüphanelerinin hazırlanması (en azından bu yazının yazıldığı tarihte), PCR amplifikasyonunu içerir. Bu, baz çağırıcılar tarafından güvenilir bir tespit yapılabilmesi için yeterli sayıda sekanslama şablonu oluşturmak için gereklidir. Ancak PCR’nin önyargıları vardır ve bunlar özellikle sekanslama kütüphanelerinin oluşturulması için kullanılan çoklu şablon PCR durumlarında belirgindir (Kanagawa ve ark. <a href="https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;dopt=Abstract&amp;list_uids=16233530">2003</a>).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pcr-duplicates.png" class="img-fluid figure-img"></p>
+<figcaption>PCR duplikasyonları görseli</figcaption>
+</figure>
+</div>
+<p>Aynı dış koordinatlarla hizalanan, en az 30’luk bir haritalama kalitesine ve en az 30nt uzunluğuna sahip moleküllerin analizi, PCR duplikasyonu başına ortalama 12.9’luk bir kapsama ve üstel/güç yasası dağılımına benzer ampirik bir kapsama dağılımı ile sonuçlanmıştır (sol üst panel). Bu, birçok molekülün yalnızca daha derin sekanslama için gözlemlendiğini, diğer moleküllerin ise daha yüksek frekanslarda mevcut olduğunu gösterir. Uzunluk (sol orta panel) ve GC içeriği (sol alt panel) modellerinin yanı sıra kombinasyonun (sağ panel) analizi, daha uzun moleküllere kıyasla %30 ila %70 arasında GC içeriğine sahip ve daha kısa moleküller için daha yüksek PCR duplikasyon sayıları gösterir. Bu etki, polimerazdan veya Illumina sekanslama için gerekli olan küme oluşturma sürecinden kaynaklanan bir amplifikasyon önyargısından kaynaklanıyor olabilir. <a href="https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/">Martin Kircher</a>’ın doktora tezinden.</p>
+<p>Duplikasyonlar, dış hizalama koordinatlarına veya sekans tabanlı kümelemeye dayalı olarak tanımlanabilir. Duplike okumaları tanımlamanın yaygın yollarından biri <a href="https://broadinstitute.github.io/picard/command-line-overview.html">Picard</a> paketinden <code>MarkDuplicates</code> aracıdır. Hem PCR hem de optik duplikasyonları tanımlamak üzere tasarlanmıştır:</p>
+<p>Duplikasyonlar, bir eş çiftindeki her iki okuma için aynı 5’ pozisyonlarına (koordinat ve zincir) sahip okuma çiftleri olarak tanımlanır (ve isteğe bağlı olarak, eşleşen benzersiz moleküler tanımlayıcı okumalar; BARCODE_TAG seçeneğine bakın). Optik veya daha geniş anlamda Sekanslama duplikasyonları, sekanslama sırasında mekansal olarak kümelenmiş görünen ve optik/görüntü işleme artefaktlarından veya klonal amplifikasyon ve sekanslama sırasındaki biyo-kimyasal süreçlerden kaynaklanabilen duplikasyonlardır; bunlar READ_NAME_REGEX ve OPTICAL_DUPLICATE_PIXEL_DISTANCE seçenekleri kullanılarak tanımlanır. Aracın ana çıktısı, duplikasyonların SAM bayrakları alanında tanımlandığı veya isteğe bağlı olarak kaldırıldığı (REMOVE_DUPLICATE ve REMOVE_SEQUENCING_DUPLICATES’e bakın) ve isteğe bağlı olarak ‘DT’ isteğe bağlı özniteliğinde bir duplikasyon tipi ile işaretlendiği yeni bir SAM veya BAM dosyasıdır. Buna ek olarak, READ_PAIRS_EXAMINED, UNMAPPED_READS, UNPAIRED_READS, UNPAIRED_READ_DUPLICATES, READ_PAIR_DUPLICATES ve READ_PAIR_OPTICAL_DUPLICATES sayılarını içeren bir metrik dosyası da çıkarır.</p>
+</section>
+<section id="örnekleme-tesadüf-duplikasyonları" class="level3">
+<h3 class="anchored" data-anchor-id="örnekleme-tesadüf-duplikasyonları">Örnekleme tesadüf duplikasyonları</h3>
+<p>Bununla birlikte, sekanslama hedefleri küçük olduğunda (örneğin, bakteriyel, viral veya organeller genomların yanı sıra amplikonların sekanslanması) duplikasyonları kaldırırken dikkatli olunmalıdır. Bunun nedeni, sekanslama hedefi küçük olduğunda, okumaların PCR amplifikasyon sorunları nedeniyle değil, tesadüfen aynı koordinatlara sahip olmasıdır. Aşağıdaki şekil, tahmini allel frekansı, kapsam ve insert boyutu varyasyonu arasındaki hassas dengeyi göstermektedir:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sampling-bias.png" class="img-fluid figure-img"></p>
+<figcaption>Örnekleme önyargısı görseli</figcaption>
+</figure>
+</div>
+<p>Kapsam ve insert boyutu varyansı tarafından belirlenen Varyant Allel Frekansı (VAF) önyargısı. Okumalar eşlenmiş uçludur ve okuma uzunluğu 76’dır. Insert boyutu dağılımı, 200’de ortalama ve x ekseninde gösterilen standart sapma ile bir Gauss dağılımı olarak modellenmiştir. Gerçek VAF 0.05’tir. Her pozisyondaki koyuluk, VAF’deki önyargının büyüklüğünü gösterir. (Zhou ve ark. <a href="https://bioinformatics.oxfordjournals.org/content/30/8/1073">2013</a>’ten).</p>
+</section>
+</section>
+<section id="ngs-verilerini-galaxyye-alma" class="level1">
+<h1>NGS Verilerini Galaxy’ye Alma</h1>
+<p>Galaxy’ye veri yüklemek için şu yollardan birini kullanabilirsiniz:</p>
+<section id="bilgisayarınızdan-veri-yükleme" class="level2">
+<h2 class="anchored" data-anchor-id="bilgisayarınızdan-veri-yükleme">Bilgisayarınızdan veri yükleme</h2>
+<p>Bu, web tarayıcıları ile küçük dosyalar yüklemek için uygundur:</p>
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/FFCDx1rMGAQ" title="Uploading data from your computer" frameborder="0" loading="lazy">
+</iframe>
+</section>
+<section id="ftp-kullanarak" class="level2">
+<h2 class="anchored" data-anchor-id="ftp-kullanarak">FTP Kullanarak</h2>
+<p>FTP (<a href="https://en.wikipedia.org/wiki/File_Transfer_Protocol">dosya transfer protokolü</a>), büyük dosya koleksiyonlarının transferine olanak tanır:</p>
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/hC8KSuT_OP8" title="Uploading with FTP" frameborder="0" loading="lazy">
+</iframe>
+</section>
+<section id="ncbi-sra-kısa-okuma-arşivinden" class="level2">
+<h2 class="anchored" data-anchor-id="ncbi-sra-kısa-okuma-arşivinden">NCBI SRA kısa okuma arşivinden</h2>
+<p>Son olarak, veri setleri doğrudan NCBI’nin kısa okuma arşivinden yüklenebilir:</p>
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/Q4t-beYZ-do" title="Uploading from SRA" frameborder="0" loading="lazy">
+</iframe>
+<blockquote class="blockquote">
+<p>Yorum</p>
+<p>Bu öğreticide bu son yaklaşımı, NCBI SRA’dan veri almayı kullanacağız.</p>
+</blockquote>
+</section>
+</section>
+<section id="hadi-yapalım-okumalardan-varyantlara" class="level1">
+<h1>Hadi yapalım: Okumalardan varyantlara</h1>
+<p>Birincil analizde ham sekanslama verisi (örn. fastq okumaları) ile başlarız ve bunları ikincil analiz için bir veri setine dönüştürürüz. Bu tür veri setleri sekans varyantlarının bir listesi, ChIP-seq piklerinin bir koleksiyonu, farklı şekilde ifade edilen genlerin bir listesi vb. olabilir.</p>
+<p>SARS-CoV-2 şüphesiz günümüzün en çok konuşulan biyolojik sistemidir. Galaxy’nin NGS verilerini nasıl işlediğini göstermek için SARS-CoV-2 sekanslama verilerini kullanacağız. Bu durumda FASTQ verisinden bir varyant listesine gideceğiz.</p>
+<section id="srada-gerekli-verileri-bulma" class="level2">
+<h2 class="anchored" data-anchor-id="srada-gerekli-verileri-bulma">SRA’da gerekli verileri bulma</h2>
+<p>İlk olarak oynamak için iyi bir veri seti bulmamız gerekiyor. <a href="https://www.ncbi.nlm.nih.gov/sra">Sequence Read Archive (SRA)</a>, <a href="https://www.ncbi.nlm.nih.gov/">ABD Ulusal Sağlık Enstitüleri (NIH)</a> tarafından işletilen <em>birleştirilmemiş okumaların</em> birincil arşividir. SRA, yayınların ve çalışmaların temelini oluşturan sekanslama verilerini almak için harika bir yerdir. Hadi bunu yapalım:</p>
+<blockquote class="blockquote">
+<p>Uygulama: NCBI SRA’dan Metadata Alma</p>
+<ol type="1">
+<li>Tarayıcınızı https://www.ncbi.nlm.nih.gov/sra adresine yönlendirerek NCBI’nin SRA sayfasına gidin</li>
+<li>Arama kutusuna <code>SARS-CoV-2 Patient Sequencing From Partners / MGH</code> girin: [Find data görseli] (Alternatif olarak, <a href="https://www.ncbi.nlm.nih.gov/sra/?term=SARS-CoV-2+Patient+Sequencing+From+Partners+%2F+MGH">veriye doğrudan bağlantıya</a> tıklayabilirsiniz)</li>
+<li>Web sayfası çok sayıda SRA veri seti gösterecektir (yazı yazıldığı sırada 2,223 tane vardı). Bu, Boston bölgesindeki SARS-CoV-2 analizini açıklayan bir <a href="https://science.sciencemag.org/content/early/2020/12/09/science.abe3261">çalışmadan</a> alınan verilerdir.</li>
+<li>Bu veri setlerini açıklayan metadatayı şu şekilde indirin:
+<ul>
+<li><strong>Send to:</strong> açılır menüsüne tıklayın</li>
+<li><code>File</code> seçeneğini seçin</li>
+<li><strong>Format</strong>’ı <code>RunInfo</code> olarak değiştirin</li>
+<li><strong>Create file</strong>’a tıklayın İşte nasıl görünmeli: [RunInfo’yu SRA’dan alma görseli]</li>
+</ul></li>
+<li>Bu, <code>Downloads</code> klasörünüzde oldukça büyük bir <code>SraRunInfo.csv</code> dosyası oluşturacaktır.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>Yorum</p>
+<p>Az önce indirdiğimiz dosyanın sekanslama verisinin kendisi <strong>olmadığını</strong> unutmayın. Daha ziyade, sekanslama okumalarının özelliklerini tanımlayan <em>metadata</em>’dır. Bu listeyi, bu öğreticinin geri kalanında kullanılacak sadece birkaç erişim numarasına kadar filtreleyeceğiz.</p>
+</blockquote>
+</section>
+<section id="galaxyde-sraruninfo.csv-dosyasını-işleme-ve-filtreleme" class="level2">
+<h2 class="anchored" data-anchor-id="galaxyde-sraruninfo.csv-dosyasını-işleme-ve-filtreleme">Galaxy’de <code>SraRunInfo.csv</code> dosyasını işleme ve filtreleme</h2>
+<blockquote class="blockquote">
+<p>Uygulama: <code>SraRunInfo.csv</code> dosyasını Galaxy’ye yükleme</p>
+<ol type="1">
+<li><a href="https://galaxyproject.org/usegalaxy/">UseGalaxy.* örnekleri</a> veya başka herhangi biri gibi tercih ettiğiniz Galaxy örneğine gidin. (Bu öğretici usegalaxy.org’u kullanır).</li>
+<li><em>Upload Data</em> (Veri Yükle) düğmesine tıklayın: [Veri yükleme düğmesi görseli]</li>
+<li>Görünecek iletişim kutusunda “<em>Choose local files</em>” (Yerel dosyaları seç) düğmesine tıklayın: [Yerel dosyaları seç düğmesi görseli]</li>
+<li>Bilgisayarınızdan <code>SraRunInfo.csv</code> dosyasını bulun ve seçin</li>
+<li><em>Start</em> (Başlat) düğmesine tıklayın</li>
+<li><strong>Close</strong> (Kapat) düğmesine basarak iletişim kutusunu kapatın</li>
+<li>Artık dosyanın içeriğine galaxy-eye (göz) simgesine tıklayarak bakabilirsiniz. Bu dosyanın tek tek SRA erişim numaraları hakkında çok bilgi içerdiğini göreceksiniz. Bu çalışmada her erişim numarası, örnekleri sekanslanan bir hastaya karşılık gelir.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>Yorum: Kesmelere Dikkat</p>
+<p>Aşağıdaki bölüm <strong>Cut</strong> aracını kullanır. Galaxy’de tarihi nedenlerle iki <strong>cut</strong> aracı vardır. Bu örnek tam adı <strong>Cut columns from a table (cut)</strong> olan aracı kullanır. Ancak, aynı mantık diğer araç için de geçerlidir. Sadece biraz farklı bir arayüze sahiptir.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Uygulama: Verinin bir alt kümesini oluşturma</p>
+<ol type="1">
+<li>Araç panelinin <em>Filter and Sort</em> bölümünde <strong>Select lines that match an expression</strong> (İfadeye uyan satırları seç) aracını bulun. param-file “Select lines from” (Satırları seçin) araç formu alanında az önce yüklediğimiz <code>SraRunInfo.csv</code> veri setinin listelendiğinden emin olun. “<em>the pattern</em>” (desen) alanına aşağıdaki ifadeyi girin → <code>SRR12733957|SRR11954102</code>. Bunlar boru sembolü <code>|</code> ile ayrılmış bulmak istediğimiz iki erişim numarasıdır. <code>|</code> VEYA anlamına gelir: <code>SRR12733957</code> VEYA <code>SRR11954102</code> içeren satırları bul. <code>Run Tool</code> (Aracı Çalıştır) düğmesine tıklayın. Bu, iki satır içeren bir dosya oluşturacaktır (aslında… bir satır da başlık olarak kullanılır, bu yüzden dosyanın üç satır içerdiği görünecektir. Bu normaldir.)</li>
+</ol>
+<p>Araç panelinin <strong>Text Manipulation</strong> bölümünde bulacağınız <strong>Advanced Cut</strong> (Galaxy sürüm 1.1.0) aracını kullanarak dosyanın ilk sütununu kesin. Araç formunun “<em>File to cut</em>” (Kesilecek dosya) alanında önceki adımdan üretilen veri setinin seçili olduğundan emin olun. “<em>Delimited by</em>”i (Ayraç) <code>Comma</code> (Virgül) olarak değiştirin “<em>List of fields</em>”de (Alan listesi) <code>Column: 1</code>’i seçin. <code>Run Tool</code>’a basın. Bu, sadece iki satır içeren bir metin dosyası üretecektir:</p>
+<pre><code>SRR12733957
+SRR11954102</code></pre>
+</blockquote>
+<p>İstediğimiz veri setlerinin tanımlayıcılarına sahip olduğumuza göre, gerçek sekanslama verisini indirmemiz gerekiyor. Ayrıca <a href="https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-ngs-data-managment/tutorial.html#from-ncbi-short-read-archive">bu videoyu</a> da izleyebilirsiniz.</p>
+</section>
+<section id="sekanslama-verisini-indirme" class="level2">
+<h2 class="anchored" data-anchor-id="sekanslama-verisini-indirme">Sekanslama verisini indirme</h2>
+<blockquote class="blockquote">
+<p>Uygulama: SRA’dan veri alma</p>
+<ol type="1">
+<li>Aşağıdaki parametrelerle <strong>Faster Download and Extract Reads in FASTQ</strong> (Galaxy sürüm 2.10.9+galaxy0) aracını çalıştırın:
+<ul>
+<li><p>“select input type”:</p>
+<pre class="plaintext"><code>List of SRA accession, one per line</code></pre>
+<ul>
+<li>param-file <em>“sra accession list”</em> parametresi önceki adımdaki “<strong>Advanced Cut</strong>” aracının çıktısını göstermelidir.</li>
+</ul></li>
+<li><p><code>Run Tool</code> düğmesine <strong>Tıklayın</strong>. Bu, aracı çalıştıracak ve <code>SRA</code> veri setinde listelenen çalışmalar için sekans okuma veri setlerini getirecektir. Bu biraz zaman alabilir. Bu, ara vermek için iyi bir zaman olabilir.</p></li>
+</ul></li>
+<li>Bu işi gönderdiğinizde geçmiş panelinizde birkaç giriş oluşturulur:
+<ul>
+<li><strong><code>Pair-end data (fasterq-dump)</code></strong>: Eşlenmiş-uç veri setlerini içerir (varsa)</li>
+<li><strong><code>Single-end data (fasterq-dump)</code></strong> Tek-uç veri setlerini içerir (varsa)</li>
+<li><strong><code>Other data (fasterq-dump)</code></strong> Eşlenmemiş veri setlerini içerir (varsa)</li>
+<li><strong><code>fasterq-dump log</code></strong> Araç çalışması hakkında bilgi içerir</li>
+</ul></li>
+</ol>
+</blockquote>
+<p>İlk üç öğe aslında veri setlerinin <em>koleksiyonlarıdır</em>. Galaxy’deki <em>Koleksiyonlar</em>, veri setleri arasındaki anlamsal ilişkileri deney/analiz içinde yansıtan mantıksal gruplandırmalardır. Bu durumda araç, eşlenmiş-uç okumalar, tek okumalar ve <em>diğer</em> için ayrı koleksiyonlar oluşturur. Daha fazla bilgi için <a href="https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html">Koleksiyonlar öğreticisine</a> bakın ve (“Dataset Collections” ile başlayan adlara sahip) <a href="https://youtube.com/playlist?list=PLNFLKDpdM3B9UaxWEXgziHXO3k-003FzE">videoları</a> izleyin.</p>
+<p>Koleksiyonları geçmiş panelindeki koleksiyon adına <strong>tıklayarak</strong> keşfedin. Bu sizi koleksiyonun içine götürür ve içindeki veri setlerini gösterir. Daha sonra geçmişinizin dış seviyesine geri dönebilirsiniz.</p>
+<p><code>fasterq</code> veri aktarımını bitirdiğinde (tüm kutular yeşil/tamamlanmış), analiz için hazırız.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
