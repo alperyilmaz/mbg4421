@@ -1,0 +1,454 @@
+---
+title: "Yeni Nesil Dizileme Giriş"
+subtitle: "MBG4421 - Ders4"
+author: "Alper Yılmaz"
+date: 2024-10-22
+format: html
+typora-copy-images-to: images
+---
+
+
+> [NGS data logistics](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-ngs-data-managment/tutorial.html) isimli Galaxy eğitimi materyalinden uyarlanmıştır.
+
+## FASTQ manipülasyonu ve kalite kontrolü
+
+[FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) çok iyi tanımlanmamış bir formattır. Başlangıçta, çeşitli sekanslama cihazı üreticileri FASTQ'yu kendi gördükleri şekilde yorumlama özgürlüğüne sahipti, bu da birçok FASTQ çeşidinin ortaya çıkmasına neden oldu. Bu varyasyon öncelikle [FASTQ için Wikipedia makalesinde](https://en.wikipedia.org/wiki/FASTQ_format) açıklandığı gibi kalite değerlerinin farklı şekillerde kodlanmasından kaynaklanıyordu (kalite skorları ve anlamları hakkında aşağıda açıklama bulacaksınız). Bugün, [FASTQ Sanger](https://www.ncbi.nlm.nih.gov/pubmed/20015970) versiyonu formatın standart formu olarak kabul edilmektedir. Galaxy, downstream işleme araçları için tek meşru girdi olarak FASTQ Sanger'ı kullanmakta ve FASTQ dosyalarını bu forma dönüştürmek için [bir dizi araç](https://www.ncbi.nlm.nih.gov/pubmed/20562416) sunmaktadır (Galaxy araçlarının **FASTQ Kalite Kontrolü** bölümüne bakınız).
+
+FASTQ formatı şu şekilde görünür:
+
+```
+@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
+CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCTGAACCAGCCAAGTAGCGTGCAG
++
+ABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-<-C++,,+;CE<,,CD,CEFC,@E9<FCFCF?9
+@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23
+CCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACTGATCCAGCCATGCCGCGTGCAG
++
+ABC@CC77CFCEG;F9<F89<9--C,CE,--C-6C-,CE:++7:,CF<,CEF,CFGGD8FFCFCFEGCF
+@M02286:19:000000000-AA549:1:1101:11116:1322 1:N:0:23
+CCTACGGGAGGCAGCAGTAGGGAATCTTCGGCAATGGACGGAAGTCTGACCGAGCAACGCCGCGTGAGT
++
+AAC<CCF+@@>CC,C9,F9C9@9-CFFFE@7@:+CC8-C@:7,@EFE,6CF:+8F7EFEEF@EGGGEEE
+```
+
+Her sekanslama okuması dört satırla temsil edilir:
+
+1. Okuma ID'si ve sekanslama çalışması hakkında isteğe bağlı bilgiler ile başlayan `@`
+2. Sekanslanmış bazlar
+3. `+` (isteğe bağlı olarak okuma ID'si ve bazı ek bilgilerle birlikte)
+4. [ASCII sembolleri](https://en.wikipedia.org/wiki/ASCII) olarak kodlanmış sekansın her bazı için kalite skorları
+
+## Eşlenmiş uç verisi (Paired End)
+
+Eşlenmiş-uç ve mate-pair sekanslama kütüphaneleri hazırlamak yaygındır. Bu, sonraki konularda tartışılan birçok uygulama için oldukça faydalıdır. Şimdilik bunların ne olduğunu ve FASTQ formunda nasıl göründüklerini kısaca tartışalım.
+
+![Görsel: Eşlenmiş-uç ve mate-pair okumalar](images/pe_mp.png)
+
+**Eşlenmiş-uç ve mate-pair okumalar**. Eşlenmiş uç sekanslama işleminde (sol) oldukça kısa DNA moleküllerinin (1kb'den az) gerçek uçları belirlenirken, mate pair sekanslama için (sağ) uzun moleküllerin uçları birleştirilir ve özel sekanslama kütüphanelerinde hazırlanır. Bu mate pair protokollerinde, uzun, boyut seçimli moleküllerin uçları bir daireselleştirme reaksiyonunda dahili bir adaptör sekansı (yani bağlayıcı, sarı) ile bağlanır. Dairesel molekül daha sonra restriksiyon enzimleri veya fragmentasyon kullanılarak işlenir. Fragmentler bağlayıcı için zenginleştirilir ve dış kütüphane adaptörleri iki birleştirilmiş molekül ucunun etrafına eklenir. Dahili adaptör daha sonra aynı yönde ek bir sekanslama reaksiyonu için ikinci bir başlatma bölgesi olarak kullanılabilir veya sekanslama ikinci adaptörden, ters zincirden gerçekleştirilebilir. ([Martin Kircher](https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/)'ın "Understanding and improving high-throughput sequencing data production and analysis" başlıklı doktora tezinden)
+
+Bu nedenle her iki durumda da (eşlenmiş-uç ve mate-pair) tek bir fiziksel DNA parçası (veya RNA-seq durumunda RNA) iki uçtan sekanslanır ve böylece iki okuma oluşturur. Bunlar ayrı dosyalar (birinci ve ikinci okumalar için iki FASTQ dosyası) veya her uç için okumaların iç içe geçtiği tek bir dosya olarak gösterilebilir. İşte örnekler:
+
+### İki ayrı dosya
+
+Dosya 1
+
+```
+@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23
+CCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCT
++
+ABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-<-C++,,+;CE
+@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23
+CCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACT
++
+ABC@CC77CFCEG;F9<F89<9--C,CE,--C-6C-,CE:++7:,CF
+```
+
+Dosya 2
+
+```
+@M02286:19:000000000-AA549:1:1101:12677:1273 2:N:0:23
+CACTACCCGTGTATCTAATCCTGTTTGATACCCGCACCTTCGAGCTTA
++
+--8A,CCE+,,;,<CC,,<CE@,CFD,,C,CFF+@+@CCEF,,,B+C,
+@M02286:19:000000000-AA549:1:1101:15048:1299 2:N:0:23
+CACTACCGGGGTATCTAATCCTGTTCGCTCCCCACGCTTTCGTCCATC
++
+-6AC,EE@::CF7CFF<<FFGGDFFF,@FGGGG?F7FEGGGDEFF>FF
+```
+
+> Yorum: Okuma sırası önemlidir
+>
+> İki dosyadaki okuma ID'lerinin **aynı** olduğuna ve **aynı** sırada listelendiğine dikkat edin. Bazı durumlarda birinci ve ikinci dosyadaki okuma ID'lerine sırasıyla `/1` ve `/2` etiketleri eklenebilir.
+
+### İç içe geçmiş dosya (Interleaved)
+ 
+```
+@1/1
+AGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA
++
+EGGEGGGDFGEEEAEECGDEGGFEEGEFGBEEDDECFEFDD@CDD<ED
+@1/2
+CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC
++
+GHHHDFDFGFGEGFBGEGGEGEGGGHGFGHFHFHHHHHHHEF?EFEFF
+@2/1
+AGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA
++
+HHHHHHEGFHEEFEEHEEHHGGEGGGGEFGFGGGGHHHHFBEEEEEFG
+@2/2
+CCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC
++
+HHHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH
+```
+
+Burada birinci ve ikinci okumalar `/1` ve `/2` etiketleriyle tanımlanmıştır.
+
+> Yorum: FASTQ formatı katı kuralları olmayan bir standarttır
+>
+> FASTQ formatı katı bir şekilde tanımlanmamıştır ve varyasyonları her zaman size baş ağrısı yaratacaktır. Daha fazla bilgi için [bu sayfaya](https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/) bakın.
+
+## Baz kaliteleri nedir?
+
+Yukarıda gördüğümüz gibi, FASTQ veri setleri iki tür bilgi içerir:
+
+- *okumanın sekansı*
+- okumadaki her nükleotid için *baz kaliteleri*.
+
+Baz kaliteleri, sekanslama okumasındaki her bazın ne kadar güvenilir olduğunu değerlendirmemize olanak tanır. Friederike Dündar, Luce Skrabanek, Paul Zumbo tarafından hazırlanan mükemmel bir [öğreticiden](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) alınan aşağıdaki alıntı baz kalitelerinin ne olduğunu açıklamaktadır:
+
+> Yorum: "RNA-seq kullanarak diferansiyel gen ekspresyon analizine giriş"ten
+>
+> Illumina sekanslama, büyüyen sekanslama okumasına dahil edilmeleri üzerine yayılan floresan sinyalini tanımlayarak tek tek nükleotidleri belirlemeye dayanır. Floresan yoğunlukları çıkarıldıktan ve dört harfli koda çevrildikten sonra, sekanslama sırasında elde edilen görüntülerden nükleotid sekanslarının çıkarılması genellikle baz çağırma olarak adlandırılır.
+> Sekanslama işleminin kusurlu doğası ve optik cihazların sınırlamaları nedeniyle, baz çağırma her zaman doğal bir belirsizliğe sahip olacaktır. Bu nedenle FASTQ dosyaları, her okumanın DNA sekansını, pozisyona özgü bir kalite skoruyla birlikte saklar; bu skor hata olasılığını, yani tek bir baz çağrısının yanlış olma olasılığını temsil eder. Skora [Phred skoru](http://www.phrap.com/phred/) denir, *Q*, bir baz çağrısının yanlış olma olasılığı *p* ile orantılıdır, burada *Q*=−10*lg*(*p*)'dir.
+
+
+Örneğin, 10'luk bir Phred skoru her on baz çağrısında bir hata anlamına gelir (*Q*=−10*lg*(0.1)), yani %90 doğruluk; 20'lik bir Phred skoru her yüz baz çağrısında bir hata, yani %99 doğruluk anlamına gelir. Dolayısıyla, daha yüksek bir Phred skoru, raporlanan baza olan güvenin daha yüksek olduğunu gösterir.
+
+Her baza benzersiz bir skor tanımlayıcısı atamak için (değişken uzunluktaki sayılar yerine), Phred skorları genellikle ASCII karakterleri olarak temsil edilir. http://ascii-code.com/ adresinde hangi karakterlerin hangi sayıya atandığını görebilirsiniz.
+
+Ham okumalar için, skorların aralığı sekanslama teknolojisine ve kullanılan baz çağırıcıya bağlı olacaktır (örneğin Illumina, Bustard adlı bir araç veya daha yakın zamanda RTA kullanıyordu). Ne yazık ki, Illumina Phred skorunu nasıl hesapladıkları ve ASCII-kodladıkları konusunda tutarlı olmaktan uzak olmuştur (aşağıya bakın)! Ayrıca, Illumina artık HiSeq X'e kadar 41 maksimum skor olana kadar, baz çağrıları için 45'e kadar yüksek Phred skorlarına izin vermektedir. Bu, 41'lik bir üst limit bekleyen downstream uygulamalarla sorunlara neden olabilir.
+
+![Illumina quality score](images/illumina_qs.png)
+
+Baz çağrısı kalite skorları Phred aralığı ile temsil edilir. Farklı Illumina (eski adıyla Solexa) versiyonları farklı skorlar ve ASCII ofsetleri kullanmıştır. Illumina format 1.8'den başlayarak, skor artık diğer sekanslama platformları ve sekanslama arşivleri tarafından da kullanılan standart Sanger/Phred formatını temsil etmektedir.
+
+![FASTQ quality score](images/fastq_qs.png)
+
+Illumina tarafından kullanılan farklı Phred skoru gösterimlerinin ve orijinal Sanger yorumunun ASCII yorumlaması ve aralıkları. Sanger formatı teorik olarak 93'lük bir skora izin verse de, ham sekanslama okumaları genellikle 60'lık bir Phred skorunu aşmaz. Aslında, çoğu Illumina tabanlı sekanslama 41 ila 45'lik maksimum skorlarla sonuçlanacaktır (görsel [Wikipedia](https://en.wikipedia.org/wiki/FASTQ_format)'dan alınmıştır)
+
+## Veri kalitesinin değerlendirilmesi
+
+NGS verilerinin analizindeki ilk adımlardan biri verinin gerçekte ne kadar iyi olduğunu görmektir. [FastqQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/), FASTQ veri setlerinin kalitesini değerlendirmenize olanak tanıyan (ve sizin için sekanslama yapanı suçlayıp suçlamama konusunda karar vermenizi sağlayan) harika bir araçtır.
+
+| **A.** Mükemmel kalite | **B.** Hmm...Tamam |
+|:---:|:---:|
+| ![İyi kalite FastQC görseli](images/good_fq.png) | ![Kötü kalite FastQC görseli](images/bad_fq.png) |
+
+Burada iki veri seti için FastQC baz kalite raporlarını görebilirsiniz (araç size başka türde veriler de sunar): **A** ve **B**. **A** veri seti uzun okumalara (250 bp) ve hiçbir kalitenin [phred skoru](http://www.phrap.com/phred/) 30'un altına düşmediği çok iyi bir kalite profiline sahiptir. **B** veri seti, okumaların uçlarının phred skoru 20'nin altına düştüğü önemli ölçüde daha kötüdür. **B** okumalarının ileri işleme için kırpılması gerekebilir.
+
+## Verinizi Haritalama
+
+NGS okumalarının referans sekanslarına karşı haritalanması, analizin temel adımlarından biridir. Şimdi bunun pratikte nasıl yapıldığını göreceğiz. Aşağıda ana akım haritalama araçlarını vurgulayan temel yayınların bir listesi bulunmaktadır:
+
+- 2009 Bowtie 1 - [Langmead ve ark.](http://genomebiology.com/content/10/3/R25)
+- 2012 Bowtie 2 - [Langmead ve Salzberg](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3322381/)
+- 2009 BWA - [Li ve Durbin](https://academic.oup.com/bioinformatics/article/25/14/1754/225615/Fast-and-accurate-short-read-alignment-with)
+- 2010 BWA - [Li ve Durbin](https://academic.oup.com/bioinformatics/article/26/5/589/211735/Fast-and-accurate-long-read-alignment-with-Burrows)
+- 2013 BWA-MEM - [Li](https://arxiv.org/abs/1303.3997)
+
+
+### Önceden hesaplanmış genom indeksine karşı haritalama
+
+Haritalayıcılar genellikle okumaları, genom indeksi adı verilen yüksek erişilebilir bir veri yapısına dönüştürülmüş bir referans sekansa karşı karşılaştırır. Bu tür indeksler haritalama başlamadan önce oluşturulmalıdır. Galaxy örnekleri genellikle halka açık olan bir dizi genom yapısı için indeksler depolar.
+
+![Önbelleğe alınmış genom görseli](images/cached_genome.png)
+
+Örneğin, yukarıdaki görsel insan genomunun `hg38` versiyonu için indeksleri göstermektedir. Aslında üç seçenek olduğunu görebilirsiniz: (1) `hg38`, (2) `hg38 canonical` ve (3) `hg38 canonical female`. `hg38` tüm kromozomları ve yerleştirilmemiş tüm contig'leri içerir. `hg38 canonical` yerleştirilmemiş sekansları içermez ve sadece 1'den 22'ye kadar olan kromozomlardan, X, Y ve mitokondriyal DNA'dan oluşur. `hg38 canonical female` Y kromozomu hariç canonical setteki her şeyi içerir.
+
+### Önceden hesaplanmış indeks mevcut değilse ne olur?
+
+Eğer Galaxy'de haritalama yapmak istediğiniz genom mevcut değilse, genom sekansınızı FASTA dosyası olarak yükleyebilir ve aşağıda gösterildiği gibi doğrudan haritalayıcıda kullanabilirsiniz (**Referans genom yükle** `History` olarak ayarlanmıştır).
+
+![Yüklenmiş genom görseli](images/uploaded_genome.png)
+
+Bu durumda Galaxy önce bu veri setinden bir indeks oluşturacak ve ardından ona karşı haritalama analizi yapacaktır.
+
+## SAM/BAM veri setleri
+
+[SAM/BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) formatı, hizalanmış okumaları depolamak için kabul edilen bir standarttır (hizalanmamış okumaları da depolayabilir ve BWA gibi bazı haritalayıcılar girdi olarak hizalanmamış BAM kabul eder). Formatın ikili formu (BAM) kompakttır ve (indekslenmişse) hızlıca aranabilir. Galaxy'de BAM veri setleri her zaman indekslidir (bir .bai dosyası eşlik eder) ve koordinat sırasına göre sıralanmıştır. [Daha fazla bilgi için tıklayınız](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf).
+
+Sequence Alignment/Map (SAM) formatı, aslında sekanslama okumalarının (veya sorgu sekanslarının) bir referansa hizalanmasını tanımlayan genel bir nükleotid hizalama formatıdır. İnsan tarafından okunabilir, TAB ile ayrılmış SAM dosyaları Binary Alignment/Map formatına sıkıştırılabilir. Bu BAM dosyaları basitçe gzip'lenmiş SAM dosyalarından daha büyüktür, çünkü boyut küçültmeden ziyade hızlı rastgele erişim için optimize edilmişlerdir. Pozisyona göre sıralanmış BAM dosyaları, tüm dosyayı belleğe yüklemeden bir lokusa hizalanan tüm okumaların verimli bir şekilde alınabilmesi için indekslenebilir.
+
+Aşağıda gösterildiği gibi, SAM dosyaları genellikle kısa bir başlık bölümü ve her satırın tek bir okuma hizalamasını temsil ettiği çok uzun bir hizalama bölümü içerir. Aşağıdaki bölümler SAM formatını biraz daha ayrıntılı olarak açıklayacaktır. En kapsamlı ve güncel bilgi için https://github.com/samtools/hts-specs adresine gidin.
+
+![BAM yapısı görseli](images/bam_structure.png)
+
+**SAM dosyasının şematik gösterimi**. İsteğe bağlı başlık bölümündeki her satır "@" ile başlar, ardından uygun kısaltma gelir (örneğin, tüm kromozom adlarını (SN) ve uzunluklarını (LN) listeleyen sekans sözlüğü için SQ). Bir SAM dosyasındaki satırların büyük çoğunluğu genellikle okuma hizalamalarına karşılık gelir; burada her okuma 11 zorunlu giriş (siyah yazı tipi) ve değişken sayıda isteğe bağlı alan (gri yazı tipi) ile tanımlanır. Friederike Dündar, Luce Skrabanek ve Paul Zumbo'nun [öğreticisinden](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) alınmıştır.
+
+
+### SAM Başlığı
+
+Başlık bölümü, hizalamanın nasıl oluşturulduğu ve saklandığı hakkında bilgi içerir. Başlık bölümündeki tüm satırlar tab ile ayrılmıştır ve "@" karakteri ile başlar, ardından etiket:değer çiftleri gelir; burada etiket, değerin içeriğini ve formatını tanımlayan iki harfli bir dizedir. Örneğin, başlık bölümündeki "@SQ" satırı, okumaların hizalandığı referans sekansların adları ve uzunlukları hakkında bilgi içerir. Her biri 1.000 bp uzunluğunda üç kromozoma sahip varsayımsal bir organizma için, SAM başlığı aşağıdaki üç satırı içermelidir:
+
+```
+@SQ SN:chr1 LN:1000
+@SQ SN:chr2 LN:1000
+@SQ SN:chr3 LN:1000
+```
+
+### SAM hizalama bölümü
+
+İsteğe bağlı başlık bölümünün ardından, her satırın bir sekanslanmış okumaya karşılık geldiği hizalama bölümü gelir. Her okuma için, her zaman aynı sırada görünen 11 zorunlu alan vardır:
+
+```
+<QNAME> <FLAG> <RNAME> <POS> <MAPQ> <CIGAR> <MRNM> <MPOS> <ISIZE> <SEQ> <QUAL>
+```
+
+İlgili bilgi mevcut değilse veya geçersizse, alan değerleri (alana bağlı olarak) '0' veya '*' olabilir, ancak eksik olamazlar! 11 zorunlu alandan sonra, değişken sayıda isteğe bağlı alan bulunabilir. İşte gerçek bir SAM dosyasından tek bir satır örneği (yana kaydırmanız gerekebilir):
+
+```
+ERR458493.552967 16 chrI 140 255 12M61232N37M2S * 0 0 CCACTCGTTCACCAGGGCCGGCGGGCTGATCACTTTATCGTGCATCTTGGC BB?HHJJIGHHJIGIIJJIJGIJIJJIIIGHBJJJJJJHHHHFFDDDA1+B NH:i:1 HI:i:1 AS:i:41 nM:i:2
+```
+
+Aşağıdaki tablo her alanın formatını ve içeriğini açıklamaktadır. `FLAG`, `CIGAR` ve isteğe bağlı alanlar (mavi ile işaretlenmiş) aşağıda daha ayrıntılı olarak açıklanmıştır. İsteğe bağlı alanların sayısı farklı SAM dosyaları arasında ve hatta aynı dosya içindeki okumalar arasında büyük ölçüde değişebilir.
+
+![SAM alanları görseli](images/sam_fields.png)
+
+### `FLAG` alanı
+
+FLAG alanı, özellikle PE (eşlenmiş uç) okumalar için önemli olan, tek tek okuma hakkında çeşitli bilgi parçalarını kodlar. Bir dizi bitten (0, 1) oluşturulan bir tamsayı içerir. Bu şekilde, birden fazla ikili (Evet/Hayır) soruya verilen yanıtlar, her bir bitin ayrı ayrı adreslenebileceği ve atanabileceği bir bit serisi olarak kompakt bir şekilde saklanabilir.
+
+Aşağıdaki tablo FLAG alanında kodlanabilen farklı özelliklere genel bir bakış sunar. SAM formatı ve samtools geliştiricileri, belgelerinde farklı bitlere atıfta bulunmak için onaltılık kodlamayı kullanma eğilimindedir. Ancak, verilen bir SAM dosyasındaki FLAG alanının değeri her zaman altta yatan ikili değerlerin toplamının ondalık gösterimi olacaktır (aşağıdaki tabloda, satır 2'de gösterildiği gibi).
+
+![SAM flag görseli](images/sam_flag.png)
+
+SAM dosyalarının `FLAG` alanı, ilgili okuma hizalaması hakkındaki bilgileri tek bir ondalık sayıda saklar. Ondalık sayı, her ikili bite karşılık gelen Evet/Hayır sorularının tüm yanıtlarının toplamıdır. Onaltılık gösterim, tek tek bitlere (sorulara) atıfta bulunmak için kullanılır. İlgili durum doğruysa bir bit ayarlanır. Örneğin, bir okuma eşlenmişse, `0x1` ayarlanır ve ondalık değer 1 döndürülür. Bu nedenle, eşlenmiş okumalarla ilişkili tüm `FLAG` değerleri tek ondalık sayılar olmalıdır. Tersine, `0x1` biti ayarlanmamışsa (= okuma eşlenmemişse), `0x2`, `0x8`, `0x20`, `0x40` ve `0x80` hakkında varsayımda bulunulamaz çünkü bunlar eşlenmiş okumalara atıfta bulunur.
+
+
+Tek okumalarla yapılan bir çalışmada, en sık göreceğiniz bayraklar şunlardır:
+
+- 0: Bu okuma ileri zincire haritalanmıştır. (Bit bazlı bayrakların hiçbiri ayarlanmamıştır.)
+- 4: Okuma haritalanmamıştır (`0x4` ayarlıdır).
+- 16: Okuma ters zincire haritalanmıştır (`0x10` ayarlıdır)
+
+(`0x100`, `0x200` ve `0x400` çoğu hizalayıcı/haritalayıcı tarafından kullanılmaz, ancak prensipte tek okumalar için ayarlanabilir.) PE (eşlenmiş uç) deneyinde görebileceğiniz bazı yaygın `FLAG` değerleri şunları içerir:
+
+| **69** (= 1 + 4 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır ve haritalanmamıştır. |
+| **77** (= 1 + 4 + 8 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır, her ikisi de haritalanmamıştır. |
+| **83** (= 1 + 2 + 16 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve ters zincire haritalanmıştır. |
+| **99** (= 1 + 2 + 32 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve eşi ters zincire haritalanmıştır. |
+| **133** (= 1 + 4 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve haritalanmamıştır. |
+| **137** (= 1 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve eşi haritalanmamışken kendisi haritalanmıştır. |
+| **141** (= 1 + 4 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır, ancak her ikisi de haritalanmamıştır. |
+| **147** (= 1 + 2 + 16 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve ters zincire haritalanmıştır. |
+| **163** (= 1 + 2 + 32 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve eşi ters zincire haritalanmıştır. |
+
+FLAG tam sayılarını yukarıda gösterilenler gibi düz İngilizce açıklamalara hızlıca çevirmek için kullanışlı bir web sitesi: https://broadinstitute.github.io/picard/explain-flags.html
+
+### `CIGAR` dizisi
+
+`CIGAR`, *Concise Idiosyncratic Gapped Alignment Report* (Özlü İdiyosinkratik Boşluklu Hizalama Raporu) anlamına gelir. SAM dosyasının bu altıncı alanı, okumayı o belirli lokusta referans sekansa haritalamak için hangi işlemlerin gerekli olduğunu gösteren bir CIGAR dizisi içerir.
+
+CIGAR formatında aşağıdaki işlemler tanımlanmıştır (ayrıca aşağıdaki şekle bakın):
+
+- **M** - Hizalama (bir sekans eşleşmesi veya uyuşmazlığı olabilir!)
+- **I** - Referansa kıyasla okumada ekleme
+- **D** - Referansa kıyasla okumada silme
+- **N** - Referanstan atlanan bölge. mRNA-genom hizalamaları için, N işlemi bir intronu temsil eder. Diğer hizalama türleri için, N'nin yorumu tanımlanmamıştır.
+- **S** - Yumuşak kırpma (kırpılan sekanslar okumada mevcuttur); S'nin yalnızca H işlemleri arasında ve dizinin uçlarında olabilir
+- **H** - Sert kırpma (kırpılan sekanslar hizalama kaydında mevcut DEĞİLDİR); yalnızca ilk ve/veya son işlem olarak mevcut olabilir
+- **P** - Dolgu (dolgulu referanstan sessiz silme)
+- **=** - Sekans eşleşmesi (yaygın olarak kullanılmaz)
+- **X** - Sekans uyuşmazlığı (yaygın olarak kullanılmaz)
+
+
+**M**, **I**, **S**, **=**, **X** işlemlerinin uzunluklarının toplamı okumanın uzunluğuna eşit olmalıdır. İşte bazı örnekler:
+
+![CIGAR görseli](images/cigar.png)
+
+Friederike Dündar, Luce Skrabanek ve Paul Zumbo'nun [eğitim materyalinzden](http://chagall.med.cornell.edu/RNASEQcourse/Intro2RNAseq.pdf) alınmıştır.
+
+### İsteğe bağlı alanlar
+
+On bir zorunlu SAM dosya alanından sonra, isteğe bağlı alanlar `<TAG>:<TİP>:<DEĞER>` formatında anahtar-değer çiftleri olarak sunulur, burada `TİP` şunlardan biridir:
+
+- `A` - Karakter
+- `i` - Tamsayı
+- `f` - Ondalıklı sayı
+- `Z` - Dizi
+- `H` - Onaltılık dizi
+
+Bu isteğe bağlı alanlarda saklanan bilgiler, haritalayıcıya bağlı olarak büyük ölçüde değişecektir ve yeni etiketler serbestçe eklenebilir. Ayrıca, SAM dosyası içindeki okumalar, SAM dosyasını üreten programa bağlı olarak farklı sayıda isteğe bağlı alana sahip olabilir. Yaygın olarak kullanılan isteğe bağlı etiketler şunları içerir:
+
+- `AS:i` - Hizalama skoru
+- `BC:Z` - Barkod sekansı
+- `HI:i` - Eşleşme okuma için i. hit'tir
+- `NH:i` - Sorgu sekansı için raporlanan hizalamaların sayısı
+- `NM:i` - Sorgunun referansa göre düzenleme mesafesi
+- `MD:Z` - Uyuşmazlıkların tam konumlarını içeren dizi (CIGAR dizisini tamamlamalıdır)
+- `RG:Z` - Okuma grubu (başlıkta @RG mevcutsa ID'den sonraki girişle eşleşmelidir)
+
+Böylece, örneğin, referansa mükemmel şekilde haritalanan (yani uyuşmazlık içermeyen) okumaları seçmek için NM:i:0 etiketini kullanabiliriz. Yukarıda listelenen isteğe bağlı alanlar oldukça standartlaştırılmış olsa da, `X`, `Y` ve `Z` ile başlayan etiketler özellikle serbest kullanım için ayrılmıştır ve asla resmi SAM dosya formatı spesifikasyonlarının bir parçası olmayacaktır. Örneğin `XS`, TopHat (daha sonra tartışacağımız bir RNA-seq analiz aracı) tarafından zincir bilgisini kodlamak için kullanılır (örn. `XS:A:+`) iken Bowtie2 ve BWA, çoklu hizalamaları olan okumalar için bir sonraki en iyi skorlu hizalamanın hizalama skorunu saklamak için `XS:i:` kullanır (örn. `XS:i:30`).
+
+### Okuma Grupları
+
+SAM/BAM formatının temel özelliklerinden biri, bireysel okumaları okuma grubu etiketleriyle etiketleme yeteneğidir. Bu, birden çok deneyin sonuçlarını tek bir BAM veri setinde birleştirmeye olanak tanır. Bu, downstream lojistiği önemli ölçüde basitleştirir: birden çok veri setiyle uğraşmak yerine sadece bir taneyle ilgilenebilirsiniz. Varyant çağırıcılar gibi birçok downstream analiz aracı, okuma grubu verilerini tanımak ve sonuçları okuma grubu bazında çıkarmak üzere tasarlanmıştır.
+
+BAM okuma gruplarının en iyi açıklamalarından biri [GATK destek sitesinde](https://gatkforums.broadinstitute.org/discussion/1317/collected-faqs-about-bam-files) bulunmaktadır. En önemli okuma grubu etiketlerini - `ID`, `SM`, `LB` ve `PL` - açıklayan iki tabloyu GATK forumundan minnetle aldık ve burada sunuyoruz:
+
+![Okuma grupları görseli](images/rg.png)
+
+
+GATK forumu ayrıca aşağıdaki örneği de sunmaktadır:
+
+![Okuma grubu örneği görseli](images/rg_example.png)
+
+### SAM/BAM veri setlerinin işlenmesi
+
+SAM/BAM veri setlerini işlemek için dört ana araç setini destekliyoruz:
+
+- [DeepTools](https://deeptools.readthedocs.io) - derin sekanslama DNA sekanslama deneylerinden elde edilen verilerin görselleştirilmesi, kalite kontrolü ve normalizasyonu için kullanıcı dostu araçlar paketi.
+- [SAMtools](http://www.htslib.org/) - SAM/BAM formatındaki hizalamaları manipüle etmek için çeşitli araçlar; sıralama, birleştirme, indeksleme ve pozisyon başına hizalamaları oluşturma dahil.
+- [BEDtools](https://bedtools.readthedocs.io/en/latest/) - başlangıçta BED formatı için yazılan araç seti, BAM ve VCF veri setlerinin analizi için genişletilmiştir.
+- [Picard](https://broadinstitute.github.io/picard/) - yüksek verimli sekanslama (HTS) verilerini ve formatlarını manipüle etmek için bir dizi Java aracı.
+
+## Okuma duplikasyonlarının zorluğu
+
+### PCR duplikasyonları
+
+Illumina gibi teknolojiler için sekanslama kütüphanelerinin hazırlanması (en azından bu yazının yazıldığı tarihte), PCR amplifikasyonunu içerir. Bu, baz çağırıcılar tarafından güvenilir bir tespit yapılabilmesi için yeterli sayıda sekanslama şablonu oluşturmak için gereklidir. Ancak PCR'nin önyargıları vardır ve bunlar özellikle sekanslama kütüphanelerinin oluşturulması için kullanılan çoklu şablon PCR durumlarında belirgindir (Kanagawa ve ark. [2003](https://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=PubMed&dopt=Abstract&list_uids=16233530)).
+
+![PCR duplikasyonları görseli](images/pcr-duplicates.png)
+
+Aynı dış koordinatlarla hizalanan, en az 30'luk bir haritalama kalitesine ve en az 30nt uzunluğuna sahip moleküllerin analizi, PCR duplikasyonu başına ortalama 12.9'luk bir kapsama ve üstel/güç yasası dağılımına benzer ampirik bir kapsama dağılımı ile sonuçlanmıştır (sol üst panel). Bu, birçok molekülün yalnızca daha derin sekanslama için gözlemlendiğini, diğer moleküllerin ise daha yüksek frekanslarda mevcut olduğunu gösterir. Uzunluk (sol orta panel) ve GC içeriği (sol alt panel) modellerinin yanı sıra kombinasyonun (sağ panel) analizi, daha uzun moleküllere kıyasla %30 ila %70 arasında GC içeriğine sahip ve daha kısa moleküller için daha yüksek PCR duplikasyon sayıları gösterir. Bu etki, polimerazdan veya Illumina sekanslama için gerekli olan küme oluşturma sürecinden kaynaklanan bir amplifikasyon önyargısından kaynaklanıyor olabilir. [Martin Kircher](https://ul.qucosa.de/api/qucosa%3A11231/attachment/ATT-0/)'ın doktora tezinden.
+
+Duplikasyonlar, dış hizalama koordinatlarına veya sekans tabanlı kümelemeye dayalı olarak tanımlanabilir. Duplike okumaları tanımlamanın yaygın yollarından biri [Picard](https://broadinstitute.github.io/picard/command-line-overview.html) paketinden `MarkDuplicates` aracıdır. Hem PCR hem de optik duplikasyonları tanımlamak üzere tasarlanmıştır:
+
+
+Duplikasyonlar, bir eş çiftindeki her iki okuma için aynı 5' pozisyonlarına (koordinat ve zincir) sahip okuma çiftleri olarak tanımlanır (ve isteğe bağlı olarak, eşleşen benzersiz moleküler tanımlayıcı okumalar; BARCODE_TAG seçeneğine bakın). Optik veya daha geniş anlamda Sekanslama duplikasyonları, sekanslama sırasında mekansal olarak kümelenmiş görünen ve optik/görüntü işleme artefaktlarından veya klonal amplifikasyon ve sekanslama sırasındaki biyo-kimyasal süreçlerden kaynaklanabilen duplikasyonlardır; bunlar READ_NAME_REGEX ve OPTICAL_DUPLICATE_PIXEL_DISTANCE seçenekleri kullanılarak tanımlanır. Aracın ana çıktısı, duplikasyonların SAM bayrakları alanında tanımlandığı veya isteğe bağlı olarak kaldırıldığı (REMOVE_DUPLICATE ve REMOVE_SEQUENCING_DUPLICATES'e bakın) ve isteğe bağlı olarak 'DT' isteğe bağlı özniteliğinde bir duplikasyon tipi ile işaretlendiği yeni bir SAM veya BAM dosyasıdır. Buna ek olarak, READ_PAIRS_EXAMINED, UNMAPPED_READS, UNPAIRED_READS, UNPAIRED_READ_DUPLICATES, READ_PAIR_DUPLICATES ve READ_PAIR_OPTICAL_DUPLICATES sayılarını içeren bir metrik dosyası da çıkarır.
+
+### Örnekleme tesadüf duplikasyonları
+
+Bununla birlikte, sekanslama hedefleri küçük olduğunda (örneğin, bakteriyel, viral veya organeller genomların yanı sıra amplikonların sekanslanması) duplikasyonları kaldırırken dikkatli olunmalıdır. Bunun nedeni, sekanslama hedefi küçük olduğunda, okumaların PCR amplifikasyon sorunları nedeniyle değil, tesadüfen aynı koordinatlara sahip olmasıdır. Aşağıdaki şekil, tahmini allel frekansı, kapsam ve insert boyutu varyasyonu arasındaki hassas dengeyi göstermektedir:
+
+![Örnekleme önyargısı görseli](images/sampling-bias.png)
+
+Kapsam ve insert boyutu varyansı tarafından belirlenen Varyant Allel Frekansı (VAF) önyargısı. Okumalar eşlenmiş uçludur ve okuma uzunluğu 76'dır. Insert boyutu dağılımı, 200'de ortalama ve x ekseninde gösterilen standart sapma ile bir Gauss dağılımı olarak modellenmiştir. Gerçek VAF 0.05'tir. Her pozisyondaki koyuluk, VAF'deki önyargının büyüklüğünü gösterir. (Zhou ve ark. [2013](https://bioinformatics.oxfordjournals.org/content/30/8/1073)'ten).
+
+# NGS Verilerini Galaxy'ye Alma
+
+Galaxy'ye veri yüklemek için şu yollardan birini kullanabilirsiniz:
+
+## Bilgisayarınızdan veri yükleme
+
+Bu, web tarayıcıları ile küçük dosyalar yüklemek için uygundur:
+
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/FFCDx1rMGAQ" title="Uploading data from your computer" frameborder="0" loading="lazy"></iframe>
+
+
+## FTP Kullanarak
+
+FTP ([dosya transfer protokolü](https://en.wikipedia.org/wiki/File_Transfer_Protocol)), büyük dosya koleksiyonlarının transferine olanak tanır:
+
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/hC8KSuT_OP8" title="Uploading with FTP" frameborder="0" loading="lazy"></iframe>
+
+## NCBI SRA kısa okuma arşivinden
+
+Son olarak, veri setleri doğrudan NCBI'nin kısa okuma arşivinden yüklenebilir:
+
+<iframe credentialless="" allowfullscreen="" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups" allow="accelerometer 'none'; ambient-light-sensor 'none'; autoplay 'none'; battery 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; ch-ua 'none'; display-capture 'none'; domain-agent 'none'; document-domain 'none'; encrypted-media 'none'; execution-while-not-rendered 'none'; execution-while-out-of-viewport 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; keyboard-map 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; navigation-override 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; sync-xhr 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'" csp="sandbox allow-scripts allow-same-origin;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/Q4t-beYZ-do" title="Uploading from SRA" frameborder="0" loading="lazy"></iframe>
+
+
+> Yorum
+>
+> Bu öğreticide bu son yaklaşımı, NCBI SRA'dan veri almayı kullanacağız.
+
+# Hadi yapalım: Okumalardan varyantlara
+
+Birincil analizde ham sekanslama verisi (örn. fastq okumaları) ile başlarız ve bunları ikincil analiz için bir veri setine dönüştürürüz. Bu tür veri setleri sekans varyantlarının bir listesi, ChIP-seq piklerinin bir koleksiyonu, farklı şekilde ifade edilen genlerin bir listesi vb. olabilir.
+
+SARS-CoV-2 şüphesiz günümüzün en çok konuşulan biyolojik sistemidir. Galaxy'nin NGS verilerini nasıl işlediğini göstermek için SARS-CoV-2 sekanslama verilerini kullanacağız. Bu durumda FASTQ verisinden bir varyant listesine gideceğiz.
+
+## SRA'da gerekli verileri bulma
+
+İlk olarak oynamak için iyi bir veri seti bulmamız gerekiyor. [Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra), [ABD Ulusal Sağlık Enstitüleri (NIH)](https://www.ncbi.nlm.nih.gov/) tarafından işletilen *birleştirilmemiş okumaların* birincil arşividir. SRA, yayınların ve çalışmaların temelini oluşturan sekanslama verilerini almak için harika bir yerdir. Hadi bunu yapalım:
+
+> Uygulama: NCBI SRA'dan Metadata Alma
+>
+> 1. Tarayıcınızı https://www.ncbi.nlm.nih.gov/sra adresine yönlendirerek NCBI'nin SRA sayfasına gidin
+> 2. Arama kutusuna `SARS-CoV-2 Patient Sequencing From Partners / MGH` girin: [Find data görseli] (Alternatif olarak, [veriye doğrudan bağlantıya](https://www.ncbi.nlm.nih.gov/sra/?term=SARS-CoV-2+Patient+Sequencing+From+Partners+%2F+MGH) tıklayabilirsiniz)
+> 3. Web sayfası çok sayıda SRA veri seti gösterecektir (yazı yazıldığı sırada 2,223 tane vardı). Bu, Boston bölgesindeki SARS-CoV-2 analizini açıklayan bir [çalışmadan](https://science.sciencemag.org/content/early/2020/12/09/science.abe3261) alınan verilerdir.
+> 4. Bu veri setlerini açıklayan metadatayı şu şekilde indirin:
+>    - **Send to:** açılır menüsüne tıklayın
+>    - `File` seçeneğini seçin
+>    - **Format**'ı `RunInfo` olarak değiştirin
+>    - **Create file**'a tıklayın İşte nasıl görünmeli: [RunInfo'yu SRA'dan alma görseli]
+> 5. Bu, `Downloads` klasörünüzde oldukça büyük bir `SraRunInfo.csv` dosyası oluşturacaktır.
+
+> Yorum
+>
+> Az önce indirdiğimiz dosyanın sekanslama verisinin kendisi **olmadığını** unutmayın. Daha ziyade, sekanslama okumalarının özelliklerini tanımlayan *metadata*'dır. Bu listeyi, bu öğreticinin geri kalanında kullanılacak sadece birkaç erişim numarasına kadar filtreleyeceğiz.
+
+
+## Galaxy'de `SraRunInfo.csv` dosyasını işleme ve filtreleme
+
+> Uygulama: `SraRunInfo.csv` dosyasını Galaxy'ye yükleme
+>
+> 1. [UseGalaxy.* örnekleri](https://galaxyproject.org/usegalaxy/) veya başka herhangi biri gibi tercih ettiğiniz Galaxy örneğine gidin. (Bu öğretici usegalaxy.org'u kullanır).
+> 2. *Upload Data* (Veri Yükle) düğmesine tıklayın: [Veri yükleme düğmesi görseli]
+> 3. Görünecek iletişim kutusunda "*Choose local files*" (Yerel dosyaları seç) düğmesine tıklayın: [Yerel dosyaları seç düğmesi görseli]
+> 4. Bilgisayarınızdan `SraRunInfo.csv` dosyasını bulun ve seçin
+> 5. *Start* (Başlat) düğmesine tıklayın
+> 6. **Close** (Kapat) düğmesine basarak iletişim kutusunu kapatın
+> 7. Artık dosyanın içeriğine galaxy-eye (göz) simgesine tıklayarak bakabilirsiniz. Bu dosyanın tek tek SRA erişim numaraları hakkında çok bilgi içerdiğini göreceksiniz. Bu çalışmada her erişim numarası, örnekleri sekanslanan bir hastaya karşılık gelir.
+
+> Yorum: Kesmelere Dikkat
+>
+> Aşağıdaki bölüm **Cut** aracını kullanır. Galaxy'de tarihi nedenlerle iki **cut** aracı vardır. Bu örnek tam adı **Cut columns from a table (cut)** olan aracı kullanır. Ancak, aynı mantık diğer araç için de geçerlidir. Sadece biraz farklı bir arayüze sahiptir.
+
+> Uygulama: Verinin bir alt kümesini oluşturma
+>
+> 1. Araç panelinin *Filter and Sort* bölümünde **Select lines that match an expression** (İfadeye uyan satırları seç) aracını bulun.
+> param-file "Select lines from" (Satırları seçin) araç formu alanında az önce yüklediğimiz `SraRunInfo.csv` veri setinin listelendiğinden emin olun.
+> "*the pattern*" (desen) alanına aşağıdaki ifadeyi girin → `SRR12733957|SRR11954102`. Bunlar boru sembolü `|` ile ayrılmış bulmak istediğimiz iki erişim numarasıdır. `|` VEYA anlamına gelir: `SRR12733957` VEYA `SRR11954102` içeren satırları bul.
+> `Run Tool` (Aracı Çalıştır) düğmesine tıklayın.
+> Bu, iki satır içeren bir dosya oluşturacaktır (aslında... bir satır da başlık olarak kullanılır, bu yüzden dosyanın üç satır içerdiği görünecektir. Bu normaldir.)
+> 
+> Araç panelinin **Text Manipulation** bölümünde bulacağınız **Advanced Cut** (Galaxy sürüm 1.1.0) aracını kullanarak dosyanın ilk sütununu kesin.
+> Araç formunun "*File to cut*" (Kesilecek dosya) alanında önceki adımdan üretilen veri setinin seçili olduğundan emin olun.
+> "*Delimited by*"i (Ayraç) `Comma` (Virgül) olarak değiştirin
+> "*List of fields*"de (Alan listesi) `Column: 1`'i seçin.
+> `Run Tool`'a basın. Bu, sadece iki satır içeren bir metin dosyası üretecektir:
+>
+> ```
+> SRR12733957
+> SRR11954102
+> ```
+
+
+İstediğimiz veri setlerinin tanımlayıcılarına sahip olduğumuza göre, gerçek sekanslama verisini indirmemiz gerekiyor. Ayrıca [bu videoyu](https://training.galaxyproject.org/training-material/topics/introduction/tutorials/galaxy-intro-ngs-data-managment/tutorial.html#from-ncbi-short-read-archive) da izleyebilirsiniz.
+
+## Sekanslama verisini indirme
+
+> Uygulama: SRA'dan veri alma
+>
+> 1. Aşağıdaki parametrelerle **Faster Download and Extract Reads in FASTQ** (Galaxy sürüm 2.10.9+galaxy0) aracını çalıştırın:
+>    - "select input type":
+>      ```plaintext
+>      List of SRA accession, one per line
+>      ```
+>      - param-file *"sra accession list"* parametresi önceki adımdaki "**Advanced Cut**" aracının çıktısını göstermelidir.
+>    - `Run Tool` düğmesine **Tıklayın**. Bu, aracı çalıştıracak ve `SRA` veri setinde listelenen çalışmalar için sekans okuma veri setlerini getirecektir. Bu biraz zaman alabilir. Bu, ara vermek için iyi bir zaman olabilir.
+>
+> 2. Bu işi gönderdiğinizde geçmiş panelinizde birkaç giriş oluşturulur:
+>    - **`Pair-end data (fasterq-dump)`**: Eşlenmiş-uç veri setlerini içerir (varsa)
+>    - **`Single-end data (fasterq-dump)`** Tek-uç veri setlerini içerir (varsa)
+>    - **`Other data (fasterq-dump)`** Eşlenmemiş veri setlerini içerir (varsa)
+>    - **`fasterq-dump log`** Araç çalışması hakkında bilgi içerir
+
+İlk üç öğe aslında veri setlerinin *koleksiyonlarıdır*. Galaxy'deki *Koleksiyonlar*, veri setleri arasındaki anlamsal ilişkileri deney/analiz içinde yansıtan mantıksal gruplandırmalardır. Bu durumda araç, eşlenmiş-uç okumalar, tek okumalar ve *diğer* için ayrı koleksiyonlar oluşturur. Daha fazla bilgi için [Koleksiyonlar öğreticisine](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html) bakın ve ("Dataset Collections" ile başlayan adlara sahip) [videoları](https://youtube.com/playlist?list=PLNFLKDpdM3B9UaxWEXgziHXO3k-003FzE) izleyin.
+
+Koleksiyonları geçmiş panelindeki koleksiyon adına **tıklayarak** keşfedin. Bu sizi koleksiyonun içine götürür ve içindeki veri setlerini gösterir. Daha sonra geçmişinizin dış seviyesine geri dönebilirsiniz.
+
+`fasterq` veri aktarımını bitirdiğinde (tüm kutular yeşil/tamamlanmış), analiz için hazırız.
+
