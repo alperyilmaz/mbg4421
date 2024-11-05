@@ -1,0 +1,38 @@
+---
+title: "Yeni Nesil Dizileme -RNASeq"
+subtitle: "MBG4421 - Ders5"
+author: "Alper Yılmaz"
+date: 2024-11-05
+format: html
+typora-copy-images-to: images
+---
+
+## RNA-Seq: okumalar -> ifadesi değişen genler
+
+> Galaxy Training sayfasındaki "[RNA-Seq reads to counts](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-reads-to-counts/tutorial.html)" ve "[RNA-seq counts to genes](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-counts-to-genes/tutorial.html)" isimli eğitim materyalinden uyarlanmıştır.
+
+## Özet
+
+![](images/aligncount.png)
+
+[resim kaynağı](https://bioconnector.github.io/bims8382/r-rnaseq-airway.html)
+
+![](images/1730786656.png)
+
+[resim kaynağı](https://bioconnector.github.io/bims8382/r-rnaseq-airway.html)
+
+## Adımlar
+
+- Verileri elde etme: kalite kontrol ve kırpma
+- Genom eşleme
+- Gen başına sayım
+- Genom eşleme QC
+- limma-voom ile ifadesi değişen genlerin tespiti
+
+## Kullanılacak Deney
+
+![](images/1730785973.png)
+
+![](images/1730787321.png)
+
+[resim kaynağı](https://journals.physiology.org/doi/full/10.1152/physrev.00040.2018)
