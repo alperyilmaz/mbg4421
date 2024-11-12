@@ -36,3 +36,31 @@ typora-copy-images-to: images
 ![](images/1730787321.png)
 
 [resim kaynağı](https://journals.physiology.org/doi/full/10.1152/physrev.00040.2018)
+
+## Workflow
+
+Örnekte sadece 1000 dizi içeren küçük dosyalar kullanılmıştı. Yapılan işlemlerden *Workflow* oluşturulmuş ve paylaşılmış.
+
+Bu workflow kullanılarak, 12 örnek için, bütün dizileri kapsayan (yaklaşık 25-30 milyon) dosyalar kullanılarak workflow çalıştırılabilir.
+
+### Dosyalar
+
+Deneye ait dosylar indirilip, Zenodo üzerinden paylaşılmıştır. [https://zenodo.org/records/14046446](https://zenodo.org/records/14046446)
+
+Daha sonra, Workflow için gerekli olan
+
+* 12 örnek için tam fastq dosyaları
+* Fare genlerini tarif eden bed dosyası 
+
+indirilip, history paylaşılmıştır. [https://usegalaxy.eu/u/alperyilmaz/h/rna-seq-counts-full-dataset](https://usegalaxy.eu/u/alperyilmaz/h/rna-seq-counts-full-dataset)
+
+Bu paylaşılan history sayfasına gidildiğinde, "Import this history" butonu tıklandığında, bu history bir kopyası sizin hesabınıza kopyalanacaktır. Bu kopyalama sırasında sadece işlemler değil dosyalar da kopyalanacaktır.
+
+![](images/clipboard_image_1731392413.png)
+
+Daha sonra, **RNA-Seq reads to counts** adlı eğitim için hazırlanan [Workflow linki](https://usegalaxy.eu/workflows/trs_import?run_form=true&trs_url=https://training.galaxyproject.org/training-material/api/ga4gh/trs/v2/tools/transcriptomics-rna-seq-reads-to-counts/versions/rna-seq-reads-to-counts)ni ziyaret ettiğinizde, bütün fastq dosyaları için Workflow çalıştırılabilecektir.
+
+Bitmiş hali ekran alıntısı:
+
+![](images/clipboard_image_1731392549.png)
+
