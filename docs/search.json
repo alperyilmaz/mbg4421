@@ -306,5 +306,47 @@
     "title": "MBG4421 Ders Notları",
     "section": "",
     "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
+  },
+  {
+    "objectID": "ders6.html",
+    "href": "ders6.html",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
+    "href": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders6.html#özet",
+    "href": "ders6.html#özet",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Özet",
+    "text": "Özet\n\nresim kaynağı\n\nresim kaynağı"
+  },
+  {
+    "objectID": "ders6.html#adımlar",
+    "href": "ders6.html#adımlar",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Adımlar",
+    "text": "Adımlar\n\nVerileri elde etme: kalite kontrol ve kırpma\nGenom eşleme\nGen başına sayım\nGenom eşleme QC\nlimma-voom ile ifadesi değişen genlerin tespiti"
+  },
+  {
+    "objectID": "ders6.html#kullanılacak-deney",
+    "href": "ders6.html#kullanılacak-deney",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Kullanılacak Deney",
+    "text": "Kullanılacak Deney\n\n\nresim kaynağı"
+  },
+  {
+    "objectID": "ders5.html#workflow",
+    "href": "ders5.html#workflow",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Workflow",
+    "text": "Workflow\nÖrnekte sadece 1000 dizi içeren küçük dosyalar kullanılmıştı. Yapılan işlemlerden Workflow oluşturulmuş ve paylaşılmış.\nBu workflow kullanılarak, 12 örnek için, bütün dizileri kapsayan (yaklaşık 25-30 milyon) dosyalar kullanılarak workflow çalıştırılabilir.\n\nDosyalar\nDeneye ait dosylar indirilip, Zenodo üzerinden paylaşılmıştır. https://zenodo.org/records/14046446\nDaha sonra, Workflow için gerekli olan\n\n12 örnek için tam fastq dosyaları\nFare genlerini tarif eden bed dosyası\n\nindirilip, history paylaşılmıştır. https://usegalaxy.eu/u/alperyilmaz/h/rna-seq-counts-full-dataset\nBu paylaşılan history sayfasına gidildiğinde, “Import this history” butonu tıklandığında, bu history bir kopyası sizin hesabınıza kopyalanacaktır. Bu kopyalama sırasında sadece işlemler değil dosyalar da kopyalanacaktır.\n\nDaha sonra, RNA-Seq reads to counts adlı eğitim için hazırlanan Workflow linkini ziyaret ettiğinizde, bütün fastq dosyaları için Workflow çalıştırılabilecektir.\nBitmiş hali ekran alıntısı:"
   }
 ]
