@@ -1,0 +1,22 @@
+---
+title: "Yeni Nesil Dizileme-RNASeq-Zenginleşme"
+subtitle: "MBG4421 - Ders7"
+author: "Alper Yılmaz"
+date: 2024-11-26
+format: html
+typora-copy-images-to: images
+---
+
+## RNA-Seq: genler -> yolaklar
+
+> Galaxy Training sayfasındaki "[RNA-seq genes to pathways](https://training.galaxyproject.org/training-material/topics/transcriptomics/tutorials/rna-seq-genes-to-pathways/tutorial.html)" isimli eğitim materyalinden uyarlanmıştır.
+
+## Özet
+
+İfadesi değişen genlerin (DEG) listesinde zenginleşen kümelere bakılacaktır.
+
+* **goseq** ile zenginleşen GO terimi
+* **fgsea** ile MSigDB veritabanında belirlenmiş Hallmark gen kümelerinde zenginleşme
+* **egsea** ile MSigDB kümeleri ve KEGG yolaklarında zenginleşme
+
+bakılacaktır.

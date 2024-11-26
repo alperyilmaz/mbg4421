@@ -19,7 +19,14 @@
 
 *22 Ekim 2024 Salı* tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. [Sunum linki](ders4.qmd)
 
-
 ## Ders5
 
 *5 Kasım 2024 Salı* tarihinde "RNA-Seq reads to counts" ve "RNA-Seq from counts to genes" adlı materyaller işlenmiştir. [Sunum linki](ders5.qmd)
+
+## Ders6
+
+*12 Kasım 2024 Salı* tarihinde Ders5 sonundaki Workflow yapıldı [Sunum linki](ders5.qmd)
+
+## Ders7
+
+*26 Kasım 2024 Salı* tarihinde "genes to pathways" isimli uygulama yapılmıştur. [Sunum linki](ders7.qmd)
