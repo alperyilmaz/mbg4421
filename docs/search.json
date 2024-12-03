@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki"
+    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki\n\n\n\n3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
   },
   {
     "objectID": "index.html#ders1",
@@ -54,6 +54,13 @@
     "title": "MBG4421 Biyoinformatik",
     "section": "",
     "text": "26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders8",
+    "href": "index.html#ders8",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
   },
   {
     "objectID": "ders3.html#içerik",
@@ -210,6 +217,69 @@
     "text": "Galaxy örnek"
   },
   {
+    "objectID": "ders8.html",
+    "href": "ders8.html",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “Calling variants in diploid systems” ve “Exome sequencing data analysis for diagnosing a genetic disease” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders8.html#ekzom-dizileme---varyant",
+    "href": "ders8.html#ekzom-dizileme---varyant",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “Calling variants in diploid systems” ve “Exome sequencing data analysis for diagnosing a genetic disease” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders8.html#varyant",
+    "href": "ders8.html#varyant",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "Varyant",
+    "text": "Varyant\nREFERENCE: atcatgacggcaGtagcatat\n--------------------------------\nREAD1:     atcatgacggcaGtagcatat\nREAD2:         tgacggcaGtagcatat\nREAD3:     atcatgacggcaAtagca\nREAD4:            cggcaGtagcatat\nREAD5:     atcatgacggcaGtagc\nBuradaki G-&gt;A değişimi (transition) sebebi ne olabilir?\n\ngerçek bir varyant\ndizileme hatası\nanaliz hatası (hizalama hatası)\n\nhangisi?"
+  },
+  {
+    "objectID": "ders8.html#bayes-teoremi",
+    "href": "ders8.html#bayes-teoremi",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "Bayes teoremi",
+    "text": "Bayes teoremi\n\nkaynak\nDaha fazla bilgi için tıklayınız"
+  },
+  {
+    "objectID": "ders8.html#freebayes",
+    "href": "ders8.html#freebayes",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "FreeBayes",
+    "text": "FreeBayes\n\nFreebayes is a haplotype-based variant caller\n\n\nkaynak\n\nkaynak"
+  },
+  {
+    "objectID": "ders8.html#varyant-bölgesinden-haplotip-belirleme",
+    "href": "ders8.html#varyant-bölgesinden-haplotip-belirleme",
+    "title": "Yeni Nesil Dizileme-Variant Calling",
+    "section": "varyant bölgesinden haplotip belirleme",
+    "text": "varyant bölgesinden haplotip belirleme\n\nkaynak"
+  },
+  {
+    "objectID": "ders7.html",
+    "href": "ders7.html",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders7.html#rna-seq-genler---yolaklar",
+    "href": "ders7.html#rna-seq-genler---yolaklar",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders7.html#özet",
+    "href": "ders7.html#özet",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
+    "section": "Özet",
+    "text": "Özet\nİfadesi değişen genlerin (DEG) listesinde zenginleşen kümelere bakılacaktır.\n\ngoseq ile zenginleşen GO terimi\nfgsea ile MSigDB veritabanında belirlenmiş Hallmark gen kümelerinde zenginleşme\negsea ile MSigDB kümeleri ve KEGG yolaklarında zenginleşme\n\nbakılacaktır."
+  },
+  {
     "objectID": "ders2.html#içerik",
     "href": "ders2.html#içerik",
     "title": "Galaxy Analizlerine Giriş",
@@ -236,27 +306,6 @@
     "title": "Galaxy Analizlerine Giriş",
     "section": "Örnek3: Introduction to Genomics and Galaxy",
     "text": "Örnek3: Introduction to Genomics and Galaxy\nBu eğitimde:\nchr22’de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.\n\nUCSC’den veri çekimi (insan genlerinin koordinatları)\nFilter yardımıyla, genleri iki dosyaya ayırma\ngenom aritmetiği, çakışan bölgeleri bulma\nUCSC genome browser’da görüntüleme"
-  },
-  {
-    "objectID": "ders7.html",
-    "href": "ders7.html",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
-  },
-  {
-    "objectID": "ders7.html#rna-seq-genler---yolaklar",
-    "href": "ders7.html#rna-seq-genler---yolaklar",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
-  },
-  {
-    "objectID": "ders7.html#özet",
-    "href": "ders7.html#özet",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "Özet",
-    "text": "Özet\nİfadesi değişen genlerin (DEG) listesinde zenginleşen kümelere bakılacaktır.\n\ngoseq ile zenginleşen GO terimi\nfgsea ile MSigDB veritabanında belirlenmiş Hallmark gen kümelerinde zenginleşme\negsea ile MSigDB kümeleri ve KEGG yolaklarında zenginleşme\n\nbakılacaktır."
   },
   {
     "objectID": "ders4.html",
