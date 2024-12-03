@@ -1,0 +1,59 @@
+---
+title: "Yeni Nesil Dizileme-Variant Calling"
+subtitle: "MBG4421 - Ders8"
+author: "Alper Yılmaz"
+date: 2024-12-03
+format: html
+typora-copy-images-to: images
+---
+
+## Ekzom dizileme -> Varyant
+
+> Galaxy Training sayfasındaki "[Calling variants in diploid systems](https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html)" ve "[Exome sequencing data analysis for diagnosing a genetic disease](https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/exome-seq/tutorial.html)" isimli eğitim materyalinden uyarlanmıştır.
+
+## Varyant
+
+```
+REFERENCE: atcatgacggcaGtagcatat
+--------------------------------
+READ1:     atcatgacggcaGtagcatat
+READ2:         tgacggcaGtagcatat
+READ3:     atcatgacggcaAtagca
+READ4:            cggcaGtagcatat
+READ5:     atcatgacggcaGtagc
+```
+
+Buradaki G->A değişimi (transition)  sebebi ne olabilir?
+
+- gerçek bir varyant
+- dizileme hatası
+- analiz hatası (hizalama hatası)
+
+hangisi?
+
+## Bayes teoremi
+
+![](images/clipboard_image_1733206689.png)
+
+[kaynak](https://training.galaxyproject.org/training-material/topics/variant-analysis/tutorials/dip/tutorial.html)
+
+Daha fazla bilgi için [tıklayınız](https://oscarbonilla.com/2009/05/visualizing-bayes-theorem/)
+
+## FreeBayes
+
+> Freebayes is a **haplotype-based variant caller**
+
+
+![](images/clipboard_image_1733206816.png)
+
+[kaynak](https://www.nature.com/articles/ng.3036/figures/1)
+
+![](images/clipboard_image_1733207028.png)
+
+[kaynak](https://www.nature.com/articles/s41587-024-02382-1)
+
+## varyant bölgesinden haplotip belirleme
+
+![](images/haplotype_calling_1733207223.png)
+
+[kaynak](https://ucdavis-bioinformatics-training.github.io/2019-Alliance-for-Global-Health-and-Science-Makerere-University_Variants/variant_analysis/variant_calling.html)

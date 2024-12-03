@@ -30,3 +30,8 @@
 ## Ders7
 
 *26 Kasım 2024 Salı* tarihinde "genes to pathways" isimli uygulama yapılmıştur. [Sunum linki](ders7.qmd)
+
+## Ders8
+
+*3 Aralık 2024 Salı* tarihinde "variant calling" konusu işlendi. [Sunum linki](ders8.qmd)
+
