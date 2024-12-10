@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki\n\n\n\n3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
+    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki\n\n\n\n3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki\n\n\n\n10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki"
   },
   {
     "objectID": "index.html#ders1",
@@ -61,6 +61,13 @@
     "title": "MBG4421 Biyoinformatik",
     "section": "",
     "text": "3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders8-1",
+    "href": "index.html#ders8-1",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki"
   },
   {
     "objectID": "ders3.html#içerik",
