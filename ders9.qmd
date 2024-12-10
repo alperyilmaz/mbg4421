@@ -1,0 +1,47 @@
+---
+title: "Epigenetik - ATACSeq analizi"
+subtitle: "MBG4421 - Ders9"
+author: "Alper Yılmaz"
+date: 2024-12-10
+format: html
+typora-copy-images-to: images
+---
+
+## ATAC-Seq
+
+Bu çalışma "[ATAC-Seq data analysis](https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/atac-seq/tutorial.html)" başlıklı materyalden alınmıştır. Ayrıca, metilasyon analizi için "[DNA Methylation data analysis](https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/methylation-seq/tutorial.html)" başlıklı materyali inceleyiniz.
+
+## Yöntem
+
+**ATAC = assay for transposase-accessible chromatin**
+
+![](images/atac-seq_1733811167.jpeg)
+
+[kaynak](https://training.galaxyproject.org/training-material/topics/epigenetics/tutorials/atac-seq/tutorial.html)
+
+
+![](images/41596_2022_692_Fig1_HTML_1733811464.png)
+
+[kaynak](https://www.nature.com/articles/s41596-022-00692-9)
+
+## ATAC-Seq vs. DNAse-Seq
+
+ATAC-seq'in başlıca avantajları:
+
+- Örnek Girdi Gereksinimleri:
+  - ATAC-seq çok daha az başlangıç materyali gerektirir - sadece 500-50.000 hücre
+  - DNase-seq genellikle milyonlarca hücreye (yaklaşık 1-10 milyon) ihtiyaç duyar
+  - Bu özellik, ATAC-seq'i nadir hücre popülasyonları veya sınırlı klinik örnekler için özellikle değerli kılar
+
+- Protokol Basitliği ve Hızı:
+  - ATAC-seq çok daha hızlıdır, sadece 2-3 saat sürer
+  - DNase-seq protokolü daha karmaşık ve zaman alıcıdır, genellikle 2-3 gün sürer
+  - ATAC-seq'in daha az adımı vardır, bu da potansiyel teknik değişkenliği azaltır
+- Çözünürlük ve Hassasiyet:
+  - Her iki yöntem de benzer baz çifti çözünürlüğüne sahiptir
+  - ATAC-seq genellikle daha iyi sinyal-gürültü oranı gösterir
+  - ATAC-seq, DNase-seq'in kaçırabileceği bazı düzenleyici elementleri tespit edebilir
+- Teknik Özellikler:
+  - ATAC-seq, DNA'yı eş zamanlı olarak parçalayan ve etiketleyen Tn5 transposaz kullanır
+  - DNase-seq ayrı parçalama ve adaptör ligasyonu adımları gerektirir
+  - ATAC-seq'in daha basit iş akışı, işlem sırasında örnek kaybını azaltır
