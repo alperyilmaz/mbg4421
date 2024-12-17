@@ -1,0 +1,27 @@
+---
+title: "Metagenomik"
+subtitle: "MBG4421 - Ders10"
+author: "Alper Yılmaz"
+date: 2024-12-17
+format: html
+typora-copy-images-to: images
+---
+
+## Metagenom analizi
+
+Bu çalışma "[16S Microbial Analysis with mothur (short)](https://training.galaxyproject.org/training-material/topics/microbiome/tutorials/mothur-miseq-sop-short/tutorial.html)" başlıklı materyalden alınmıştır. Normalde bu çalışma adımları uzun zaman aldığından, biz **kısaltılmış** versiyonunu inceleyeceğiz. Dilerseniz uzun hali de [bu linkte](https://training.galaxyproject.org/training-material/topics/microbiome/tutorials/mothur-miseq-sop/tutorial.html) mevcut.
+
+## Ribosome ve 16S rRNA
+
+![](images/16S_gene_1734416506.png)
+
+
+![](images/16S_variableregions_1734416584.jpg)
+
+[kaynak](https://training.galaxyproject.org/training-material/topics/microbiome/images/16S_variableregions.jpg)
+
+## Çalışma
+
+![](images/experiment_setup_1734416647.png)
+
+[kaynak](https://training.galaxyproject.org/training-material/topics/microbiome/tutorials/mothur-miseq-sop-short/tutorial.html#understanding-our-input-data)

@@ -35,7 +35,11 @@
 
 *3 Aralık 2024 Salı* tarihinde "variant calling" konusu işlendi. [Sunum linki](ders8.qmd)
 
-## Ders8
+## Ders9
 
 *10 Aralık 2024 Salı* tarihinde "ATAC-Seq" konusu işlendi. [Sunum linki](ders9.qmd)
+
+## Ders10
+
+*17 Aralık 2024 Salı* tarihinde "Metagenomik" konusu işlendi. [Sunum linki](ders10.qmd)
 
