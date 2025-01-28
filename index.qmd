@@ -43,3 +43,6 @@
 
 *17 Aralık 2024 Salı* tarihinde "Metagenomik" konusu işlendi. [Sunum linki](ders10.qmd)
 
+## Ders11 
+
+*7 Ocak 2025 Salı* tarihinde "Makine öğrenmesi" konusu işlendi. [Sunum linki](ders11.qmd)
