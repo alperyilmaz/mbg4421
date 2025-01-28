@@ -1,0 +1,13 @@
+---
+title: "Galaxy Üzerinde Makine Öğrenmesi"
+subtitle: "MBG4421 - Ders11"
+author: "Alper Yılmaz"
+date: 2025-01-07
+format: html
+typora-copy-images-to: images
+---
+
+## Galaxy üzerinde makine öğrenmesi
+
+
+
