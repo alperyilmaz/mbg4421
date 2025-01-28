@@ -1,80 +1,136 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders9.html",
+    "href": "ders9.html",
+    "title": "Epigenetik - ATACSeq analizi",
     "section": "",
-    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki\n\n\n\n3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki\n\n\n\n10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki\n\n\n\n17 Aralık 2024 Salı tarihinde “Metagenomik” konusu işlendi. Sunum linki"
+    "text": "Bu çalışma “ATAC-Seq data analysis” başlıklı materyalden alınmıştır. Ayrıca, metilasyon analizi için “DNA Methylation data analysis” başlıklı materyali inceleyiniz."
   },
   {
-    "objectID": "index.html#ders1",
-    "href": "index.html#ders1",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders9.html#atac-seq",
+    "href": "ders9.html#atac-seq",
+    "title": "Epigenetik - ATACSeq analizi",
     "section": "",
-    "text": "1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı"
+    "text": "Bu çalışma “ATAC-Seq data analysis” başlıklı materyalden alınmıştır. Ayrıca, metilasyon analizi için “DNA Methylation data analysis” başlıklı materyali inceleyiniz."
   },
   {
-    "objectID": "index.html#ders2",
-    "href": "index.html#ders2",
-    "title": "MBG4421 Biyoinformatik",
-    "section": "",
-    "text": "8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
+    "objectID": "ders9.html#yöntem",
+    "href": "ders9.html#yöntem",
+    "title": "Epigenetik - ATACSeq analizi",
+    "section": "Yöntem",
+    "text": "Yöntem\nATAC = assay for transposase-accessible chromatin\n\nkaynak\n\nkaynak"
   },
   {
-    "objectID": "index.html#ders3",
-    "href": "index.html#ders3",
-    "title": "MBG4421 Biyoinformatik",
-    "section": "",
-    "text": "15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki"
+    "objectID": "ders9.html#atac-seq-vs.-dnase-seq",
+    "href": "ders9.html#atac-seq-vs.-dnase-seq",
+    "title": "Epigenetik - ATACSeq analizi",
+    "section": "ATAC-Seq vs. DNAse-Seq",
+    "text": "ATAC-Seq vs. DNAse-Seq\nATAC-seq’in başlıca avantajları:\n\nÖrnek Girdi Gereksinimleri:\n\nATAC-seq çok daha az başlangıç materyali gerektirir - sadece 500-50.000 hücre\nDNase-seq genellikle milyonlarca hücreye (yaklaşık 1-10 milyon) ihtiyaç duyar\nBu özellik, ATAC-seq’i nadir hücre popülasyonları veya sınırlı klinik örnekler için özellikle değerli kılar\n\nProtokol Basitliği ve Hızı:\n\nATAC-seq çok daha hızlıdır, sadece 2-3 saat sürer\nDNase-seq protokolü daha karmaşık ve zaman alıcıdır, genellikle 2-3 gün sürer\nATAC-seq’in daha az adımı vardır, bu da potansiyel teknik değişkenliği azaltır\n\nÇözünürlük ve Hassasiyet:\n\nHer iki yöntem de benzer baz çifti çözünürlüğüne sahiptir\nATAC-seq genellikle daha iyi sinyal-gürültü oranı gösterir\nATAC-seq, DNase-seq’in kaçırabileceği bazı düzenleyici elementleri tespit edebilir\n\nTeknik Özellikler:\n\nATAC-seq, DNA’yı eş zamanlı olarak parçalayan ve etiketleyen Tn5 transposaz kullanır\nDNase-seq ayrı parçalama ve adaptör ligasyonu adımları gerektirir\nATAC-seq’in daha basit iş akışı, işlem sırasında örnek kaybını azaltır"
   },
   {
-    "objectID": "index.html#ders4",
-    "href": "index.html#ders4",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "page-sample.html",
+    "href": "page-sample.html",
+    "title": "Some title",
     "section": "",
-    "text": "22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki"
+    "text": "Galaxy örnek"
   },
   {
-    "objectID": "index.html#ders5",
-    "href": "index.html#ders5",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders7.html",
+    "href": "ders7.html",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
     "section": "",
-    "text": "5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki"
+    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
   },
   {
-    "objectID": "index.html#ders6",
-    "href": "index.html#ders6",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders7.html#rna-seq-genler---yolaklar",
+    "href": "ders7.html#rna-seq-genler---yolaklar",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
     "section": "",
-    "text": "12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki"
+    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
   },
   {
-    "objectID": "index.html#ders7",
-    "href": "index.html#ders7",
-    "title": "MBG4421 Biyoinformatik",
-    "section": "",
-    "text": "26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki"
+    "objectID": "ders7.html#özet",
+    "href": "ders7.html#özet",
+    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
+    "section": "Özet",
+    "text": "Özet\nİfadesi değişen genlerin (DEG) listesinde zenginleşen kümelere bakılacaktır.\n\ngoseq ile zenginleşen GO terimi\nfgsea ile MSigDB veritabanında belirlenmiş Hallmark gen kümelerinde zenginleşme\negsea ile MSigDB kümeleri ve KEGG yolaklarında zenginleşme\n\nbakılacaktır."
   },
   {
-    "objectID": "index.html#ders8",
-    "href": "index.html#ders8",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders4.html",
+    "href": "ders4.html",
+    "title": "Yeni Nesil Dizileme Giriş",
     "section": "",
-    "text": "3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
+    "text": "NGS data logistics isimli Galaxy eğitimi materyalinden uyarlanmıştır."
   },
   {
-    "objectID": "index.html#ders9",
-    "href": "index.html#ders9",
-    "title": "MBG4421 Biyoinformatik",
-    "section": "",
-    "text": "10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki"
+    "objectID": "ders4.html#fastq-manipülasyonu-ve-kalite-kontrolü",
+    "href": "ders4.html#fastq-manipülasyonu-ve-kalite-kontrolü",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "FASTQ manipülasyonu ve kalite kontrolü",
+    "text": "FASTQ manipülasyonu ve kalite kontrolü\nFASTQ çok iyi tanımlanmamış bir formattır. Başlangıçta, çeşitli sekanslama cihazı üreticileri FASTQ’yu kendi gördükleri şekilde yorumlama özgürlüğüne sahipti, bu da birçok FASTQ çeşidinin ortaya çıkmasına neden oldu. Bu varyasyon öncelikle FASTQ için Wikipedia makalesinde açıklandığı gibi kalite değerlerinin farklı şekillerde kodlanmasından kaynaklanıyordu (kalite skorları ve anlamları hakkında aşağıda açıklama bulacaksınız). Bugün, FASTQ Sanger versiyonu formatın standart formu olarak kabul edilmektedir. Galaxy, downstream işleme araçları için tek meşru girdi olarak FASTQ Sanger’ı kullanmakta ve FASTQ dosyalarını bu forma dönüştürmek için bir dizi araç sunmaktadır (Galaxy araçlarının FASTQ Kalite Kontrolü bölümüne bakınız).\nFASTQ formatı şu şekilde görünür:\n@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23\nCCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCTGAACCAGCCAAGTAGCGTGCAG\n+\nABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE&lt;,,CD,CEFC,@E9&lt;FCFCF?9\n@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23\nCCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACTGATCCAGCCATGCCGCGTGCAG\n+\nABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF&lt;,CEF,CFGGD8FFCFCFEGCF\n@M02286:19:000000000-AA549:1:1101:11116:1322 1:N:0:23\nCCTACGGGAGGCAGCAGTAGGGAATCTTCGGCAATGGACGGAAGTCTGACCGAGCAACGCCGCGTGAGT\n+\nAAC&lt;CCF+@@&gt;CC,C9,F9C9@9-CFFFE@7@:+CC8-C@:7,@EFE,6CF:+8F7EFEEF@EGGGEEE\nHer sekanslama okuması dört satırla temsil edilir:\n\nOkuma ID’si ve sekanslama çalışması hakkında isteğe bağlı bilgiler ile başlayan @\nSekanslanmış bazlar\n+ (isteğe bağlı olarak okuma ID’si ve bazı ek bilgilerle birlikte)\nASCII sembolleri olarak kodlanmış sekansın her bazı için kalite skorları"
   },
   {
-    "objectID": "index.html#ders10",
-    "href": "index.html#ders10",
-    "title": "MBG4421 Biyoinformatik",
+    "objectID": "ders4.html#eşlenmiş-uç-verisi-paired-end",
+    "href": "ders4.html#eşlenmiş-uç-verisi-paired-end",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "Eşlenmiş uç verisi (Paired End)",
+    "text": "Eşlenmiş uç verisi (Paired End)\nEşlenmiş-uç ve mate-pair sekanslama kütüphaneleri hazırlamak yaygındır. Bu, sonraki konularda tartışılan birçok uygulama için oldukça faydalıdır. Şimdilik bunların ne olduğunu ve FASTQ formunda nasıl göründüklerini kısaca tartışalım.\n\n\n\nGörsel: Eşlenmiş-uç ve mate-pair okumalar\n\n\nEşlenmiş-uç ve mate-pair okumalar. Eşlenmiş uç sekanslama işleminde (sol) oldukça kısa DNA moleküllerinin (1kb’den az) gerçek uçları belirlenirken, mate pair sekanslama için (sağ) uzun moleküllerin uçları birleştirilir ve özel sekanslama kütüphanelerinde hazırlanır. Bu mate pair protokollerinde, uzun, boyut seçimli moleküllerin uçları bir daireselleştirme reaksiyonunda dahili bir adaptör sekansı (yani bağlayıcı, sarı) ile bağlanır. Dairesel molekül daha sonra restriksiyon enzimleri veya fragmentasyon kullanılarak işlenir. Fragmentler bağlayıcı için zenginleştirilir ve dış kütüphane adaptörleri iki birleştirilmiş molekül ucunun etrafına eklenir. Dahili adaptör daha sonra aynı yönde ek bir sekanslama reaksiyonu için ikinci bir başlatma bölgesi olarak kullanılabilir veya sekanslama ikinci adaptörden, ters zincirden gerçekleştirilebilir. (Martin Kircher’ın “Understanding and improving high-throughput sequencing data production and analysis” başlıklı doktora tezinden)\nBu nedenle her iki durumda da (eşlenmiş-uç ve mate-pair) tek bir fiziksel DNA parçası (veya RNA-seq durumunda RNA) iki uçtan sekanslanır ve böylece iki okuma oluşturur. Bunlar ayrı dosyalar (birinci ve ikinci okumalar için iki FASTQ dosyası) veya her uç için okumaların iç içe geçtiği tek bir dosya olarak gösterilebilir. İşte örnekler:\n\nİki ayrı dosya\nDosya 1\n@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23\nCCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCT\n+\nABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE\n@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23\nCCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACT\n+\nABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF\nDosya 2\n@M02286:19:000000000-AA549:1:1101:12677:1273 2:N:0:23\nCACTACCCGTGTATCTAATCCTGTTTGATACCCGCACCTTCGAGCTTA\n+\n--8A,CCE+,,;,&lt;CC,,&lt;CE@,CFD,,C,CFF+@+@CCEF,,,B+C,\n@M02286:19:000000000-AA549:1:1101:15048:1299 2:N:0:23\nCACTACCGGGGTATCTAATCCTGTTCGCTCCCCACGCTTTCGTCCATC\n+\n-6AC,EE@::CF7CFF&lt;&lt;FFGGDFFF,@FGGGG?F7FEGGGDEFF&gt;FF\n\nYorum: Okuma sırası önemlidir\nİki dosyadaki okuma ID’lerinin aynı olduğuna ve aynı sırada listelendiğine dikkat edin. Bazı durumlarda birinci ve ikinci dosyadaki okuma ID’lerine sırasıyla /1 ve /2 etiketleri eklenebilir.\n\n\n\nİç içe geçmiş dosya (Interleaved)\n@1/1\nAGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA\n+\nEGGEGGGDFGEEEAEECGDEGGFEEGEFGBEEDDECFEFDD@CDD&lt;ED\n@1/2\nCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC\n+\nGHHHDFDFGFGEGFBGEGGEGEGGGHGFGHFHFHHHHHHHEF?EFEFF\n@2/1\nAGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA\n+\nHHHHHHEGFHEEFEEHEEHHGGEGGGGEFGFGGGGHHHHFBEEEEEFG\n@2/2\nCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC\n+\nHHHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH\nBurada birinci ve ikinci okumalar /1 ve /2 etiketleriyle tanımlanmıştır.\n\nYorum: FASTQ formatı katı kuralları olmayan bir standarttır\nFASTQ formatı katı bir şekilde tanımlanmamıştır ve varyasyonları her zaman size baş ağrısı yaratacaktır. Daha fazla bilgi için bu sayfaya bakın."
+  },
+  {
+    "objectID": "ders4.html#baz-kaliteleri-nedir",
+    "href": "ders4.html#baz-kaliteleri-nedir",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "Baz kaliteleri nedir?",
+    "text": "Baz kaliteleri nedir?\nYukarıda gördüğümüz gibi, FASTQ veri setleri iki tür bilgi içerir:\n\nokumanın sekansı\nokumadaki her nükleotid için baz kaliteleri.\n\nBaz kaliteleri, sekanslama okumasındaki her bazın ne kadar güvenilir olduğunu değerlendirmemize olanak tanır. Friederike Dündar, Luce Skrabanek, Paul Zumbo tarafından hazırlanan mükemmel bir öğreticiden alınan aşağıdaki alıntı baz kalitelerinin ne olduğunu açıklamaktadır:\n\nYorum: “RNA-seq kullanarak diferansiyel gen ekspresyon analizine giriş”ten\nIllumina sekanslama, büyüyen sekanslama okumasına dahil edilmeleri üzerine yayılan floresan sinyalini tanımlayarak tek tek nükleotidleri belirlemeye dayanır. Floresan yoğunlukları çıkarıldıktan ve dört harfli koda çevrildikten sonra, sekanslama sırasında elde edilen görüntülerden nükleotid sekanslarının çıkarılması genellikle baz çağırma olarak adlandırılır. Sekanslama işleminin kusurlu doğası ve optik cihazların sınırlamaları nedeniyle, baz çağırma her zaman doğal bir belirsizliğe sahip olacaktır. Bu nedenle FASTQ dosyaları, her okumanın DNA sekansını, pozisyona özgü bir kalite skoruyla birlikte saklar; bu skor hata olasılığını, yani tek bir baz çağrısının yanlış olma olasılığını temsil eder. Skora Phred skoru denir, Q, bir baz çağrısının yanlış olma olasılığı p ile orantılıdır, burada Q=−10lg(p)’dir.\n\nÖrneğin, 10’luk bir Phred skoru her on baz çağrısında bir hata anlamına gelir (Q=−10lg(0.1)), yani %90 doğruluk; 20’lik bir Phred skoru her yüz baz çağrısında bir hata, yani %99 doğruluk anlamına gelir. Dolayısıyla, daha yüksek bir Phred skoru, raporlanan baza olan güvenin daha yüksek olduğunu gösterir.\nHer baza benzersiz bir skor tanımlayıcısı atamak için (değişken uzunluktaki sayılar yerine), Phred skorları genellikle ASCII karakterleri olarak temsil edilir. http://ascii-code.com/ adresinde hangi karakterlerin hangi sayıya atandığını görebilirsiniz.\nHam okumalar için, skorların aralığı sekanslama teknolojisine ve kullanılan baz çağırıcıya bağlı olacaktır (örneğin Illumina, Bustard adlı bir araç veya daha yakın zamanda RTA kullanıyordu). Ne yazık ki, Illumina Phred skorunu nasıl hesapladıkları ve ASCII-kodladıkları konusunda tutarlı olmaktan uzak olmuştur (aşağıya bakın)! Ayrıca, Illumina artık HiSeq X’e kadar 41 maksimum skor olana kadar, baz çağrıları için 45’e kadar yüksek Phred skorlarına izin vermektedir. Bu, 41’lik bir üst limit bekleyen downstream uygulamalarla sorunlara neden olabilir.\n\n\n\nIllumina quality score\n\n\nBaz çağrısı kalite skorları Phred aralığı ile temsil edilir. Farklı Illumina (eski adıyla Solexa) versiyonları farklı skorlar ve ASCII ofsetleri kullanmıştır. Illumina format 1.8’den başlayarak, skor artık diğer sekanslama platformları ve sekanslama arşivleri tarafından da kullanılan standart Sanger/Phred formatını temsil etmektedir.\n\n\n\nFASTQ quality score\n\n\nIllumina tarafından kullanılan farklı Phred skoru gösterimlerinin ve orijinal Sanger yorumunun ASCII yorumlaması ve aralıkları. Sanger formatı teorik olarak 93’lük bir skora izin verse de, ham sekanslama okumaları genellikle 60’lık bir Phred skorunu aşmaz. Aslında, çoğu Illumina tabanlı sekanslama 41 ila 45’lik maksimum skorlarla sonuçlanacaktır (görsel Wikipedia’dan alınmıştır)"
+  },
+  {
+    "objectID": "ders4.html#veri-kalitesinin-değerlendirilmesi",
+    "href": "ders4.html#veri-kalitesinin-değerlendirilmesi",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "Veri kalitesinin değerlendirilmesi",
+    "text": "Veri kalitesinin değerlendirilmesi\nNGS verilerinin analizindeki ilk adımlardan biri verinin gerçekte ne kadar iyi olduğunu görmektir. FastqQC, FASTQ veri setlerinin kalitesini değerlendirmenize olanak tanıyan (ve sizin için sekanslama yapanı suçlayıp suçlamama konusunda karar vermenizi sağlayan) harika bir araçtır.\n\n\n\n\n\n\n\nA. Mükemmel kalite\nB. Hmm…Tamam\n\n\n\n\n\n\n\n\n\nBurada iki veri seti için FastQC baz kalite raporlarını görebilirsiniz (araç size başka türde veriler de sunar): A ve B. A veri seti uzun okumalara (250 bp) ve hiçbir kalitenin phred skoru 30’un altına düşmediği çok iyi bir kalite profiline sahiptir. B veri seti, okumaların uçlarının phred skoru 20’nin altına düştüğü önemli ölçüde daha kötüdür. B okumalarının ileri işleme için kırpılması gerekebilir."
+  },
+  {
+    "objectID": "ders4.html#verinizi-haritalama",
+    "href": "ders4.html#verinizi-haritalama",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "Verinizi Haritalama",
+    "text": "Verinizi Haritalama\nNGS okumalarının referans sekanslarına karşı haritalanması, analizin temel adımlarından biridir. Şimdi bunun pratikte nasıl yapıldığını göreceğiz. Aşağıda ana akım haritalama araçlarını vurgulayan temel yayınların bir listesi bulunmaktadır:\n\n2009 Bowtie 1 - Langmead ve ark.\n2012 Bowtie 2 - Langmead ve Salzberg\n2009 BWA - Li ve Durbin\n2010 BWA - Li ve Durbin\n2013 BWA-MEM - Li\n\n\nÖnceden hesaplanmış genom indeksine karşı haritalama\nHaritalayıcılar genellikle okumaları, genom indeksi adı verilen yüksek erişilebilir bir veri yapısına dönüştürülmüş bir referans sekansa karşı karşılaştırır. Bu tür indeksler haritalama başlamadan önce oluşturulmalıdır. Galaxy örnekleri genellikle halka açık olan bir dizi genom yapısı için indeksler depolar.\n\n\n\nÖnbelleğe alınmış genom görseli\n\n\nÖrneğin, yukarıdaki görsel insan genomunun hg38 versiyonu için indeksleri göstermektedir. Aslında üç seçenek olduğunu görebilirsiniz: (1) hg38, (2) hg38 canonical ve (3) hg38 canonical female. hg38 tüm kromozomları ve yerleştirilmemiş tüm contig’leri içerir. hg38 canonical yerleştirilmemiş sekansları içermez ve sadece 1’den 22’ye kadar olan kromozomlardan, X, Y ve mitokondriyal DNA’dan oluşur. hg38 canonical female Y kromozomu hariç canonical setteki her şeyi içerir.\n\n\nÖnceden hesaplanmış indeks mevcut değilse ne olur?\nEğer Galaxy’de haritalama yapmak istediğiniz genom mevcut değilse, genom sekansınızı FASTA dosyası olarak yükleyebilir ve aşağıda gösterildiği gibi doğrudan haritalayıcıda kullanabilirsiniz (Referans genom yükle History olarak ayarlanmıştır).\n\n\n\nYüklenmiş genom görseli\n\n\nBu durumda Galaxy önce bu veri setinden bir indeks oluşturacak ve ardından ona karşı haritalama analizi yapacaktır."
+  },
+  {
+    "objectID": "ders4.html#sambam-veri-setleri",
+    "href": "ders4.html#sambam-veri-setleri",
+    "title": "Yeni Nesil Dizileme Giriş",
+    "section": "SAM/BAM veri setleri",
+    "text": "SAM/BAM veri setleri\nSAM/BAM formatı, hizalanmış okumaları depolamak için kabul edilen bir standarttır (hizalanmamış okumaları da depolayabilir ve BWA gibi bazı haritalayıcılar girdi olarak hizalanmamış BAM kabul eder). Formatın ikili formu (BAM) kompakttır ve (indekslenmişse) hızlıca aranabilir. Galaxy’de BAM veri setleri her zaman indekslidir (bir .bai dosyası eşlik eder) ve koordinat sırasına göre sıralanmıştır. Daha fazla bilgi için tıklayınız.\nSequence Alignment/Map (SAM) formatı, aslında sekanslama okumalarının (veya sorgu sekanslarının) bir referansa hizalanmasını tanımlayan genel bir nükleotid hizalama formatıdır. İnsan tarafından okunabilir, TAB ile ayrılmış SAM dosyaları Binary Alignment/Map formatına sıkıştırılabilir. Bu BAM dosyaları basitçe gzip’lenmiş SAM dosyalarından daha büyüktür, çünkü boyut küçültmeden ziyade hızlı rastgele erişim için optimize edilmişlerdir. Pozisyona göre sıralanmış BAM dosyaları, tüm dosyayı belleğe yüklemeden bir lokusa hizalanan tüm okumaların verimli bir şekilde alınabilmesi için indekslenebilir.\nAşağıda gösterildiği gibi, SAM dosyaları genellikle kısa bir başlık bölümü ve her satırın tek bir okuma hizalamasını temsil ettiği çok uzun bir hizalama bölümü içerir. Aşağıdaki bölümler SAM formatını biraz daha ayrıntılı olarak açıklayacaktır. En kapsamlı ve güncel bilgi için https://github.com/samtools/hts-specs adresine gidin.\n\n\n\nBAM yapısı görseli\n\n\nSAM dosyasının şematik gösterimi. İsteğe bağlı başlık bölümündeki her satır “@” ile başlar, ardından uygun kısaltma gelir (örneğin, tüm kromozom adlarını (SN) ve uzunluklarını (LN) listeleyen sekans sözlüğü için SQ). Bir SAM dosyasındaki satırların büyük çoğunluğu genellikle okuma hizalamalarına karşılık gelir; burada her okuma 11 zorunlu giriş (siyah yazı tipi) ve değişken sayıda isteğe bağlı alan (gri yazı tipi) ile tanımlanır. Friederike Dündar, Luce Skrabanek ve Paul Zumbo’nun öğreticisinden alınmıştır.\n\nSAM Başlığı\nBaşlık bölümü, hizalamanın nasıl oluşturulduğu ve saklandığı hakkında bilgi içerir. Başlık bölümündeki tüm satırlar tab ile ayrılmıştır ve “@” karakteri ile başlar, ardından etiket:değer çiftleri gelir; burada etiket, değerin içeriğini ve formatını tanımlayan iki harfli bir dizedir. Örneğin, başlık bölümündeki “@SQ” satırı, okumaların hizalandığı referans sekansların adları ve uzunlukları hakkında bilgi içerir. Her biri 1.000 bp uzunluğunda üç kromozoma sahip varsayımsal bir organizma için, SAM başlığı aşağıdaki üç satırı içermelidir:\n@SQ SN:chr1 LN:1000\n@SQ SN:chr2 LN:1000\n@SQ SN:chr3 LN:1000\n\n\nSAM hizalama bölümü\nİsteğe bağlı başlık bölümünün ardından, her satırın bir sekanslanmış okumaya karşılık geldiği hizalama bölümü gelir. Her okuma için, her zaman aynı sırada görünen 11 zorunlu alan vardır:\n&lt;QNAME&gt; &lt;FLAG&gt; &lt;RNAME&gt; &lt;POS&gt; &lt;MAPQ&gt; &lt;CIGAR&gt; &lt;MRNM&gt; &lt;MPOS&gt; &lt;ISIZE&gt; &lt;SEQ&gt; &lt;QUAL&gt;\nİlgili bilgi mevcut değilse veya geçersizse, alan değerleri (alana bağlı olarak) ‘0’ veya ’*’ olabilir, ancak eksik olamazlar! 11 zorunlu alandan sonra, değişken sayıda isteğe bağlı alan bulunabilir. İşte gerçek bir SAM dosyasından tek bir satır örneği (yana kaydırmanız gerekebilir):\nERR458493.552967 16 chrI 140 255 12M61232N37M2S * 0 0 CCACTCGTTCACCAGGGCCGGCGGGCTGATCACTTTATCGTGCATCTTGGC BB?HHJJIGHHJIGIIJJIJGIJIJJIIIGHBJJJJJJHHHHFFDDDA1+B NH:i:1 HI:i:1 AS:i:41 nM:i:2\nAşağıdaki tablo her alanın formatını ve içeriğini açıklamaktadır. FLAG, CIGAR ve isteğe bağlı alanlar (mavi ile işaretlenmiş) aşağıda daha ayrıntılı olarak açıklanmıştır. İsteğe bağlı alanların sayısı farklı SAM dosyaları arasında ve hatta aynı dosya içindeki okumalar arasında büyük ölçüde değişebilir.\n\n\n\nSAM alanları görseli\n\n\n\n\nFLAG alanı\nFLAG alanı, özellikle PE (eşlenmiş uç) okumalar için önemli olan, tek tek okuma hakkında çeşitli bilgi parçalarını kodlar. Bir dizi bitten (0, 1) oluşturulan bir tamsayı içerir. Bu şekilde, birden fazla ikili (Evet/Hayır) soruya verilen yanıtlar, her bir bitin ayrı ayrı adreslenebileceği ve atanabileceği bir bit serisi olarak kompakt bir şekilde saklanabilir.\nAşağıdaki tablo FLAG alanında kodlanabilen farklı özelliklere genel bir bakış sunar. SAM formatı ve samtools geliştiricileri, belgelerinde farklı bitlere atıfta bulunmak için onaltılık kodlamayı kullanma eğilimindedir. Ancak, verilen bir SAM dosyasındaki FLAG alanının değeri her zaman altta yatan ikili değerlerin toplamının ondalık gösterimi olacaktır (aşağıdaki tabloda, satır 2’de gösterildiği gibi).\n\n\n\nSAM flag görseli\n\n\nSAM dosyalarının FLAG alanı, ilgili okuma hizalaması hakkındaki bilgileri tek bir ondalık sayıda saklar. Ondalık sayı, her ikili bite karşılık gelen Evet/Hayır sorularının tüm yanıtlarının toplamıdır. Onaltılık gösterim, tek tek bitlere (sorulara) atıfta bulunmak için kullanılır. İlgili durum doğruysa bir bit ayarlanır. Örneğin, bir okuma eşlenmişse, 0x1 ayarlanır ve ondalık değer 1 döndürülür. Bu nedenle, eşlenmiş okumalarla ilişkili tüm FLAG değerleri tek ondalık sayılar olmalıdır. Tersine, 0x1 biti ayarlanmamışsa (= okuma eşlenmemişse), 0x2, 0x8, 0x20, 0x40 ve 0x80 hakkında varsayımda bulunulamaz çünkü bunlar eşlenmiş okumalara atıfta bulunur.\nTek okumalarla yapılan bir çalışmada, en sık göreceğiniz bayraklar şunlardır:\n\n0: Bu okuma ileri zincire haritalanmıştır. (Bit bazlı bayrakların hiçbiri ayarlanmamıştır.)\n4: Okuma haritalanmamıştır (0x4 ayarlıdır).\n16: Okuma ters zincire haritalanmıştır (0x10 ayarlıdır)\n\n(0x100, 0x200 ve 0x400 çoğu hizalayıcı/haritalayıcı tarafından kullanılmaz, ancak prensipte tek okumalar için ayarlanabilir.) PE (eşlenmiş uç) deneyinde görebileceğiniz bazı yaygın FLAG değerleri şunları içerir:\n69 (= 1 + 4 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır ve haritalanmamıştır. |\n77 (= 1 + 4 + 8 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır, her ikisi de haritalanmamıştır. |\n83 (= 1 + 2 + 16 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve ters zincire haritalanmıştır. |\n99 (= 1 + 2 + 32 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve eşi ters zincire haritalanmıştır. |\n133 (= 1 + 4 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve haritalanmamıştır. |\n137 (= 1 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve eşi haritalanmamışken kendisi haritalanmıştır. |\n141 (= 1 + 4 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır, ancak her ikisi de haritalanmamıştır. |\n147 (= 1 + 2 + 16 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve ters zincire haritalanmıştır. |\n163 (= 1 + 2 + 32 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve eşi ters zincire haritalanmıştır. |\nFLAG tam sayılarını yukarıda gösterilenler gibi düz İngilizce açıklamalara hızlıca çevirmek için kullanışlı bir web sitesi: https://broadinstitute.github.io/picard/explain-flags.html\n\n\nCIGAR dizisi\nCIGAR, Concise Idiosyncratic Gapped Alignment Report (Özlü İdiyosinkratik Boşluklu Hizalama Raporu) anlamına gelir. SAM dosyasının bu altıncı alanı, okumayı o belirli lokusta referans sekansa haritalamak için hangi işlemlerin gerekli olduğunu gösteren bir CIGAR dizisi içerir.\nCIGAR formatında aşağıdaki işlemler tanımlanmıştır (ayrıca aşağıdaki şekle bakın):\n\nM - Hizalama (bir sekans eşleşmesi veya uyuşmazlığı olabilir!)\nI - Referansa kıyasla okumada ekleme\nD - Referansa kıyasla okumada silme\nN - Referanstan atlanan bölge. mRNA-genom hizalamaları için, N işlemi bir intronu temsil eder. Diğer hizalama türleri için, N’nin yorumu tanımlanmamıştır.\nS - Yumuşak kırpma (kırpılan sekanslar okumada mevcuttur); S’nin yalnızca H işlemleri arasında ve dizinin uçlarında olabilir\nH - Sert kırpma (kırpılan sekanslar hizalama kaydında mevcut DEĞİLDİR); yalnızca ilk ve/veya son işlem olarak mevcut olabilir\nP - Dolgu (dolgulu referanstan sessiz silme)\n= - Sekans eşleşmesi (yaygın olarak kullanılmaz)\nX - Sekans uyuşmazlığı (yaygın olarak kullanılmaz)\n\nM, I, S, =, X işlemlerinin uzunluklarının toplamı okumanın uzunluğuna eşit olmalıdır. İşte bazı örnekler:\n\n\n\nCIGAR görseli\n\n\nFriederike Dündar, Luce Skrabanek ve Paul Zumbo’nun eğitim materyalinzden alınmıştır.\n\n\nİsteğe bağlı alanlar\nOn bir zorunlu SAM dosya alanından sonra, isteğe bağlı alanlar &lt;TAG&gt;:&lt;TİP&gt;:&lt;DEĞER&gt; formatında anahtar-değer çiftleri olarak sunulur, burada TİP şunlardan biridir:\n\nA - Karakter\ni - Tamsayı\nf - Ondalıklı sayı\nZ - Dizi\nH - Onaltılık dizi\n\nBu isteğe bağlı alanlarda saklanan bilgiler, haritalayıcıya bağlı olarak büyük ölçüde değişecektir ve yeni etiketler serbestçe eklenebilir. Ayrıca, SAM dosyası içindeki okumalar, SAM dosyasını üreten programa bağlı olarak farklı sayıda isteğe bağlı alana sahip olabilir. Yaygın olarak kullanılan isteğe bağlı etiketler şunları içerir:\n\nAS:i - Hizalama skoru\nBC:Z - Barkod sekansı\nHI:i - Eşleşme okuma için i. hit’tir\nNH:i - Sorgu sekansı için raporlanan hizalamaların sayısı\nNM:i - Sorgunun referansa göre düzenleme mesafesi\nMD:Z - Uyuşmazlıkların tam konumlarını içeren dizi (CIGAR dizisini tamamlamalıdır)\nRG:Z - Okuma grubu (başlıkta @RG mevcutsa ID’den sonraki girişle eşleşmelidir)\n\nBöylece, örneğin, referansa mükemmel şekilde haritalanan (yani uyuşmazlık içermeyen) okumaları seçmek için NM:i:0 etiketini kullanabiliriz. Yukarıda listelenen isteğe bağlı alanlar oldukça standartlaştırılmış olsa da, X, Y ve Z ile başlayan etiketler özellikle serbest kullanım için ayrılmıştır ve asla resmi SAM dosya formatı spesifikasyonlarının bir parçası olmayacaktır. Örneğin XS, TopHat (daha sonra tartışacağımız bir RNA-seq analiz aracı) tarafından zincir bilgisini kodlamak için kullanılır (örn. XS:A:+) iken Bowtie2 ve BWA, çoklu hizalamaları olan okumalar için bir sonraki en iyi skorlu hizalamanın hizalama skorunu saklamak için XS:i: kullanır (örn. XS:i:30).\n\n\nOkuma Grupları\nSAM/BAM formatının temel özelliklerinden biri, bireysel okumaları okuma grubu etiketleriyle etiketleme yeteneğidir. Bu, birden çok deneyin sonuçlarını tek bir BAM veri setinde birleştirmeye olanak tanır. Bu, downstream lojistiği önemli ölçüde basitleştirir: birden çok veri setiyle uğraşmak yerine sadece bir taneyle ilgilenebilirsiniz. Varyant çağırıcılar gibi birçok downstream analiz aracı, okuma grubu verilerini tanımak ve sonuçları okuma grubu bazında çıkarmak üzere tasarlanmıştır.\nBAM okuma gruplarının en iyi açıklamalarından biri GATK destek sitesinde bulunmaktadır. En önemli okuma grubu etiketlerini - ID, SM, LB ve PL - açıklayan iki tabloyu GATK forumundan minnetle aldık ve burada sunuyoruz:\n\n\n\nOkuma grupları görseli\n\n\nGATK forumu ayrıca aşağıdaki örneği de sunmaktadır:\n\n\n\nOkuma grubu örneği görseli\n\n\n\n\nSAM/BAM veri setlerinin işlenmesi\nSAM/BAM veri setlerini işlemek için dört ana araç setini destekliyoruz:\n\nDeepTools - derin sekanslama DNA sekanslama deneylerinden elde edilen verilerin görselleştirilmesi, kalite kontrolü ve normalizasyonu için kullanıcı dostu araçlar paketi.\nSAMtools - SAM/BAM formatındaki hizalamaları manipüle etmek için çeşitli araçlar; sıralama, birleştirme, indeksleme ve pozisyon başına hizalamaları oluşturma dahil.\nBEDtools - başlangıçta BED formatı için yazılan araç seti, BAM ve VCF veri setlerinin analizi için genişletilmiştir.\nPicard - yüksek verimli sekanslama (HTS) verilerini ve formatlarını manipüle etmek için bir dizi Java aracı."
+  },
+  {
+    "objectID": "ders10.html",
+    "href": "ders10.html",
+    "title": "Metagenomik",
     "section": "",
-    "text": "17 Aralık 2024 Salı tarihinde “Metagenomik” konusu işlendi. Sunum linki"
+    "text": "Bu çalışma “16S Microbial Analysis with mothur (short)” başlıklı materyalden alınmıştır. Normalde bu çalışma adımları uzun zaman aldığından, biz kısaltılmış versiyonunu inceleyeceğiz. Dilerseniz uzun hali de bu linkte mevcut."
+  },
+  {
+    "objectID": "ders10.html#metagenom-analizi",
+    "href": "ders10.html#metagenom-analizi",
+    "title": "Metagenomik",
+    "section": "",
+    "text": "Bu çalışma “16S Microbial Analysis with mothur (short)” başlıklı materyalden alınmıştır. Normalde bu çalışma adımları uzun zaman aldığından, biz kısaltılmış versiyonunu inceleyeceğiz. Dilerseniz uzun hali de bu linkte mevcut."
+  },
+  {
+    "objectID": "ders10.html#ribosome-ve-16s-rrna",
+    "href": "ders10.html#ribosome-ve-16s-rrna",
+    "title": "Metagenomik",
+    "section": "Ribosome ve 16S rRNA",
+    "text": "Ribosome ve 16S rRNA\n\n\nkaynak"
+  },
+  {
+    "objectID": "ders10.html#çalışma",
+    "href": "ders10.html#çalışma",
+    "title": "Metagenomik",
+    "section": "Çalışma",
+    "text": "Çalışma\n\nkaynak"
   },
   {
     "objectID": "ders3.html#içerik",
@@ -210,174 +266,6 @@
     "text": "Ligand Moleküllerinin Hazırlanması\n\nLigand yapısını elde edin\n\nManuel olarak çizin veya veritabanlarından alın (örn. PubChem, ZINC)\n\n3B konformasyon oluşturun\n\nGerekirse 2B’den 3B yapıya dönüştürün\n\nHidrojenleri ekleyin ve yükleri atayın\n\nUygun protonasyon durumlarını ve yük dağılımını sağlayın\n\nBirden çok konformer oluşturun (isteğe bağlı)\n\nLigand esnekliğini hesaba katın\n\nEnerjiyi minimize edin\n\nLigand geometrisini optimize edin"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "MBG4421 Ders Notları",
-    "section": "",
-    "text": "YTÜ MBG bölümü MBG4421 Biyoinformatik 2024/2025GÜZ dönemi ders notları.\n\n\nSorularınız oldukça bu kısımda cevaplanacaktır.."
-  },
-  {
-    "objectID": "about.html#sıkça-sorulan-sorular",
-    "href": "about.html#sıkça-sorulan-sorular",
-    "title": "MBG4421 Ders Notları",
-    "section": "",
-    "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
-  },
-  {
-    "objectID": "ders9.html",
-    "href": "ders9.html",
-    "title": "Epigenetik - ATACSeq analizi",
-    "section": "",
-    "text": "Bu çalışma “ATAC-Seq data analysis” başlıklı materyalden alınmıştır. Ayrıca, metilasyon analizi için “DNA Methylation data analysis” başlıklı materyali inceleyiniz."
-  },
-  {
-    "objectID": "ders9.html#atac-seq",
-    "href": "ders9.html#atac-seq",
-    "title": "Epigenetik - ATACSeq analizi",
-    "section": "",
-    "text": "Bu çalışma “ATAC-Seq data analysis” başlıklı materyalden alınmıştır. Ayrıca, metilasyon analizi için “DNA Methylation data analysis” başlıklı materyali inceleyiniz."
-  },
-  {
-    "objectID": "ders9.html#yöntem",
-    "href": "ders9.html#yöntem",
-    "title": "Epigenetik - ATACSeq analizi",
-    "section": "Yöntem",
-    "text": "Yöntem\nATAC = assay for transposase-accessible chromatin\n\nkaynak\n\nkaynak"
-  },
-  {
-    "objectID": "ders9.html#atac-seq-vs.-dnase-seq",
-    "href": "ders9.html#atac-seq-vs.-dnase-seq",
-    "title": "Epigenetik - ATACSeq analizi",
-    "section": "ATAC-Seq vs. DNAse-Seq",
-    "text": "ATAC-Seq vs. DNAse-Seq\nATAC-seq’in başlıca avantajları:\n\nÖrnek Girdi Gereksinimleri:\n\nATAC-seq çok daha az başlangıç materyali gerektirir - sadece 500-50.000 hücre\nDNase-seq genellikle milyonlarca hücreye (yaklaşık 1-10 milyon) ihtiyaç duyar\nBu özellik, ATAC-seq’i nadir hücre popülasyonları veya sınırlı klinik örnekler için özellikle değerli kılar\n\nProtokol Basitliği ve Hızı:\n\nATAC-seq çok daha hızlıdır, sadece 2-3 saat sürer\nDNase-seq protokolü daha karmaşık ve zaman alıcıdır, genellikle 2-3 gün sürer\nATAC-seq’in daha az adımı vardır, bu da potansiyel teknik değişkenliği azaltır\n\nÇözünürlük ve Hassasiyet:\n\nHer iki yöntem de benzer baz çifti çözünürlüğüne sahiptir\nATAC-seq genellikle daha iyi sinyal-gürültü oranı gösterir\nATAC-seq, DNase-seq’in kaçırabileceği bazı düzenleyici elementleri tespit edebilir\n\nTeknik Özellikler:\n\nATAC-seq, DNA’yı eş zamanlı olarak parçalayan ve etiketleyen Tn5 transposaz kullanır\nDNase-seq ayrı parçalama ve adaptör ligasyonu adımları gerektirir\nATAC-seq’in daha basit iş akışı, işlem sırasında örnek kaybını azaltır"
-  },
-  {
-    "objectID": "ders4.html",
-    "href": "ders4.html",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "",
-    "text": "NGS data logistics isimli Galaxy eğitimi materyalinden uyarlanmıştır."
-  },
-  {
-    "objectID": "ders4.html#fastq-manipülasyonu-ve-kalite-kontrolü",
-    "href": "ders4.html#fastq-manipülasyonu-ve-kalite-kontrolü",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "FASTQ manipülasyonu ve kalite kontrolü",
-    "text": "FASTQ manipülasyonu ve kalite kontrolü\nFASTQ çok iyi tanımlanmamış bir formattır. Başlangıçta, çeşitli sekanslama cihazı üreticileri FASTQ’yu kendi gördükleri şekilde yorumlama özgürlüğüne sahipti, bu da birçok FASTQ çeşidinin ortaya çıkmasına neden oldu. Bu varyasyon öncelikle FASTQ için Wikipedia makalesinde açıklandığı gibi kalite değerlerinin farklı şekillerde kodlanmasından kaynaklanıyordu (kalite skorları ve anlamları hakkında aşağıda açıklama bulacaksınız). Bugün, FASTQ Sanger versiyonu formatın standart formu olarak kabul edilmektedir. Galaxy, downstream işleme araçları için tek meşru girdi olarak FASTQ Sanger’ı kullanmakta ve FASTQ dosyalarını bu forma dönüştürmek için bir dizi araç sunmaktadır (Galaxy araçlarının FASTQ Kalite Kontrolü bölümüne bakınız).\nFASTQ formatı şu şekilde görünür:\n@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23\nCCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCTGAACCAGCCAAGTAGCGTGCAG\n+\nABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE&lt;,,CD,CEFC,@E9&lt;FCFCF?9\n@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23\nCCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACTGATCCAGCCATGCCGCGTGCAG\n+\nABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF&lt;,CEF,CFGGD8FFCFCFEGCF\n@M02286:19:000000000-AA549:1:1101:11116:1322 1:N:0:23\nCCTACGGGAGGCAGCAGTAGGGAATCTTCGGCAATGGACGGAAGTCTGACCGAGCAACGCCGCGTGAGT\n+\nAAC&lt;CCF+@@&gt;CC,C9,F9C9@9-CFFFE@7@:+CC8-C@:7,@EFE,6CF:+8F7EFEEF@EGGGEEE\nHer sekanslama okuması dört satırla temsil edilir:\n\nOkuma ID’si ve sekanslama çalışması hakkında isteğe bağlı bilgiler ile başlayan @\nSekanslanmış bazlar\n+ (isteğe bağlı olarak okuma ID’si ve bazı ek bilgilerle birlikte)\nASCII sembolleri olarak kodlanmış sekansın her bazı için kalite skorları"
-  },
-  {
-    "objectID": "ders4.html#eşlenmiş-uç-verisi-paired-end",
-    "href": "ders4.html#eşlenmiş-uç-verisi-paired-end",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "Eşlenmiş uç verisi (Paired End)",
-    "text": "Eşlenmiş uç verisi (Paired End)\nEşlenmiş-uç ve mate-pair sekanslama kütüphaneleri hazırlamak yaygındır. Bu, sonraki konularda tartışılan birçok uygulama için oldukça faydalıdır. Şimdilik bunların ne olduğunu ve FASTQ formunda nasıl göründüklerini kısaca tartışalım.\n\n\n\nGörsel: Eşlenmiş-uç ve mate-pair okumalar\n\n\nEşlenmiş-uç ve mate-pair okumalar. Eşlenmiş uç sekanslama işleminde (sol) oldukça kısa DNA moleküllerinin (1kb’den az) gerçek uçları belirlenirken, mate pair sekanslama için (sağ) uzun moleküllerin uçları birleştirilir ve özel sekanslama kütüphanelerinde hazırlanır. Bu mate pair protokollerinde, uzun, boyut seçimli moleküllerin uçları bir daireselleştirme reaksiyonunda dahili bir adaptör sekansı (yani bağlayıcı, sarı) ile bağlanır. Dairesel molekül daha sonra restriksiyon enzimleri veya fragmentasyon kullanılarak işlenir. Fragmentler bağlayıcı için zenginleştirilir ve dış kütüphane adaptörleri iki birleştirilmiş molekül ucunun etrafına eklenir. Dahili adaptör daha sonra aynı yönde ek bir sekanslama reaksiyonu için ikinci bir başlatma bölgesi olarak kullanılabilir veya sekanslama ikinci adaptörden, ters zincirden gerçekleştirilebilir. (Martin Kircher’ın “Understanding and improving high-throughput sequencing data production and analysis” başlıklı doktora tezinden)\nBu nedenle her iki durumda da (eşlenmiş-uç ve mate-pair) tek bir fiziksel DNA parçası (veya RNA-seq durumunda RNA) iki uçtan sekanslanır ve böylece iki okuma oluşturur. Bunlar ayrı dosyalar (birinci ve ikinci okumalar için iki FASTQ dosyası) veya her uç için okumaların iç içe geçtiği tek bir dosya olarak gösterilebilir. İşte örnekler:\n\nİki ayrı dosya\nDosya 1\n@M02286:19:000000000-AA549:1:1101:12677:1273 1:N:0:23\nCCTACGGGTGGCAGCAGTGAGGAATATTGGTCAATGGACGGAAGTCT\n+\nABC8C,:@F:CE8,B-,C,-6-9-C,CE9-CC--C-&lt;-C++,,+;CE\n@M02286:19:000000000-AA549:1:1101:15048:1299 1:N:0:23\nCCTACGGGTGGCTGCAGTGAGGAATATTGGACAATGGTCGGAAGACT\n+\nABC@CC77CFCEG;F9&lt;F89&lt;9--C,CE,--C-6C-,CE:++7:,CF\nDosya 2\n@M02286:19:000000000-AA549:1:1101:12677:1273 2:N:0:23\nCACTACCCGTGTATCTAATCCTGTTTGATACCCGCACCTTCGAGCTTA\n+\n--8A,CCE+,,;,&lt;CC,,&lt;CE@,CFD,,C,CFF+@+@CCEF,,,B+C,\n@M02286:19:000000000-AA549:1:1101:15048:1299 2:N:0:23\nCACTACCGGGGTATCTAATCCTGTTCGCTCCCCACGCTTTCGTCCATC\n+\n-6AC,EE@::CF7CFF&lt;&lt;FFGGDFFF,@FGGGG?F7FEGGGDEFF&gt;FF\n\nYorum: Okuma sırası önemlidir\nİki dosyadaki okuma ID’lerinin aynı olduğuna ve aynı sırada listelendiğine dikkat edin. Bazı durumlarda birinci ve ikinci dosyadaki okuma ID’lerine sırasıyla /1 ve /2 etiketleri eklenebilir.\n\n\n\nİç içe geçmiş dosya (Interleaved)\n@1/1\nAGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA\n+\nEGGEGGGDFGEEEAEECGDEGGFEEGEFGBEEDDECFEFDD@CDD&lt;ED\n@1/2\nCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC\n+\nGHHHDFDFGFGEGFBGEGGEGEGGGHGFGHFHFHHHHHHHEF?EFEFF\n@2/1\nAGGGATGTGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTAGGGTTA\n+\nHHHHHHEGFHEEFEEHEEHHGGEGGGGEFGFGGGGHHHHFBEEEEEFG\n@2/2\nCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAAC\n+\nHHHHHHHHHHHHHGHHHHHHGHHHHHHHHHHHFHHHFHHHHHHHHHHH\nBurada birinci ve ikinci okumalar /1 ve /2 etiketleriyle tanımlanmıştır.\n\nYorum: FASTQ formatı katı kuralları olmayan bir standarttır\nFASTQ formatı katı bir şekilde tanımlanmamıştır ve varyasyonları her zaman size baş ağrısı yaratacaktır. Daha fazla bilgi için bu sayfaya bakın."
-  },
-  {
-    "objectID": "ders4.html#baz-kaliteleri-nedir",
-    "href": "ders4.html#baz-kaliteleri-nedir",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "Baz kaliteleri nedir?",
-    "text": "Baz kaliteleri nedir?\nYukarıda gördüğümüz gibi, FASTQ veri setleri iki tür bilgi içerir:\n\nokumanın sekansı\nokumadaki her nükleotid için baz kaliteleri.\n\nBaz kaliteleri, sekanslama okumasındaki her bazın ne kadar güvenilir olduğunu değerlendirmemize olanak tanır. Friederike Dündar, Luce Skrabanek, Paul Zumbo tarafından hazırlanan mükemmel bir öğreticiden alınan aşağıdaki alıntı baz kalitelerinin ne olduğunu açıklamaktadır:\n\nYorum: “RNA-seq kullanarak diferansiyel gen ekspresyon analizine giriş”ten\nIllumina sekanslama, büyüyen sekanslama okumasına dahil edilmeleri üzerine yayılan floresan sinyalini tanımlayarak tek tek nükleotidleri belirlemeye dayanır. Floresan yoğunlukları çıkarıldıktan ve dört harfli koda çevrildikten sonra, sekanslama sırasında elde edilen görüntülerden nükleotid sekanslarının çıkarılması genellikle baz çağırma olarak adlandırılır. Sekanslama işleminin kusurlu doğası ve optik cihazların sınırlamaları nedeniyle, baz çağırma her zaman doğal bir belirsizliğe sahip olacaktır. Bu nedenle FASTQ dosyaları, her okumanın DNA sekansını, pozisyona özgü bir kalite skoruyla birlikte saklar; bu skor hata olasılığını, yani tek bir baz çağrısının yanlış olma olasılığını temsil eder. Skora Phred skoru denir, Q, bir baz çağrısının yanlış olma olasılığı p ile orantılıdır, burada Q=−10lg(p)’dir.\n\nÖrneğin, 10’luk bir Phred skoru her on baz çağrısında bir hata anlamına gelir (Q=−10lg(0.1)), yani %90 doğruluk; 20’lik bir Phred skoru her yüz baz çağrısında bir hata, yani %99 doğruluk anlamına gelir. Dolayısıyla, daha yüksek bir Phred skoru, raporlanan baza olan güvenin daha yüksek olduğunu gösterir.\nHer baza benzersiz bir skor tanımlayıcısı atamak için (değişken uzunluktaki sayılar yerine), Phred skorları genellikle ASCII karakterleri olarak temsil edilir. http://ascii-code.com/ adresinde hangi karakterlerin hangi sayıya atandığını görebilirsiniz.\nHam okumalar için, skorların aralığı sekanslama teknolojisine ve kullanılan baz çağırıcıya bağlı olacaktır (örneğin Illumina, Bustard adlı bir araç veya daha yakın zamanda RTA kullanıyordu). Ne yazık ki, Illumina Phred skorunu nasıl hesapladıkları ve ASCII-kodladıkları konusunda tutarlı olmaktan uzak olmuştur (aşağıya bakın)! Ayrıca, Illumina artık HiSeq X’e kadar 41 maksimum skor olana kadar, baz çağrıları için 45’e kadar yüksek Phred skorlarına izin vermektedir. Bu, 41’lik bir üst limit bekleyen downstream uygulamalarla sorunlara neden olabilir.\n\n\n\nIllumina quality score\n\n\nBaz çağrısı kalite skorları Phred aralığı ile temsil edilir. Farklı Illumina (eski adıyla Solexa) versiyonları farklı skorlar ve ASCII ofsetleri kullanmıştır. Illumina format 1.8’den başlayarak, skor artık diğer sekanslama platformları ve sekanslama arşivleri tarafından da kullanılan standart Sanger/Phred formatını temsil etmektedir.\n\n\n\nFASTQ quality score\n\n\nIllumina tarafından kullanılan farklı Phred skoru gösterimlerinin ve orijinal Sanger yorumunun ASCII yorumlaması ve aralıkları. Sanger formatı teorik olarak 93’lük bir skora izin verse de, ham sekanslama okumaları genellikle 60’lık bir Phred skorunu aşmaz. Aslında, çoğu Illumina tabanlı sekanslama 41 ila 45’lik maksimum skorlarla sonuçlanacaktır (görsel Wikipedia’dan alınmıştır)"
-  },
-  {
-    "objectID": "ders4.html#veri-kalitesinin-değerlendirilmesi",
-    "href": "ders4.html#veri-kalitesinin-değerlendirilmesi",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "Veri kalitesinin değerlendirilmesi",
-    "text": "Veri kalitesinin değerlendirilmesi\nNGS verilerinin analizindeki ilk adımlardan biri verinin gerçekte ne kadar iyi olduğunu görmektir. FastqQC, FASTQ veri setlerinin kalitesini değerlendirmenize olanak tanıyan (ve sizin için sekanslama yapanı suçlayıp suçlamama konusunda karar vermenizi sağlayan) harika bir araçtır.\n\n\n\n\n\n\n\nA. Mükemmel kalite\nB. Hmm…Tamam\n\n\n\n\n\n\n\n\n\nBurada iki veri seti için FastQC baz kalite raporlarını görebilirsiniz (araç size başka türde veriler de sunar): A ve B. A veri seti uzun okumalara (250 bp) ve hiçbir kalitenin phred skoru 30’un altına düşmediği çok iyi bir kalite profiline sahiptir. B veri seti, okumaların uçlarının phred skoru 20’nin altına düştüğü önemli ölçüde daha kötüdür. B okumalarının ileri işleme için kırpılması gerekebilir."
-  },
-  {
-    "objectID": "ders4.html#verinizi-haritalama",
-    "href": "ders4.html#verinizi-haritalama",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "Verinizi Haritalama",
-    "text": "Verinizi Haritalama\nNGS okumalarının referans sekanslarına karşı haritalanması, analizin temel adımlarından biridir. Şimdi bunun pratikte nasıl yapıldığını göreceğiz. Aşağıda ana akım haritalama araçlarını vurgulayan temel yayınların bir listesi bulunmaktadır:\n\n2009 Bowtie 1 - Langmead ve ark.\n2012 Bowtie 2 - Langmead ve Salzberg\n2009 BWA - Li ve Durbin\n2010 BWA - Li ve Durbin\n2013 BWA-MEM - Li\n\n\nÖnceden hesaplanmış genom indeksine karşı haritalama\nHaritalayıcılar genellikle okumaları, genom indeksi adı verilen yüksek erişilebilir bir veri yapısına dönüştürülmüş bir referans sekansa karşı karşılaştırır. Bu tür indeksler haritalama başlamadan önce oluşturulmalıdır. Galaxy örnekleri genellikle halka açık olan bir dizi genom yapısı için indeksler depolar.\n\n\n\nÖnbelleğe alınmış genom görseli\n\n\nÖrneğin, yukarıdaki görsel insan genomunun hg38 versiyonu için indeksleri göstermektedir. Aslında üç seçenek olduğunu görebilirsiniz: (1) hg38, (2) hg38 canonical ve (3) hg38 canonical female. hg38 tüm kromozomları ve yerleştirilmemiş tüm contig’leri içerir. hg38 canonical yerleştirilmemiş sekansları içermez ve sadece 1’den 22’ye kadar olan kromozomlardan, X, Y ve mitokondriyal DNA’dan oluşur. hg38 canonical female Y kromozomu hariç canonical setteki her şeyi içerir.\n\n\nÖnceden hesaplanmış indeks mevcut değilse ne olur?\nEğer Galaxy’de haritalama yapmak istediğiniz genom mevcut değilse, genom sekansınızı FASTA dosyası olarak yükleyebilir ve aşağıda gösterildiği gibi doğrudan haritalayıcıda kullanabilirsiniz (Referans genom yükle History olarak ayarlanmıştır).\n\n\n\nYüklenmiş genom görseli\n\n\nBu durumda Galaxy önce bu veri setinden bir indeks oluşturacak ve ardından ona karşı haritalama analizi yapacaktır."
-  },
-  {
-    "objectID": "ders4.html#sambam-veri-setleri",
-    "href": "ders4.html#sambam-veri-setleri",
-    "title": "Yeni Nesil Dizileme Giriş",
-    "section": "SAM/BAM veri setleri",
-    "text": "SAM/BAM veri setleri\nSAM/BAM formatı, hizalanmış okumaları depolamak için kabul edilen bir standarttır (hizalanmamış okumaları da depolayabilir ve BWA gibi bazı haritalayıcılar girdi olarak hizalanmamış BAM kabul eder). Formatın ikili formu (BAM) kompakttır ve (indekslenmişse) hızlıca aranabilir. Galaxy’de BAM veri setleri her zaman indekslidir (bir .bai dosyası eşlik eder) ve koordinat sırasına göre sıralanmıştır. Daha fazla bilgi için tıklayınız.\nSequence Alignment/Map (SAM) formatı, aslında sekanslama okumalarının (veya sorgu sekanslarının) bir referansa hizalanmasını tanımlayan genel bir nükleotid hizalama formatıdır. İnsan tarafından okunabilir, TAB ile ayrılmış SAM dosyaları Binary Alignment/Map formatına sıkıştırılabilir. Bu BAM dosyaları basitçe gzip’lenmiş SAM dosyalarından daha büyüktür, çünkü boyut küçültmeden ziyade hızlı rastgele erişim için optimize edilmişlerdir. Pozisyona göre sıralanmış BAM dosyaları, tüm dosyayı belleğe yüklemeden bir lokusa hizalanan tüm okumaların verimli bir şekilde alınabilmesi için indekslenebilir.\nAşağıda gösterildiği gibi, SAM dosyaları genellikle kısa bir başlık bölümü ve her satırın tek bir okuma hizalamasını temsil ettiği çok uzun bir hizalama bölümü içerir. Aşağıdaki bölümler SAM formatını biraz daha ayrıntılı olarak açıklayacaktır. En kapsamlı ve güncel bilgi için https://github.com/samtools/hts-specs adresine gidin.\n\n\n\nBAM yapısı görseli\n\n\nSAM dosyasının şematik gösterimi. İsteğe bağlı başlık bölümündeki her satır “@” ile başlar, ardından uygun kısaltma gelir (örneğin, tüm kromozom adlarını (SN) ve uzunluklarını (LN) listeleyen sekans sözlüğü için SQ). Bir SAM dosyasındaki satırların büyük çoğunluğu genellikle okuma hizalamalarına karşılık gelir; burada her okuma 11 zorunlu giriş (siyah yazı tipi) ve değişken sayıda isteğe bağlı alan (gri yazı tipi) ile tanımlanır. Friederike Dündar, Luce Skrabanek ve Paul Zumbo’nun öğreticisinden alınmıştır.\n\nSAM Başlığı\nBaşlık bölümü, hizalamanın nasıl oluşturulduğu ve saklandığı hakkında bilgi içerir. Başlık bölümündeki tüm satırlar tab ile ayrılmıştır ve “@” karakteri ile başlar, ardından etiket:değer çiftleri gelir; burada etiket, değerin içeriğini ve formatını tanımlayan iki harfli bir dizedir. Örneğin, başlık bölümündeki “@SQ” satırı, okumaların hizalandığı referans sekansların adları ve uzunlukları hakkında bilgi içerir. Her biri 1.000 bp uzunluğunda üç kromozoma sahip varsayımsal bir organizma için, SAM başlığı aşağıdaki üç satırı içermelidir:\n@SQ SN:chr1 LN:1000\n@SQ SN:chr2 LN:1000\n@SQ SN:chr3 LN:1000\n\n\nSAM hizalama bölümü\nİsteğe bağlı başlık bölümünün ardından, her satırın bir sekanslanmış okumaya karşılık geldiği hizalama bölümü gelir. Her okuma için, her zaman aynı sırada görünen 11 zorunlu alan vardır:\n&lt;QNAME&gt; &lt;FLAG&gt; &lt;RNAME&gt; &lt;POS&gt; &lt;MAPQ&gt; &lt;CIGAR&gt; &lt;MRNM&gt; &lt;MPOS&gt; &lt;ISIZE&gt; &lt;SEQ&gt; &lt;QUAL&gt;\nİlgili bilgi mevcut değilse veya geçersizse, alan değerleri (alana bağlı olarak) ‘0’ veya ’*’ olabilir, ancak eksik olamazlar! 11 zorunlu alandan sonra, değişken sayıda isteğe bağlı alan bulunabilir. İşte gerçek bir SAM dosyasından tek bir satır örneği (yana kaydırmanız gerekebilir):\nERR458493.552967 16 chrI 140 255 12M61232N37M2S * 0 0 CCACTCGTTCACCAGGGCCGGCGGGCTGATCACTTTATCGTGCATCTTGGC BB?HHJJIGHHJIGIIJJIJGIJIJJIIIGHBJJJJJJHHHHFFDDDA1+B NH:i:1 HI:i:1 AS:i:41 nM:i:2\nAşağıdaki tablo her alanın formatını ve içeriğini açıklamaktadır. FLAG, CIGAR ve isteğe bağlı alanlar (mavi ile işaretlenmiş) aşağıda daha ayrıntılı olarak açıklanmıştır. İsteğe bağlı alanların sayısı farklı SAM dosyaları arasında ve hatta aynı dosya içindeki okumalar arasında büyük ölçüde değişebilir.\n\n\n\nSAM alanları görseli\n\n\n\n\nFLAG alanı\nFLAG alanı, özellikle PE (eşlenmiş uç) okumalar için önemli olan, tek tek okuma hakkında çeşitli bilgi parçalarını kodlar. Bir dizi bitten (0, 1) oluşturulan bir tamsayı içerir. Bu şekilde, birden fazla ikili (Evet/Hayır) soruya verilen yanıtlar, her bir bitin ayrı ayrı adreslenebileceği ve atanabileceği bir bit serisi olarak kompakt bir şekilde saklanabilir.\nAşağıdaki tablo FLAG alanında kodlanabilen farklı özelliklere genel bir bakış sunar. SAM formatı ve samtools geliştiricileri, belgelerinde farklı bitlere atıfta bulunmak için onaltılık kodlamayı kullanma eğilimindedir. Ancak, verilen bir SAM dosyasındaki FLAG alanının değeri her zaman altta yatan ikili değerlerin toplamının ondalık gösterimi olacaktır (aşağıdaki tabloda, satır 2’de gösterildiği gibi).\n\n\n\nSAM flag görseli\n\n\nSAM dosyalarının FLAG alanı, ilgili okuma hizalaması hakkındaki bilgileri tek bir ondalık sayıda saklar. Ondalık sayı, her ikili bite karşılık gelen Evet/Hayır sorularının tüm yanıtlarının toplamıdır. Onaltılık gösterim, tek tek bitlere (sorulara) atıfta bulunmak için kullanılır. İlgili durum doğruysa bir bit ayarlanır. Örneğin, bir okuma eşlenmişse, 0x1 ayarlanır ve ondalık değer 1 döndürülür. Bu nedenle, eşlenmiş okumalarla ilişkili tüm FLAG değerleri tek ondalık sayılar olmalıdır. Tersine, 0x1 biti ayarlanmamışsa (= okuma eşlenmemişse), 0x2, 0x8, 0x20, 0x40 ve 0x80 hakkında varsayımda bulunulamaz çünkü bunlar eşlenmiş okumalara atıfta bulunur.\nTek okumalarla yapılan bir çalışmada, en sık göreceğiniz bayraklar şunlardır:\n\n0: Bu okuma ileri zincire haritalanmıştır. (Bit bazlı bayrakların hiçbiri ayarlanmamıştır.)\n4: Okuma haritalanmamıştır (0x4 ayarlıdır).\n16: Okuma ters zincire haritalanmıştır (0x10 ayarlıdır)\n\n(0x100, 0x200 ve 0x400 çoğu hizalayıcı/haritalayıcı tarafından kullanılmaz, ancak prensipte tek okumalar için ayarlanabilir.) PE (eşlenmiş uç) deneyinde görebileceğiniz bazı yaygın FLAG değerleri şunları içerir:\n69 (= 1 + 4 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır ve haritalanmamıştır. |\n77 (= 1 + 4 + 8 + 64) | Okuma eşlenmiştir, çiftteki ilk okumadır, her ikisi de haritalanmamıştır. |\n83 (= 1 + 2 + 16 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve ters zincire haritalanmıştır. |\n99 (= 1 + 2 + 32 + 64) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ilk okumadır ve eşi ters zincire haritalanmıştır. |\n133 (= 1 + 4 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve haritalanmamıştır. |\n137 (= 1 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır ve eşi haritalanmamışken kendisi haritalanmıştır. |\n141 (= 1 + 4 + 8 + 128) | Okuma eşlenmiştir, çiftteki ikinci okumadır, ancak her ikisi de haritalanmamıştır. |\n147 (= 1 + 2 + 16 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve ters zincire haritalanmıştır. |\n163 (= 1 + 2 + 32 + 128) | Okuma eşlenmiştir, uygun bir çiftte haritalanmıştır, çiftteki ikinci okumadır ve eşi ters zincire haritalanmıştır. |\nFLAG tam sayılarını yukarıda gösterilenler gibi düz İngilizce açıklamalara hızlıca çevirmek için kullanışlı bir web sitesi: https://broadinstitute.github.io/picard/explain-flags.html\n\n\nCIGAR dizisi\nCIGAR, Concise Idiosyncratic Gapped Alignment Report (Özlü İdiyosinkratik Boşluklu Hizalama Raporu) anlamına gelir. SAM dosyasının bu altıncı alanı, okumayı o belirli lokusta referans sekansa haritalamak için hangi işlemlerin gerekli olduğunu gösteren bir CIGAR dizisi içerir.\nCIGAR formatında aşağıdaki işlemler tanımlanmıştır (ayrıca aşağıdaki şekle bakın):\n\nM - Hizalama (bir sekans eşleşmesi veya uyuşmazlığı olabilir!)\nI - Referansa kıyasla okumada ekleme\nD - Referansa kıyasla okumada silme\nN - Referanstan atlanan bölge. mRNA-genom hizalamaları için, N işlemi bir intronu temsil eder. Diğer hizalama türleri için, N’nin yorumu tanımlanmamıştır.\nS - Yumuşak kırpma (kırpılan sekanslar okumada mevcuttur); S’nin yalnızca H işlemleri arasında ve dizinin uçlarında olabilir\nH - Sert kırpma (kırpılan sekanslar hizalama kaydında mevcut DEĞİLDİR); yalnızca ilk ve/veya son işlem olarak mevcut olabilir\nP - Dolgu (dolgulu referanstan sessiz silme)\n= - Sekans eşleşmesi (yaygın olarak kullanılmaz)\nX - Sekans uyuşmazlığı (yaygın olarak kullanılmaz)\n\nM, I, S, =, X işlemlerinin uzunluklarının toplamı okumanın uzunluğuna eşit olmalıdır. İşte bazı örnekler:\n\n\n\nCIGAR görseli\n\n\nFriederike Dündar, Luce Skrabanek ve Paul Zumbo’nun eğitim materyalinzden alınmıştır.\n\n\nİsteğe bağlı alanlar\nOn bir zorunlu SAM dosya alanından sonra, isteğe bağlı alanlar &lt;TAG&gt;:&lt;TİP&gt;:&lt;DEĞER&gt; formatında anahtar-değer çiftleri olarak sunulur, burada TİP şunlardan biridir:\n\nA - Karakter\ni - Tamsayı\nf - Ondalıklı sayı\nZ - Dizi\nH - Onaltılık dizi\n\nBu isteğe bağlı alanlarda saklanan bilgiler, haritalayıcıya bağlı olarak büyük ölçüde değişecektir ve yeni etiketler serbestçe eklenebilir. Ayrıca, SAM dosyası içindeki okumalar, SAM dosyasını üreten programa bağlı olarak farklı sayıda isteğe bağlı alana sahip olabilir. Yaygın olarak kullanılan isteğe bağlı etiketler şunları içerir:\n\nAS:i - Hizalama skoru\nBC:Z - Barkod sekansı\nHI:i - Eşleşme okuma için i. hit’tir\nNH:i - Sorgu sekansı için raporlanan hizalamaların sayısı\nNM:i - Sorgunun referansa göre düzenleme mesafesi\nMD:Z - Uyuşmazlıkların tam konumlarını içeren dizi (CIGAR dizisini tamamlamalıdır)\nRG:Z - Okuma grubu (başlıkta @RG mevcutsa ID’den sonraki girişle eşleşmelidir)\n\nBöylece, örneğin, referansa mükemmel şekilde haritalanan (yani uyuşmazlık içermeyen) okumaları seçmek için NM:i:0 etiketini kullanabiliriz. Yukarıda listelenen isteğe bağlı alanlar oldukça standartlaştırılmış olsa da, X, Y ve Z ile başlayan etiketler özellikle serbest kullanım için ayrılmıştır ve asla resmi SAM dosya formatı spesifikasyonlarının bir parçası olmayacaktır. Örneğin XS, TopHat (daha sonra tartışacağımız bir RNA-seq analiz aracı) tarafından zincir bilgisini kodlamak için kullanılır (örn. XS:A:+) iken Bowtie2 ve BWA, çoklu hizalamaları olan okumalar için bir sonraki en iyi skorlu hizalamanın hizalama skorunu saklamak için XS:i: kullanır (örn. XS:i:30).\n\n\nOkuma Grupları\nSAM/BAM formatının temel özelliklerinden biri, bireysel okumaları okuma grubu etiketleriyle etiketleme yeteneğidir. Bu, birden çok deneyin sonuçlarını tek bir BAM veri setinde birleştirmeye olanak tanır. Bu, downstream lojistiği önemli ölçüde basitleştirir: birden çok veri setiyle uğraşmak yerine sadece bir taneyle ilgilenebilirsiniz. Varyant çağırıcılar gibi birçok downstream analiz aracı, okuma grubu verilerini tanımak ve sonuçları okuma grubu bazında çıkarmak üzere tasarlanmıştır.\nBAM okuma gruplarının en iyi açıklamalarından biri GATK destek sitesinde bulunmaktadır. En önemli okuma grubu etiketlerini - ID, SM, LB ve PL - açıklayan iki tabloyu GATK forumundan minnetle aldık ve burada sunuyoruz:\n\n\n\nOkuma grupları görseli\n\n\nGATK forumu ayrıca aşağıdaki örneği de sunmaktadır:\n\n\n\nOkuma grubu örneği görseli\n\n\n\n\nSAM/BAM veri setlerinin işlenmesi\nSAM/BAM veri setlerini işlemek için dört ana araç setini destekliyoruz:\n\nDeepTools - derin sekanslama DNA sekanslama deneylerinden elde edilen verilerin görselleştirilmesi, kalite kontrolü ve normalizasyonu için kullanıcı dostu araçlar paketi.\nSAMtools - SAM/BAM formatındaki hizalamaları manipüle etmek için çeşitli araçlar; sıralama, birleştirme, indeksleme ve pozisyon başına hizalamaları oluşturma dahil.\nBEDtools - başlangıçta BED formatı için yazılan araç seti, BAM ve VCF veri setlerinin analizi için genişletilmiştir.\nPicard - yüksek verimli sekanslama (HTS) verilerini ve formatlarını manipüle etmek için bir dizi Java aracı."
-  },
-  {
-    "objectID": "ders2.html#içerik",
-    "href": "ders2.html#içerik",
-    "title": "Galaxy Analizlerine Giriş",
-    "section": "İçerik",
-    "text": "İçerik\nBugün bahsedilecek Galaxy analizleri:\n\nA short introduction to Galaxy\nGalaxy Basics for genomics\nIntroduction to Genomics and Galaxy"
-  },
-  {
-    "objectID": "ders2.html#örnek1-a-short-introduction-to-galaxy",
-    "href": "ders2.html#örnek1-a-short-introduction-to-galaxy",
-    "title": "Galaxy Analizlerine Giriş",
-    "section": "Örnek1: A short introduction to Galaxy",
-    "text": "Örnek1: A short introduction to Galaxy\nBu eğitimde\n\ndosya yükleme\ndosya görüntüleme\ntool kullanma\nbir tool’u tekrar kullanma\n\ngösterilecektir."
-  },
-  {
-    "objectID": "ders2.html#örnek2-galaxy-basics-for-genomics",
-    "href": "ders2.html#örnek2-galaxy-basics-for-genomics",
-    "title": "Galaxy Analizlerine Giriş",
-    "section": "Örnek2: Galaxy Basics for genomics",
-    "text": "Örnek2: Galaxy Basics for genomics\nBu eğitimde:\n\nlink kullanarak dosya yükleme\ngenom aritmetiği\ndatamash ile veri analizi\n\nherhangi bir kolondaki verilerin sayımı\nherhangi bir kolona göre sıralama\niki dosyayı birleştirme\n\nUCSC genom browser’da görüntüleme\n\ngösterilecektir."
-  },
-  {
-    "objectID": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
-    "href": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
-    "title": "Galaxy Analizlerine Giriş",
-    "section": "Örnek3: Introduction to Genomics and Galaxy",
-    "text": "Örnek3: Introduction to Genomics and Galaxy\nBu eğitimde:\nchr22’de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.\n\nUCSC’den veri çekimi (insan genlerinin koordinatları)\nFilter yardımıyla, genleri iki dosyaya ayırma\ngenom aritmetiği, çakışan bölgeleri bulma\nUCSC genome browser’da görüntüleme"
-  },
-  {
-    "objectID": "ders10.html",
-    "href": "ders10.html",
-    "title": "Metagenomik",
-    "section": "",
-    "text": "Bu çalışma “16S Microbial Analysis with mothur (short)” başlıklı materyalden alınmıştır. Normalde bu çalışma adımları uzun zaman aldığından, biz kısaltılmış versiyonunu inceleyeceğiz. Dilerseniz uzun hali de bu linkte mevcut."
-  },
-  {
-    "objectID": "ders10.html#metagenom-analizi",
-    "href": "ders10.html#metagenom-analizi",
-    "title": "Metagenomik",
-    "section": "",
-    "text": "Bu çalışma “16S Microbial Analysis with mothur (short)” başlıklı materyalden alınmıştır. Normalde bu çalışma adımları uzun zaman aldığından, biz kısaltılmış versiyonunu inceleyeceğiz. Dilerseniz uzun hali de bu linkte mevcut."
-  },
-  {
-    "objectID": "ders10.html#ribosome-ve-16s-rrna",
-    "href": "ders10.html#ribosome-ve-16s-rrna",
-    "title": "Metagenomik",
-    "section": "Ribosome ve 16S rRNA",
-    "text": "Ribosome ve 16S rRNA\n\n\nkaynak"
-  },
-  {
-    "objectID": "ders10.html#çalışma",
-    "href": "ders10.html#çalışma",
-    "title": "Metagenomik",
-    "section": "Çalışma",
-    "text": "Çalışma\n\nkaynak"
-  },
-  {
-    "objectID": "ders7.html",
-    "href": "ders7.html",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
-  },
-  {
-    "objectID": "ders7.html#rna-seq-genler---yolaklar",
-    "href": "ders7.html#rna-seq-genler---yolaklar",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-seq genes to pathways” isimli eğitim materyalinden uyarlanmıştır."
-  },
-  {
-    "objectID": "ders7.html#özet",
-    "href": "ders7.html#özet",
-    "title": "Yeni Nesil Dizileme-RNASeq-Zenginleşme",
-    "section": "Özet",
-    "text": "Özet\nİfadesi değişen genlerin (DEG) listesinde zenginleşen kümelere bakılacaktır.\n\ngoseq ile zenginleşen GO terimi\nfgsea ile MSigDB veritabanında belirlenmiş Hallmark gen kümelerinde zenginleşme\negsea ile MSigDB kümeleri ve KEGG yolaklarında zenginleşme\n\nbakılacaktır."
-  },
-  {
     "objectID": "ders8.html",
     "href": "ders8.html",
     "title": "Yeni Nesil Dizileme-Variant Calling",
@@ -420,11 +308,39 @@
     "text": "varyant bölgesinden haplotip belirleme\n\nkaynak"
   },
   {
-    "objectID": "page-sample.html",
-    "href": "page-sample.html",
-    "title": "Some title",
+    "objectID": "ders6.html",
+    "href": "ders6.html",
+    "title": "Yeni Nesil Dizileme -RNASeq",
     "section": "",
-    "text": "Galaxy örnek"
+    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
+    "href": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "",
+    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+  },
+  {
+    "objectID": "ders6.html#özet",
+    "href": "ders6.html#özet",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Özet",
+    "text": "Özet\n\nresim kaynağı\n\nresim kaynağı"
+  },
+  {
+    "objectID": "ders6.html#adımlar",
+    "href": "ders6.html#adımlar",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Adımlar",
+    "text": "Adımlar\n\nVerileri elde etme: kalite kontrol ve kırpma\nGenom eşleme\nGen başına sayım\nGenom eşleme QC\nlimma-voom ile ifadesi değişen genlerin tespiti"
+  },
+  {
+    "objectID": "ders6.html#kullanılacak-deney",
+    "href": "ders6.html#kullanılacak-deney",
+    "title": "Yeni Nesil Dizileme -RNASeq",
+    "section": "Kullanılacak Deney",
+    "text": "Kullanılacak Deney\n\n\nresim kaynağı"
   },
   {
     "objectID": "ders5.html",
@@ -469,38 +385,129 @@
     "text": "Workflow\nÖrnekte sadece 1000 dizi içeren küçük dosyalar kullanılmıştı. Yapılan işlemlerden Workflow oluşturulmuş ve paylaşılmış.\nBu workflow kullanılarak, 12 örnek için, bütün dizileri kapsayan (yaklaşık 25-30 milyon) dosyalar kullanılarak workflow çalıştırılabilir.\n\nDosyalar\nDeneye ait dosylar indirilip, Zenodo üzerinden paylaşılmıştır. https://zenodo.org/records/14046446\nDaha sonra, Workflow için gerekli olan\n\n12 örnek için tam fastq dosyaları\nFare genlerini tarif eden bed dosyası\n\nindirilip, history paylaşılmıştır. https://usegalaxy.eu/u/alperyilmaz/h/rna-seq-counts-full-dataset\nBu paylaşılan history sayfasına gidildiğinde, “Import this history” butonu tıklandığında, bu history bir kopyası sizin hesabınıza kopyalanacaktır. Bu kopyalama sırasında sadece işlemler değil dosyalar da kopyalanacaktır.\n\nDaha sonra, RNA-Seq reads to counts adlı eğitim için hazırlanan Workflow linkini ziyaret ettiğinizde, bütün fastq dosyaları için Workflow çalıştırılabilecektir.\nBitmiş hali ekran alıntısı:"
   },
   {
-    "objectID": "ders6.html",
-    "href": "ders6.html",
-    "title": "Yeni Nesil Dizileme -RNASeq",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+    "text": "Ders notları bu sayfada paylaşılacaktır. Ders notlarımız Türkçe olacktır fakat takip edilen site (Galaxy Training) İngilizce dilindedir. Gerektiğinde tarayıcınızın çeviri özelliğini kullanıp içerikleri Türkçe’ye çevirebilirsiniz.\nUygulamaları gerçekleştirmek için, öğrencilerin Galaxy ortamında hesap açması gerekmektedir. Halka açık bir çok Galaxy sunucu bulunmaktadır, yoğunluk veya içerik açısından farklar olabileceğinden usegalaxy.org , usegalaxy.eu ve usegalaxy.org.au sitelerinde hesap açmanız yararlı olacaktır.\n\n\n\n1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı\n\n\n\n8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki\n\n\n\n15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki\n\n\n\n22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki\n\n\n\n5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki\n\n\n\n12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki\n\n\n\n26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki\n\n\n\n3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki\n\n\n\n10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki\n\n\n\n17 Aralık 2024 Salı tarihinde “Metagenomik” konusu işlendi. Sunum linki\n\n\n\n7 Ocak 2025 Salı tarihinde “Makine öğrenmesi” konusu işlendi. Sunum linki"
   },
   {
-    "objectID": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
-    "href": "ders6.html#rna-seq-okumalar---ifadesi-değişen-genler",
-    "title": "Yeni Nesil Dizileme -RNASeq",
+    "objectID": "index.html#ders1",
+    "href": "index.html#ders1",
+    "title": "MBG4421 Biyoinformatik",
     "section": "",
-    "text": "Galaxy Training sayfasındaki “RNA-Seq reads to counts” ve “RNA-seq counts to genes” isimli eğitim materyalinden uyarlanmıştır."
+    "text": "1 Ekim 2024 Salı tarihinde Galaxy sitesi tanıtıldı"
   },
   {
-    "objectID": "ders6.html#özet",
-    "href": "ders6.html#özet",
-    "title": "Yeni Nesil Dizileme -RNASeq",
-    "section": "Özet",
-    "text": "Özet\n\nresim kaynağı\n\nresim kaynağı"
+    "objectID": "index.html#ders2",
+    "href": "index.html#ders2",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "8 Ekim 2024 Salı tarihinde Galaxy kullanımını gösteren üç örnek yapılacaktır. Sunum linki"
   },
   {
-    "objectID": "ders6.html#adımlar",
-    "href": "ders6.html#adımlar",
-    "title": "Yeni Nesil Dizileme -RNASeq",
-    "section": "Adımlar",
-    "text": "Adımlar\n\nVerileri elde etme: kalite kontrol ve kırpma\nGenom eşleme\nGen başına sayım\nGenom eşleme QC\nlimma-voom ile ifadesi değişen genlerin tespiti"
+    "objectID": "index.html#ders3",
+    "href": "index.html#ders3",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "15 Ekim 2024 Salı tarihinde Docking (Yanaştırma) konusu işlenecektir. Sunum linki"
   },
   {
-    "objectID": "ders6.html#kullanılacak-deney",
-    "href": "ders6.html#kullanılacak-deney",
-    "title": "Yeni Nesil Dizileme -RNASeq",
-    "section": "Kullanılacak Deney",
-    "text": "Kullanılacak Deney\n\n\nresim kaynağı"
+    "objectID": "index.html#ders4",
+    "href": "index.html#ders4",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "22 Ekim 2024 Salı tarihinde NGS (yeni nesil dizileme) verileri konusuna giriş yapılacaktır. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders5",
+    "href": "index.html#ders5",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "5 Kasım 2024 Salı tarihinde “RNA-Seq reads to counts” ve “RNA-Seq from counts to genes” adlı materyaller işlenmiştir. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders6",
+    "href": "index.html#ders6",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "12 Kasım 2024 Salı tarihinde Ders5 sonundaki Workflow yapıldı Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders7",
+    "href": "index.html#ders7",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "26 Kasım 2024 Salı tarihinde “genes to pathways” isimli uygulama yapılmıştur. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders8",
+    "href": "index.html#ders8",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "3 Aralık 2024 Salı tarihinde “variant calling” konusu işlendi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders9",
+    "href": "index.html#ders9",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "10 Aralık 2024 Salı tarihinde “ATAC-Seq” konusu işlendi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders10",
+    "href": "index.html#ders10",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "17 Aralık 2024 Salı tarihinde “Metagenomik” konusu işlendi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders11",
+    "href": "index.html#ders11",
+    "title": "MBG4421 Biyoinformatik",
+    "section": "",
+    "text": "7 Ocak 2025 Salı tarihinde “Makine öğrenmesi” konusu işlendi. Sunum linki"
+  },
+  {
+    "objectID": "ders2.html#içerik",
+    "href": "ders2.html#içerik",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "İçerik",
+    "text": "İçerik\nBugün bahsedilecek Galaxy analizleri:\n\nA short introduction to Galaxy\nGalaxy Basics for genomics\nIntroduction to Genomics and Galaxy"
+  },
+  {
+    "objectID": "ders2.html#örnek1-a-short-introduction-to-galaxy",
+    "href": "ders2.html#örnek1-a-short-introduction-to-galaxy",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek1: A short introduction to Galaxy",
+    "text": "Örnek1: A short introduction to Galaxy\nBu eğitimde\n\ndosya yükleme\ndosya görüntüleme\ntool kullanma\nbir tool’u tekrar kullanma\n\ngösterilecektir."
+  },
+  {
+    "objectID": "ders2.html#örnek2-galaxy-basics-for-genomics",
+    "href": "ders2.html#örnek2-galaxy-basics-for-genomics",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek2: Galaxy Basics for genomics",
+    "text": "Örnek2: Galaxy Basics for genomics\nBu eğitimde:\n\nlink kullanarak dosya yükleme\ngenom aritmetiği\ndatamash ile veri analizi\n\nherhangi bir kolondaki verilerin sayımı\nherhangi bir kolona göre sıralama\niki dosyayı birleştirme\n\nUCSC genom browser’da görüntüleme\n\ngösterilecektir."
+  },
+  {
+    "objectID": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
+    "href": "ders2.html#örnek3-introduction-to-genomics-and-galaxy",
+    "title": "Galaxy Analizlerine Giriş",
+    "section": "Örnek3: Introduction to Genomics and Galaxy",
+    "text": "Örnek3: Introduction to Genomics and Galaxy\nBu eğitimde:\nchr22’de pozitif ve negatif zincirde çakışan genler tespit edilecektir ve aşağıdaki adımlar takip edilecektir.\n\nUCSC’den veri çekimi (insan genlerinin koordinatları)\nFilter yardımıyla, genleri iki dosyaya ayırma\ngenom aritmetiği, çakışan bölgeleri bulma\nUCSC genome browser’da görüntüleme"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "MBG4421 Ders Notları",
+    "section": "",
+    "text": "YTÜ MBG bölümü MBG4421 Biyoinformatik 2024/2025GÜZ dönemi ders notları.\n\n\nSorularınız oldukça bu kısımda cevaplanacaktır.."
+  },
+  {
+    "objectID": "about.html#sıkça-sorulan-sorular",
+    "href": "about.html#sıkça-sorulan-sorular",
+    "title": "MBG4421 Ders Notları",
+    "section": "",
+    "text": "Sorularınız oldukça bu kısımda cevaplanacaktır.."
   }
 ]
